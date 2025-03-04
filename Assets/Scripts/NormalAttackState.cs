@@ -22,6 +22,7 @@ public class NormalAttackState : BaseState
 
     public override void ExitState()
     {
+        _context.Anim.applyRootMotion = false;
         if(_currentAttackPhase == _maxAttackPhase){
             _currentAttackPhase = 0;
         }

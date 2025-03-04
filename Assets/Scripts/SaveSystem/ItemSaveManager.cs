@@ -24,7 +24,7 @@ public class ItemSaveManager : MonoBehaviour
 
 			if (savedSlot == null)
 			{
-				Debug.Log("index i:"+ i);
+				//Debug.Log("index i:"+ i);
 				itemSlot.item = null;
 				itemSlot.quantity = 0;
 			}

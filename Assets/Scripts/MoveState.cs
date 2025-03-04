@@ -15,7 +15,7 @@ public class MoveState : BaseState
 
     public override void ExitState()
     {
-        throw new System.NotImplementedException();
+        //throw new System.NotImplementedException();
     }
 
     public override void UpdateState()
@@ -24,7 +24,7 @@ public class MoveState : BaseState
             return;
         }
         Vector3 direction = new Vector3(_context.Dir.x,0,_context.Dir.y);
-        _context._characterController.Move(direction * _context.MoveSpeed);
+        _context._characterController.Move(direction * _context.MoveSpeed * Time.deltaTime);
         CheckSwitchState();
         
     }
