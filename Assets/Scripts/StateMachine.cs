@@ -26,7 +26,7 @@ public class StateMachine : MonoBehaviour
 
     private void Start() {
         CurrentState = _state.Idle();
-        CurrentState.EnterState();
+        //CurrentState.EnterState();
     }
     public void OnMove(InputValue value){
         
@@ -73,5 +73,6 @@ public class StateMachine : MonoBehaviour
 
         FollowTarget.transform.localEulerAngles = angles;
     }
+    
     
 }

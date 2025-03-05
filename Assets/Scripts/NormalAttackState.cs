@@ -8,16 +8,19 @@ public class NormalAttackState : BaseState
     int _maxAttackPhase = 3;
     string _attackName = "attack";
     bool _continueAttack = false;
+    float[] _transformTime = {0,0.5f,0.1f};
     public NormalAttackState(StateMachine currentContext,StateFactory stateFactory):base(currentContext,stateFactory){
         
     }
     public override void EnterState()
     {
+        //Debug.Log("animation attack is playing");
         _context.CanAttack = 0;
         _continueAttack = false;
         _currentAttackPhase += 1;
         _exitState = false;
-        _context.Anim.Play(_attackName + _currentAttackPhase);
+        //_context.Anim.Play(_attackName + _currentAttackPhase);
+        _context.Anim.CrossFade(_attackName + _currentAttackPhase,_transformTime[_currentAttackPhase-1]);
     }
 
     public override void ExitState()
@@ -39,7 +42,7 @@ public class NormalAttackState : BaseState
         }
     }
     public override void CheckSwitchState(){
-        if(_continueAttack && !_context.AnimatorIsPlaying() ){
+        if(_continueAttack /* &&  !_context.AnimatorIsPlaying() */ ){
             SwitchState(_factory.NormalAttack());
         }
         else if(!_continueAttack && !_context.AnimatorIsPlaying(1)){

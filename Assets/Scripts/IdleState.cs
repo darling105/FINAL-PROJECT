@@ -7,9 +7,13 @@ public class IdleState : BaseState
     public IdleState(StateMachine currentContext,StateFactory stateFactory):base(currentContext,stateFactory){
         
     }
+    // public void InitialState(){
+    //     _context.Anim.Play("idle");
+    //     _exitState = false;
+    // }
     public override void EnterState()
     {
-        _context.Anim.Play("idle");
+        _context.Anim.CrossFade("idle",0.1f);
         _exitState = false;
     }
 

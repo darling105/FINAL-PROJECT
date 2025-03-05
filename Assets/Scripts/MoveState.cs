@@ -10,7 +10,8 @@ public class MoveState : BaseState
     public override void EnterState()
     {
         _exitState = false;
-        _context.Anim.Play("move");
+        _context.Anim.CrossFade("move",0.05f);
+        //_context.Anim.Play("move");
     }
 
     public override void ExitState()

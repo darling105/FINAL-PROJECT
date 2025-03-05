@@ -13,7 +13,7 @@ public class ShowingRootMotion : MonoBehaviour
     }
     void OnAnimatorMove()
     {
-        Debug.Log("OnAnimatorMove");
+        //Debug.Log("OnAnimatorMove");
         if (Anim && Controller)
         {
             Vector3 rootMotionMove = Anim.deltaPosition;
