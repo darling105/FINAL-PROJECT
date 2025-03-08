@@ -262,6 +262,7 @@ MonoBehaviour:
   cameraInput: {x: 0, y: 0}
   cameraVerticalInput: 0
   cameraHorizontalInput: 0
+  dodgeInpput: 0
 --- !u!4 &38028684
 Transform:
   m_ObjectHideFlags: 0
@@ -1464,13 +1465,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 423153926947766390, guid: 60770bdb4dc667c45bea53db0339dc05, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1438546959266459337, guid: 60770bdb4dc667c45bea53db0339dc05, type: 3}
       propertyPath: m_LocalPosition.x
       value: 47
       objectReference: {fileID: 0}
     - target: {fileID: 1438546959266459337, guid: 60770bdb4dc667c45bea53db0339dc05, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 18.003336
+      value: 18.087202
       objectReference: {fileID: 0}
     - target: {fileID: 1438546959266459337, guid: 60770bdb4dc667c45bea53db0339dc05, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2779,7 +2784,7 @@ Transform:
   m_GameObject: {fileID: 705507993}
   serializedVersion: 2
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: 174, y: 67, z: 35}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2826,7 +2831,7 @@ TerrainCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_TerrainData: {fileID: 15600000, guid: 5cb7351ec15a2034a8b403a16d4f2532, type: 2}
+  m_TerrainData: {fileID: 15600000, guid: 0987d0d082e971f4a9eaf4d36877c94f, type: 2}
   m_EnableTreeColliders: 1
 --- !u!218 &717596853
 Terrain:
@@ -6521,10 +6526,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 717596854}
     m_Modifications:
-    - target: {fileID: 8549044517892250023, guid: f6fac0a00acc6a54f93bd70af48fc6df, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.09
-      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cdd65cb6904f9fb4faeebb37342b1932, type: 3}
       propertyPath: m_LocalScale.x
       value: 4
@@ -6588,6 +6589,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: cdd65cb6904f9fb4faeebb37342b1932, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8549044517892250023, guid: f6fac0a00acc6a54f93bd70af48fc6df, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.09
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -7145,22 +7150,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Smithy
       objectReference: {fileID: 0}
-    - target: {fileID: 1733350709616557346, guid: 4d027cd71b53a234aa91cb080bbc60c2, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: 1750596504982121060, guid: 4d027cd71b53a234aa91cb080bbc60c2, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: 7795331791830197962, guid: 4d027cd71b53a234aa91cb080bbc60c2, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: 8491779341069832804, guid: 4d027cd71b53a234aa91cb080bbc60c2, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 18
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7549,7 +7538,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sharedProfile: {fileID: 11400000, guid: 8da948c57360ec742ac2d9934a034498, type: 2}
+  sharedProfile: {fileID: 11400000, guid: cf2649d8410aacf43860f9496d8804f2, type: 2}
   isGlobal: 1
   blendDistance: 0
   weight: 1
@@ -8493,7 +8482,7 @@ Transform:
   m_GameObject: {fileID: 1192198991669167060}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -1}
+  m_LocalPosition: {x: 47, y: 17.5, z: 145.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

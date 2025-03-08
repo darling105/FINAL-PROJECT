@@ -74,6 +74,34 @@
             ]
         },
         {
+            "name": "Player Actions",
+            "id": "3032dabe-59e0-45d7-bc16-dfaf45ece94c",
+            "actions": [
+                {
+                    "name": "Dodge",
+                    "type": "Button",
+                    "id": "e276a054-943c-4b30-889a-8700d02f5634",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "989ea01f-ca75-4862-9827-7758af62b784",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Dodge",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
             "name": "Player Camera",
             "id": "4cc3b0a5-0369-4a5b-8d99-7198b9278de0",
             "actions": [
