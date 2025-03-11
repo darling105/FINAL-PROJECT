@@ -27,6 +27,7 @@ public class PlayerInputManager : MonoBehaviour
 
     [Header("Actions Input")]
     public bool bInput;
+    public bool aInput;
     public bool rbInput;
     public bool rtInput;
     public bool upArrow;
@@ -68,6 +69,7 @@ public class PlayerInputManager : MonoBehaviour
         HandleRollInput(delta);
         HandleAttackInput(delta);
         HandleQuickSlotsInput();
+        HandleInteractingButtonInput();
     }
     private void HandlePlayerMovementInput(float delta)
     {
@@ -147,6 +149,11 @@ public class PlayerInputManager : MonoBehaviour
         {
             playerInventory.ChangeLeftWeapon();
         }
+    }
+
+    private void HandleInteractingButtonInput()
+    {
+        playerControls.PlayerActions.Interactable.performed += i => aInput = true;
     }
 
 }
