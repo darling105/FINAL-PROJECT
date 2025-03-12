@@ -172,6 +172,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LockOn"",
+                    ""type"": ""Button"",
+                    ""id"": ""edc281dd-c598-4c40-805c-7c7009935525"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -238,6 +247,28 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Inventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fc49920d-f541-4a50-b5a3-36e9a5cf1840"",
+                    ""path"": ""<Mouse>/middleButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LockOn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""02d5be82-d729-4331-854e-67a0511fd7ac"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LockOn"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -346,6 +377,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_PlayerActions_Interactable = m_PlayerActions.FindAction("Interactable", throwIfNotFound: true);
         m_PlayerActions_Jump = m_PlayerActions.FindAction("Jump", throwIfNotFound: true);
         m_PlayerActions_Inventory = m_PlayerActions.FindAction("Inventory", throwIfNotFound: true);
+        m_PlayerActions_LockOn = m_PlayerActions.FindAction("LockOn", throwIfNotFound: true);
         // Player Inventory
         m_PlayerInventory = asset.FindActionMap("Player Inventory", throwIfNotFound: true);
         m_PlayerInventory_Up = m_PlayerInventory.FindAction("Up", throwIfNotFound: true);
@@ -473,6 +505,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerActions_Interactable;
     private readonly InputAction m_PlayerActions_Jump;
     private readonly InputAction m_PlayerActions_Inventory;
+    private readonly InputAction m_PlayerActions_LockOn;
     public struct PlayerActionsActions
     {
         private @PlayerControls m_Wrapper;
@@ -483,6 +516,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @Interactable => m_Wrapper.m_PlayerActions_Interactable;
         public InputAction @Jump => m_Wrapper.m_PlayerActions_Jump;
         public InputAction @Inventory => m_Wrapper.m_PlayerActions_Inventory;
+        public InputAction @LockOn => m_Wrapper.m_PlayerActions_LockOn;
         public InputActionMap Get() { return m_Wrapper.m_PlayerActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -510,6 +544,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Inventory.started += instance.OnInventory;
             @Inventory.performed += instance.OnInventory;
             @Inventory.canceled += instance.OnInventory;
+            @LockOn.started += instance.OnLockOn;
+            @LockOn.performed += instance.OnLockOn;
+            @LockOn.canceled += instance.OnLockOn;
         }
 
         private void UnregisterCallbacks(IPlayerActionsActions instance)
@@ -532,6 +569,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Inventory.started -= instance.OnInventory;
             @Inventory.performed -= instance.OnInventory;
             @Inventory.canceled -= instance.OnInventory;
+            @LockOn.started -= instance.OnLockOn;
+            @LockOn.performed -= instance.OnLockOn;
+            @LockOn.canceled -= instance.OnLockOn;
         }
 
         public void RemoveCallbacks(IPlayerActionsActions instance)
@@ -632,6 +672,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnInteractable(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnInventory(InputAction.CallbackContext context);
+        void OnLockOn(InputAction.CallbackContext context);
     }
     public interface IPlayerInventoryActions
     {

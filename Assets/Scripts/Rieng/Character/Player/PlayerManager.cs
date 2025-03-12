@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerManager : MonoBehaviour
+public class PlayerManager : CharacterManager
 {
     PlayerInputManager playerInputManager;
     Animator anim;
@@ -41,10 +41,9 @@ public class PlayerManager : MonoBehaviour
         anim.SetBool("isInAir", isInAir);
 
         playerInputManager.TickInput(delta);
-        playerLocomotion.HandleMovement(delta);
         playerLocomotion.HandleRollingAndSprinting(delta);
-        playerLocomotion.HandleFalling(delta, playerLocomotion.moveDirection);
         playerLocomotion.HandleJumping();
+
 
         CheckForInteractableObject();
     }
@@ -52,18 +51,13 @@ public class PlayerManager : MonoBehaviour
     private void FixedUpdate()
     {
         float delta = Time.fixedDeltaTime;
-
-        if (playerCamera != null)
-        {
-            playerCamera.FollowTarget(delta);
-            playerCamera.HandleCameraRotation(delta, playerInputManager.mouseX, playerInputManager.mouseY);
-        }
+        playerLocomotion.HandleMovement(delta);
+        playerLocomotion.HandleFalling(delta, playerLocomotion.moveDirection);
     }
 
     private void LateUpdate()
     {
         playerInputManager.rollFlag = false;
-        playerInputManager.sprintFlag = false;
         playerInputManager.rbInput = false;
         playerInputManager.rtInput = false;
         playerInputManager.upArrow = false;
@@ -73,6 +67,13 @@ public class PlayerManager : MonoBehaviour
         playerInputManager.aInput = false;
         playerInputManager.jumpInput = false;
         playerInputManager.inventoryInput = false;
+
+        float delta = Time.deltaTime;
+        if (playerCamera != null)
+        {
+            playerCamera.FollowTarget(delta);
+            playerCamera.HandleCameraRotation(delta, playerInputManager.mouseX, playerInputManager.mouseY);
+        }
 
         if (isInAir)
         {

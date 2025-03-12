@@ -12,6 +12,7 @@ public class PlayerInputManager : MonoBehaviour
     PlayerAttacker playerAttacker;
     PlayerInventory playerInventory;
     PlayerManager playerManager;
+    PlayerCamera playerCamera;
     UIManager uiManager;
 
     [Header("Movement Input")]
@@ -33,6 +34,8 @@ public class PlayerInputManager : MonoBehaviour
     public bool rtInput;
     public bool jumpInput;
     public bool inventoryInput;
+    public bool lockOnInput;
+
     public bool upArrow;
     public bool downArrow;
     public bool leftArrow;
@@ -42,6 +45,7 @@ public class PlayerInputManager : MonoBehaviour
     public bool rollFlag;
     public bool sprintFlag;
     public bool comboFlag;
+    public bool lockOnFlag;
     public bool inventoryFlag;
     public float rollInputTimer;
 
@@ -52,6 +56,7 @@ public class PlayerInputManager : MonoBehaviour
         playerInventory = GetComponent<PlayerInventory>();
         playerManager = GetComponent<PlayerManager>();
         uiManager = FindObjectOfType<UIManager>();
+        playerCamera = FindObjectOfType<PlayerCamera>();
     }
 
     private void OnEnable()
@@ -61,6 +66,14 @@ public class PlayerInputManager : MonoBehaviour
             playerControls = new PlayerControls();
             playerControls.PlayerMovement.Movement.performed += playerControls => movementInput = playerControls.ReadValue<Vector2>();
             playerControls.PlayerMovement.Camera.performed += i => cameraInput = i.ReadValue<Vector2>();
+            playerControls.PlayerActions.RB.performed += i => rbInput = true;
+            playerControls.PlayerActions.RT.performed += i => rtInput = true;
+            playerControls.PlayerInventory.Right.performed += i => rightArrow = true;
+            playerControls.PlayerInventory.Left.performed += i => leftArrow = true;
+            playerControls.PlayerActions.Interactable.performed += i => aInput = true;
+            playerControls.PlayerActions.Jump.performed += i => jumpInput = true;
+            playerControls.PlayerActions.Inventory.performed += i => inventoryInput = true;
+            playerControls.PlayerActions.LockOn.performed += i => lockOnInput = true;
         }
         playerControls.Enable();
     }
@@ -74,9 +87,8 @@ public class PlayerInputManager : MonoBehaviour
         HandleRollInput(delta);
         HandleAttackInput(delta);
         HandleQuickSlotsInput();
-        HandleInteractingButtonInput();
-        HandleJumpInput();
         HandleInventoryInput();
+        HandleLockOnInput();
     }
     private void HandlePlayerMovementInput(float delta)
     {
@@ -88,13 +100,12 @@ public class PlayerInputManager : MonoBehaviour
     }
     private void HandleRollInput(float delta)
     {
-
         bInput = playerControls.PlayerActions.Roll.phase == UnityEngine.InputSystem.InputActionPhase.Performed;
-
+        sprintFlag = bInput;
         if (bInput)
         {
             rollInputTimer += delta;
-            sprintFlag = true;
+
         }
         else
         {
@@ -110,9 +121,6 @@ public class PlayerInputManager : MonoBehaviour
     }
     private void HandleAttackInput(float delta)
     {
-        playerControls.PlayerActions.RB.performed += i => rbInput = true;
-        playerControls.PlayerActions.RT.performed += i => rtInput = true;
-
         if (rbInput)
         {
             if (playerManager.canDoCombo)
@@ -142,9 +150,6 @@ public class PlayerInputManager : MonoBehaviour
     }
     private void HandleQuickSlotsInput()
     {
-        playerControls.PlayerInventory.Right.performed += i => rightArrow = true;
-        playerControls.PlayerInventory.Left.performed += i => leftArrow = true;
-
         if (rightArrow)
         {
             playerInventory.ChangeRightWeapon();
@@ -154,18 +159,8 @@ public class PlayerInputManager : MonoBehaviour
             playerInventory.ChangeLeftWeapon();
         }
     }
-    private void HandleInteractingButtonInput()
-    {
-        playerControls.PlayerActions.Interactable.performed += i => aInput = true;
-    }
-    private void HandleJumpInput()
-    {
-        playerControls.PlayerActions.Jump.performed += i => jumpInput = true;
-    }
     private void HandleInventoryInput()
     {
-        playerControls.PlayerActions.Inventory.performed += i => inventoryInput = true;
-
         if (inventoryInput)
         {
             inventoryFlag = !inventoryFlag;
@@ -173,13 +168,40 @@ public class PlayerInputManager : MonoBehaviour
             if (inventoryFlag)
             {
                 uiManager.OpenSelectWindow();
+                uiManager.UpdateUI();
+                uiManager.hudWindow.SetActive(false);
             }
             else
             {
                 uiManager.CloseSelectWindow();
+                uiManager.CloseAllInventoryWindows();
+                uiManager.hudWindow.SetActive(true);
             }
         }
     }
+
+    private void HandleLockOnInput()
+    {
+        if (lockOnInput && lockOnFlag == false)
+        {
+            playerCamera.ClearLockOnTarget();
+            lockOnInput = false;
+            playerCamera.HandleLockOn();
+            if(playerCamera.nearestLockOnTarget != null)
+            {
+                playerCamera.currentLockOnTarget = playerCamera.nearestLockOnTarget;
+                lockOnFlag = true;
+            }
+        }
+        else if (lockOnInput && lockOnFlag)
+        {
+            lockOnInput = false;
+            lockOnFlag = false;
+            playerCamera.ClearLockOnTarget();
+            //tat lock
+        }
+    }
+
 
 }
 
