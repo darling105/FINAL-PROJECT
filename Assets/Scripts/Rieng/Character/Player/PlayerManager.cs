@@ -38,11 +38,13 @@ public class PlayerManager : MonoBehaviour
         float delta = Time.deltaTime;
         isInteracting = anim.GetBool("isInteracting");
         canDoCombo = anim.GetBool("canDoCombo");
+        anim.SetBool("isInAir", isInAir);
 
         playerInputManager.TickInput(delta);
         playerLocomotion.HandleMovement(delta);
         playerLocomotion.HandleRollingAndSprinting(delta);
         playerLocomotion.HandleFalling(delta, playerLocomotion.moveDirection);
+        playerLocomotion.HandleJumping();
 
         CheckForInteractableObject();
     }
@@ -69,6 +71,8 @@ public class PlayerManager : MonoBehaviour
         playerInputManager.leftArrow = false;
         playerInputManager.rightArrow = false;
         playerInputManager.aInput = false;
+        playerInputManager.jumpInput = false;
+        playerInputManager.inventoryInput = false;
 
         if (isInAir)
         {
@@ -102,12 +106,12 @@ public class PlayerManager : MonoBehaviour
         }
         else
         {
-            if(interactableUIGameObject != null)
+            if (interactableUIGameObject != null)
             {
                 interactableUIGameObject.SetActive(false);
             }
 
-            if(itemInteractableGameObject != null && playerInputManager.aInput)
+            if (itemInteractableGameObject != null && playerInputManager.aInput)
             {
                 itemInteractableGameObject.SetActive(false);
             }

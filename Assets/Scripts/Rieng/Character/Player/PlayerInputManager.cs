@@ -12,6 +12,7 @@ public class PlayerInputManager : MonoBehaviour
     PlayerAttacker playerAttacker;
     PlayerInventory playerInventory;
     PlayerManager playerManager;
+    UIManager uiManager;
 
     [Header("Movement Input")]
     [SerializeField] Vector2 movementInput;
@@ -30,6 +31,8 @@ public class PlayerInputManager : MonoBehaviour
     public bool aInput;
     public bool rbInput;
     public bool rtInput;
+    public bool jumpInput;
+    public bool inventoryInput;
     public bool upArrow;
     public bool downArrow;
     public bool leftArrow;
@@ -39,6 +42,7 @@ public class PlayerInputManager : MonoBehaviour
     public bool rollFlag;
     public bool sprintFlag;
     public bool comboFlag;
+    public bool inventoryFlag;
     public float rollInputTimer;
 
 
@@ -47,6 +51,7 @@ public class PlayerInputManager : MonoBehaviour
         playerAttacker = GetComponent<PlayerAttacker>();
         playerInventory = GetComponent<PlayerInventory>();
         playerManager = GetComponent<PlayerManager>();
+        uiManager = FindObjectOfType<UIManager>();
     }
 
     private void OnEnable()
@@ -70,6 +75,8 @@ public class PlayerInputManager : MonoBehaviour
         HandleAttackInput(delta);
         HandleQuickSlotsInput();
         HandleInteractingButtonInput();
+        HandleJumpInput();
+        HandleInventoryInput();
     }
     private void HandlePlayerMovementInput(float delta)
     {
@@ -79,7 +86,6 @@ public class PlayerInputManager : MonoBehaviour
         mouseX = cameraInput.x;
         moveAmount = Mathf.Clamp01(Mathf.Abs(horizontalInput) + Mathf.Abs(verticalInput));
     }
-
     private void HandleRollInput(float delta)
     {
 
@@ -102,7 +108,6 @@ public class PlayerInputManager : MonoBehaviour
 
         }
     }
-
     private void HandleAttackInput(float delta)
     {
         playerControls.PlayerActions.RB.performed += i => rbInput = true;
@@ -135,7 +140,6 @@ public class PlayerInputManager : MonoBehaviour
             playerAttacker.HandleHeavyAttack(playerInventory.rightWeapon);
         }
     }
-
     private void HandleQuickSlotsInput()
     {
         playerControls.PlayerInventory.Right.performed += i => rightArrow = true;
@@ -150,10 +154,31 @@ public class PlayerInputManager : MonoBehaviour
             playerInventory.ChangeLeftWeapon();
         }
     }
-
     private void HandleInteractingButtonInput()
     {
         playerControls.PlayerActions.Interactable.performed += i => aInput = true;
+    }
+    private void HandleJumpInput()
+    {
+        playerControls.PlayerActions.Jump.performed += i => jumpInput = true;
+    }
+    private void HandleInventoryInput()
+    {
+        playerControls.PlayerActions.Inventory.performed += i => inventoryInput = true;
+
+        if (inventoryInput)
+        {
+            inventoryFlag = !inventoryFlag;
+
+            if (inventoryFlag)
+            {
+                uiManager.OpenSelectWindow();
+            }
+            else
+            {
+                uiManager.CloseSelectWindow();
+            }
+        }
     }
 
 }

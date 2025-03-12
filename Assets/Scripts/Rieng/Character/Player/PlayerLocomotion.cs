@@ -27,6 +27,7 @@ public class PlayerLocomotion : MonoBehaviour
     [SerializeField] float sprintSpeed = 8;
     [SerializeField] float rotationSpeed = 10;
     [SerializeField] float fallingSpeed = 45;
+    [SerializeField] float jumpForce = 10;
 
     void Start()
     {
@@ -64,7 +65,6 @@ public class PlayerLocomotion : MonoBehaviour
         Quaternion targetRotation = Quaternion.Slerp(myTransform.rotation, newRotation, rotationSpeed * Time.deltaTime);
         myTransform.rotation = targetRotation;
     }
-
     public void HandleMovement(float delta)
     {
 
@@ -110,7 +110,6 @@ public class PlayerLocomotion : MonoBehaviour
             HandleRotation(delta);
         }
     }
-
     public void HandleRollingAndSprinting(float delta)
     {
         if (playerAnimatorManager.anim.GetBool("isInteracting"))
@@ -134,7 +133,6 @@ public class PlayerLocomotion : MonoBehaviour
             }
         }
     }
-
     public void HandleFalling(float delta, Vector3 moveDirection)
     {
         playerManager.isGrounded = false;
@@ -211,6 +209,25 @@ public class PlayerLocomotion : MonoBehaviour
         else
         {
             myTransform.position = targetPosition;
+        }
+    }
+    public void HandleJumping()
+    {
+        if (playerManager.isInteracting)
+            return;
+
+        if (playerInputManager.jumpInput)
+        {
+            if (playerInputManager.moveAmount > 0)
+            {
+                moveDirection = cameraObject.forward * playerInputManager.verticalInput;
+                moveDirection += cameraObject.right * playerInputManager.horizontalInput;
+
+                playerAnimatorManager.PlayTargetAnimation("Jump", true);
+                moveDirection.y = 0;
+                Quaternion jumpRotation = Quaternion.LookRotation(moveDirection);
+                myTransform.rotation = jumpRotation;
+            }
         }
     }
 
