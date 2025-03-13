@@ -35,6 +35,8 @@ public class PlayerInputManager : MonoBehaviour
     public bool jumpInput;
     public bool inventoryInput;
     public bool lockOnInput;
+    public bool lockRight;
+    public bool lockLeft;
 
     public bool upArrow;
     public bool downArrow;
@@ -74,6 +76,8 @@ public class PlayerInputManager : MonoBehaviour
             playerControls.PlayerActions.Jump.performed += i => jumpInput = true;
             playerControls.PlayerActions.Inventory.performed += i => inventoryInput = true;
             playerControls.PlayerActions.LockOn.performed += i => lockOnInput = true;
+            playerControls.PlayerMovement.LockOnTargetRight.performed += i => lockRight = true;
+            playerControls.PlayerMovement.LockOnTargetLeft.performed += i => lockLeft = true;
         }
         playerControls.Enable();
     }
@@ -179,15 +183,13 @@ public class PlayerInputManager : MonoBehaviour
             }
         }
     }
-
     private void HandleLockOnInput()
     {
         if (lockOnInput && lockOnFlag == false)
         {
-            playerCamera.ClearLockOnTarget();
             lockOnInput = false;
             playerCamera.HandleLockOn();
-            if(playerCamera.nearestLockOnTarget != null)
+            if (playerCamera.nearestLockOnTarget != null)
             {
                 playerCamera.currentLockOnTarget = playerCamera.nearestLockOnTarget;
                 lockOnFlag = true;
@@ -198,8 +200,29 @@ public class PlayerInputManager : MonoBehaviour
             lockOnInput = false;
             lockOnFlag = false;
             playerCamera.ClearLockOnTarget();
-            //tat lock
         }
+
+        if (lockOnFlag && lockLeft)
+        {
+            lockLeft = false;
+            playerCamera.HandleLockOn();
+            if (playerCamera.leftLockTarget != null)
+            {
+                playerCamera.currentLockOnTarget = playerCamera.leftLockTarget;
+            }
+        }
+
+        if (lockOnFlag && lockRight)
+        {
+            lockRight = false;
+            playerCamera.HandleLockOn();
+            if (playerCamera.rightLockTarget != null)
+            {
+                playerCamera.currentLockOnTarget = playerCamera.rightLockTarget;
+            }
+        }
+
+        playerCamera.SetCameraHeight();
     }
 
 

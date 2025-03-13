@@ -9,7 +9,7 @@ public class EquipmentWindowUI : MonoBehaviour
     public bool leftHandSlot01Selected;
     public bool leftHandSlot02Selected;
 
-    HandEquipmentSlotUI[] handEquimentSlotUI;
+    public HandEquipmentSlotUI[] handEquimentSlotUI;
 
     private void Start()
     {
