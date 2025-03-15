@@ -12,13 +12,5 @@ public class CharacterAnimatorManager : MonoBehaviour
         anim.SetBool("isInteracting", isInteracting);
         anim.CrossFade(targetAnim, 0.2f);
     }
-    public void EnableCombo()
-    {
-        anim.SetBool("canDoCombo", true);
-    }
-    public void DisableCombo()
-    {
-        anim.SetBool("canDoCombo", false);
-    }
 
 }

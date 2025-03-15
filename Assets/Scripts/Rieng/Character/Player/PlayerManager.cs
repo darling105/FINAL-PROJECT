@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerManager : CharacterManager
 {
+    PlayerStats playerStats;
     PlayerInputManager playerInputManager;
     Animator anim;
     PlayerCamera playerCamera;
@@ -19,6 +20,9 @@ public class PlayerManager : CharacterManager
     public bool isInAir;
     public bool isGrounded;
     public bool canDoCombo;
+    public bool isUsingRightHand;
+    public bool isUsingLeftHand;
+    public bool isInvulnerable;
 
     private void Awake()
     {
@@ -30,6 +34,7 @@ public class PlayerManager : CharacterManager
     {
         playerInputManager = GetComponent<PlayerInputManager>();
         anim = GetComponentInChildren<Animator>();
+        playerStats = GetComponent<PlayerStats>();
         playerLocomotion = GetComponent<PlayerLocomotion>();
         interactableUI = FindObjectOfType<InteractableUI>();
     }
@@ -38,11 +43,14 @@ public class PlayerManager : CharacterManager
         float delta = Time.deltaTime;
         isInteracting = anim.GetBool("isInteracting");
         canDoCombo = anim.GetBool("canDoCombo");
+        isUsingRightHand = anim.GetBool("isUsingRightHand");
+        isUsingLeftHand = anim.GetBool("isUsingLeftHand");
+        isInvulnerable = anim.GetBool("isInvulnerable");
         anim.SetBool("isInAir", isInAir);
-
         playerInputManager.TickInput(delta);
         playerLocomotion.HandleRollingAndSprinting(delta);
         playerLocomotion.HandleJumping();
+        playerStats.RegenerateStanima();
 
 
         CheckForInteractableObject();

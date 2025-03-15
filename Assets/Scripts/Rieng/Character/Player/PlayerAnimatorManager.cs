@@ -74,8 +74,8 @@ public class PlayerAnimatorManager : CharacterAnimatorManager
         anim.SetFloat(vertical, v, 0.1f, Time.deltaTime);
         anim.SetFloat(horizontal, h, 0.1f, Time.deltaTime);
     }
- 
- 
+
+
     public void CanRotate()
     {
         canRotate = true;
@@ -86,7 +86,24 @@ public class PlayerAnimatorManager : CharacterAnimatorManager
         canRotate = false;
     }
 
-    
+    public void EnableCombo()
+    {
+        anim.SetBool("canDoCombo", true);
+    }
+    public void DisableCombo()
+    {
+        anim.SetBool("canDoCombo", false);
+    }
+
+    public void EnableIsInvulnerable()
+    {
+        anim.SetBool("isInvulnerable", true);
+    }
+    public void DisableIsInvulnerable()
+    {
+        anim.SetBool("isInvulnerable", false);
+    }
+
     private void OnAnimatorMove()
     {
         if (playerManager.isInteracting == false)

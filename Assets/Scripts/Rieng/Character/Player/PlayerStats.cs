@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class PlayerStats : CharacterStats
 {
-
+    PlayerManager playerManager;
     HealthBar healthBar;
     StaminaBar staminaBar;
     PlayerAnimatorManager playerAnimatorManager;
 
+    public float staminaRegenerationAmount = 1;
+    public float staminaRegenTimer = 0;
+
     private void Awake()
     {
+
+        playerManager = GetComponent<PlayerManager>();
         healthBar = FindObjectOfType<HealthBar>();
         staminaBar = FindObjectOfType<StaminaBar>();
         playerAnimatorManager = GetComponentInChildren<PlayerAnimatorManager>();
@@ -36,7 +41,7 @@ public class PlayerStats : CharacterStats
         return maxHealth;
     }
 
-    private int SetMaxStaminaFromStaminaLevel()
+    private float SetMaxStaminaFromStaminaLevel()
     {
         maxStamina = staminaLevel * 10;
         return maxStamina;
@@ -44,6 +49,11 @@ public class PlayerStats : CharacterStats
 
     public void TakeDamage(int damage)
     {
+        if (playerManager.isInvulnerable)
+            return;
+
+        if (isDead)
+            return;
         currentHealth = currentHealth - damage;
         healthBar.SetCurrentHealth(currentHealth);
 
@@ -53,6 +63,7 @@ public class PlayerStats : CharacterStats
         {
             currentHealth = 0;
             playerAnimatorManager.PlayTargetAnimation("Death_01", true);
+            isDead = true;
             //handle dead
         }
     }
@@ -61,6 +72,36 @@ public class PlayerStats : CharacterStats
     {
         currentStamina = currentStamina - damage;
         staminaBar.SetCurrentStamina(currentStamina);
+
     }
 
+    public void RegenerateStanima()
+    {
+        if (playerManager.isInteracting)
+        {
+            staminaRegenTimer = 0;
+        }
+        else
+        {
+
+            staminaRegenTimer += Time.deltaTime;
+            if (currentStamina < maxStamina && staminaRegenTimer > 1f)
+            {
+                currentStamina += staminaRegenerationAmount * Time.deltaTime;
+                staminaBar.SetCurrentStamina(Mathf.RoundToInt(currentStamina));
+            }
+        }
+    }
+
+    public void HealPlayer(int healAmount)
+    {
+        currentHealth = currentHealth + healAmount;
+
+        if (currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+
+        healthBar.SetCurrentHealth(currentHealth);
+    }
 }

@@ -14,6 +14,7 @@ public class PlayerInputManager : MonoBehaviour
     PlayerManager playerManager;
     WeaponSlotManager weaponSlotManager;
     PlayerCamera playerCamera;
+    PlayerAnimatorManager playerAnimatorManager;
     UIManager uiManager;
 
     [Header("Movement Input")]
@@ -57,12 +58,13 @@ public class PlayerInputManager : MonoBehaviour
 
     private void Awake()
     {
-        playerAttacker = GetComponent<PlayerAttacker>();
+        playerAttacker = GetComponentInChildren<PlayerAttacker>();
         playerInventory = GetComponent<PlayerInventory>();
         playerManager = GetComponent<PlayerManager>();
         weaponSlotManager = GetComponentInChildren<WeaponSlotManager>();
         uiManager = FindObjectOfType<UIManager>();
         playerCamera = FindObjectOfType<PlayerCamera>();
+        playerAnimatorManager = GetComponentInChildren<PlayerAnimatorManager>();
     }
 
     private void OnEnable()
@@ -133,28 +135,10 @@ public class PlayerInputManager : MonoBehaviour
     {
         if (rbInput)
         {
-            if (playerManager.canDoCombo)
-            {
-                comboFlag = true;
-                playerAttacker.HandleWeaponCombo(playerInventory.rightWeapon);
-                comboFlag = false;
-            }
-            else
-            {
-                if (playerManager.isInteracting)
-                    return;
-                if (playerManager.canDoCombo)
-                    return;
-
-                playerAttacker.HandleLightAttack(playerInventory.rightWeapon);
-            }
+            playerAttacker.HandleRBAction();
         }
         if (rtInput)
         {
-            if (playerManager.isInteracting)
-                return;
-            if (playerManager.canDoCombo)
-                return;
             playerAttacker.HandleHeavyAttack(playerInventory.rightWeapon);
         }
     }
@@ -230,7 +214,6 @@ public class PlayerInputManager : MonoBehaviour
 
         playerCamera.SetCameraHeight();
     }
-
     private void HandleTwoHandInput()
     {
         if (twoHandInput)
