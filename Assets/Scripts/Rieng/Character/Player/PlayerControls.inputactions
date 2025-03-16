@@ -165,6 +165,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Critical Attack",
+                    "type": "Button",
+                    "id": "c075d70e-bd0a-4e57-9dab-60ba700c88f7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Interactable",
                     "type": "Button",
                     "id": "fe4a853a-8c8a-46ff-91d9-18f920b03de0",
@@ -226,7 +235,7 @@
                     "name": "",
                     "id": "57507467-814d-4a4a-8868-6bdbc5fa6499",
                     "path": "<Mouse>/leftButton",
-                    "interactions": "",
+                    "interactions": "Tap",
                     "processors": "",
                     "groups": "",
                     "action": "RB",
@@ -243,6 +252,39 @@
                     "action": "RT",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "sttrongAttack",
+                    "id": "7bbbdf68-3c3c-4003-929f-f537e567d705",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RT",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier",
+                    "id": "e3277f60-e92a-41ab-a871-3159fae38c9f",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RT",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "68d96e2e-7d45-4d3e-8d1b-693ef84893d5",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RT",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 },
                 {
                     "name": "",
@@ -307,6 +349,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Y",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "73d6c245-dd45-4d3f-85d4-ab80a96ee735",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Critical Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

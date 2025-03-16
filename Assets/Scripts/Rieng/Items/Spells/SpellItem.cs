@@ -6,8 +6,10 @@ public class SpellItem : Item
 {
     public GameObject spellWarmUpFX;
     public GameObject spellCastFX;
-
     public string spellAnimation;
+
+    [Header("Spell Cost")]
+    public int focusPointCost;
 
     [Header("Spell Type")]
     public bool isFaithSpell;
@@ -26,5 +28,6 @@ public class SpellItem : Item
     public virtual void SuccessfullyCastSpell(PlayerAnimatorManager playerAnimatorManager, PlayerStats playerStats)
     {
         Debug.Log("Successfully cast spell...");
+        playerStats.DeductFocusPoint(focusPointCost);
     }
 }

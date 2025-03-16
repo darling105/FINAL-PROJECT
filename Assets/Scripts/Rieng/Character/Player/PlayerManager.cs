@@ -28,6 +28,7 @@ public class PlayerManager : CharacterManager
     {
         //instance = this;
         playerCamera = FindAnyObjectByType<PlayerCamera>();
+        backStabCollider = GetComponentInChildren<BackStabCollider>();
     }
 
     void Start()

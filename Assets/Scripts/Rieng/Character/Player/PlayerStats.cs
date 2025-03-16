@@ -7,6 +7,7 @@ public class PlayerStats : CharacterStats
     PlayerManager playerManager;
     HealthBar healthBar;
     StaminaBar staminaBar;
+    FocusPointBar focusPointBar;
     PlayerAnimatorManager playerAnimatorManager;
 
     public float staminaRegenerationAmount = 1;
@@ -18,6 +19,7 @@ public class PlayerStats : CharacterStats
         playerManager = GetComponent<PlayerManager>();
         healthBar = FindObjectOfType<HealthBar>();
         staminaBar = FindObjectOfType<StaminaBar>();
+        focusPointBar = FindObjectOfType<FocusPointBar>();
         playerAnimatorManager = GetComponentInChildren<PlayerAnimatorManager>();
     }
 
@@ -33,6 +35,11 @@ public class PlayerStats : CharacterStats
         staminaBar.SetMaxStamina(maxStamina);
         staminaBar.SetCurrentStamina(currentStamina);
 
+        maxFocusPoint = SetMaxFocusPointFromFocusLevel();
+        currentFocusPoint = maxFocusPoint;
+        focusPointBar.SetMaxFocusPoint(maxFocusPoint);
+        focusPointBar.SetCurrentFocusPoint(currentFocusPoint);
+
     }
 
     private int SetMaxHealthFromHealthLevel()
@@ -45,6 +52,12 @@ public class PlayerStats : CharacterStats
     {
         maxStamina = staminaLevel * 10;
         return maxStamina;
+    }
+
+    private float SetMaxFocusPointFromFocusLevel()
+    {
+        maxFocusPoint = focusLevel * 10;
+        return maxFocusPoint;
     }
 
     public void TakeDamage(int damage)
@@ -104,4 +117,17 @@ public class PlayerStats : CharacterStats
 
         healthBar.SetCurrentHealth(currentHealth);
     }
+
+    public void DeductFocusPoint(int focusPoint)
+    {
+        currentFocusPoint = currentFocusPoint - focusPoint;
+
+        if (currentFocusPoint < 0)
+        {
+            currentFocusPoint = 0;
+        }
+
+        focusPointBar.SetCurrentFocusPoint(currentFocusPoint);
+    }
+
 }

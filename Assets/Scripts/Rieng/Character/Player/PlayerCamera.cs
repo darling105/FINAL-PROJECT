@@ -14,7 +14,7 @@ public class PlayerCamera : MonoBehaviour
     private Transform myTransform;
     private Vector3 cameraTransformPosition;
     public LayerMask ignoreLayers;
-    private LayerMask environmentLayer;
+    public LayerMask environmentLayer;
     private Vector3 cameraFollowVelocity = Vector3.zero;
 
     public static PlayerCamera singleton;
@@ -48,7 +48,7 @@ public class PlayerCamera : MonoBehaviour
         singleton = this;
         myTransform = transform;
         defaultPosition = cameraTransform.localPosition.z;
-        ignoreLayers = ~(1 << 8 | 1 << 9 | 1 << 10);
+        ignoreLayers = ~(1 << 8 | 1 << 9 | 1 << 10 | 1 << 12);
         targetTransform = FindObjectOfType<PlayerManager>().transform;
         playerInputManager = FindObjectOfType<PlayerInputManager>();
         playerManager = FindObjectOfType<PlayerManager>();

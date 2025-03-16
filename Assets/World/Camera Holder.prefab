@@ -172,7 +172,13 @@ MonoBehaviour:
   targetTransform: {fileID: 0}
   cameraTransform: {fileID: 8360352981334426740}
   cameraPivotTransform: {fileID: 166925894092262354}
-  lookSpeed: 0.005
+  ignoreLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  environmentLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  lookSpeed: 0.001
   followSpeed: 0.1
   pivotSpeed: 0.01
   minPivot: -30
@@ -180,3 +186,10 @@ MonoBehaviour:
   cameraSphereRadius: 0.2
   cameraCollisionOffSet: 0.2
   minimumCollisionOffset: 0.2
+  lockedPivotPosition: 2.25
+  unlockedPivotPosition: 1.65
+  currentLockOnTarget: {fileID: 0}
+  nearestLockOnTarget: {fileID: 0}
+  leftLockTarget: {fileID: 0}
+  rightLockTarget: {fileID: 0}
+  maximumLockOnDistance: 30

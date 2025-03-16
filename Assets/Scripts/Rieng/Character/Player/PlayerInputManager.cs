@@ -35,6 +35,7 @@ public class PlayerInputManager : MonoBehaviour
     public bool twoHandInput;
     public bool rbInput;
     public bool rtInput;
+    public bool criticalAttackInput;
     public bool jumpInput;
     public bool inventoryInput;
     public bool lockOnInput;
@@ -54,6 +55,8 @@ public class PlayerInputManager : MonoBehaviour
     public bool lockOnFlag;
     public bool inventoryFlag;
     public float rollInputTimer;
+
+    public Transform criticalAttackRayCastStartPoint;
 
 
     private void Awake()
@@ -85,6 +88,7 @@ public class PlayerInputManager : MonoBehaviour
             playerControls.PlayerMovement.LockOnTargetRight.performed += i => lockRight = true;
             playerControls.PlayerMovement.LockOnTargetLeft.performed += i => lockLeft = true;
             playerControls.PlayerActions.Y.performed += i => twoHandInput = true;
+            playerControls.PlayerActions.CriticalAttack.performed += i => criticalAttackInput = true;
         }
         playerControls.Enable();
     }
@@ -101,6 +105,7 @@ public class PlayerInputManager : MonoBehaviour
         HandleInventoryInput();
         HandleLockOnInput();
         HandleTwoHandInput();
+        HandleCriticalAttackInput();
     }
     private void HandlePlayerMovementInput(float delta)
     {
@@ -229,6 +234,15 @@ public class PlayerInputManager : MonoBehaviour
                 weaponSlotManager.LoadWeaponOnSlot(playerInventory.rightWeapon, false);
                 weaponSlotManager.LoadWeaponOnSlot(playerInventory.leftWeapon, true);
             }
+        }
+    }
+
+    private void HandleCriticalAttackInput()
+    {
+        if (criticalAttackInput)
+        {
+            criticalAttackInput = false;
+            playerAttacker.AttempBackStabOrRiposte();
         }
     }
 
