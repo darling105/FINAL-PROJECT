@@ -12,6 +12,7 @@ public class PlayerInputManager : MonoBehaviour
     PlayerAttacker playerAttacker;
     PlayerInventory playerInventory;
     PlayerManager playerManager;
+    PlayerStats playerStats;
     WeaponSlotManager weaponSlotManager;
     PlayerCamera playerCamera;
     PlayerAnimatorManager playerAnimatorManager;
@@ -64,6 +65,7 @@ public class PlayerInputManager : MonoBehaviour
         playerAttacker = GetComponentInChildren<PlayerAttacker>();
         playerInventory = GetComponent<PlayerInventory>();
         playerManager = GetComponent<PlayerManager>();
+        playerStats = GetComponent<PlayerStats>();
         weaponSlotManager = GetComponentInChildren<WeaponSlotManager>();
         uiManager = FindObjectOfType<UIManager>();
         playerCamera = FindObjectOfType<PlayerCamera>();
@@ -82,6 +84,8 @@ public class PlayerInputManager : MonoBehaviour
             playerControls.PlayerInventory.Right.performed += i => rightArrow = true;
             playerControls.PlayerInventory.Left.performed += i => leftArrow = true;
             playerControls.PlayerActions.Interactable.performed += i => aInput = true;
+            playerControls.PlayerActions.Roll.performed += i => bInput = true;
+            playerControls.PlayerActions.Roll.canceled += i => bInput = false;
             playerControls.PlayerActions.Jump.performed += i => jumpInput = true;
             playerControls.PlayerActions.Inventory.performed += i => inventoryInput = true;
             playerControls.PlayerActions.LockOn.performed += i => lockOnInput = true;
@@ -117,18 +121,27 @@ public class PlayerInputManager : MonoBehaviour
     }
     private void HandleRollInput(float delta)
     {
-        bInput = playerControls.PlayerActions.Roll.phase == UnityEngine.InputSystem.InputActionPhase.Performed;
-        sprintFlag = bInput;
+
         if (bInput)
         {
             rollInputTimer += delta;
 
+            if (playerStats.currentStamina <= 0)
+            {
+                bInput = false;
+                rollFlag = false;
+            }
+
+            if (moveAmount > 0.5f && playerStats.currentStamina > 0)
+            {
+                sprintFlag = true;
+            }
         }
         else
         {
+            sprintFlag = false;
             if (rollInputTimer > 0 && rollInputTimer < 0.5f)
             {
-                sprintFlag = true;
                 rollFlag = true;
             }
 

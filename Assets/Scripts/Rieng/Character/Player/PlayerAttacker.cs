@@ -26,6 +26,9 @@ public class PlayerAttacker : MonoBehaviour
 
     public void HandleWeaponCombo(WeaponItem weapon)
     {
+        if (playerStats.currentStamina <= 0)
+            return;
+
         if (playerInputManager.comboFlag)
         {
             playerAnimatorManager.anim.SetBool("canDoCombo", false);
@@ -49,6 +52,9 @@ public class PlayerAttacker : MonoBehaviour
 
     public void HandleLightAttack(WeaponItem weapon)
     {
+        if (playerStats.currentStamina <= 0)
+            return;
+
         weaponSlotManager.attackingWeapon = weapon;
 
         if (playerInputManager.twoHandFlag)
@@ -65,6 +71,9 @@ public class PlayerAttacker : MonoBehaviour
 
     public void HandleHeavyAttack(WeaponItem weapon)
     {
+        if (playerStats.currentStamina <= 0)
+            return;
+
         weaponSlotManager.attackingWeapon = weapon;
 
         if (playerInputManager.twoHandFlag)
@@ -119,7 +128,7 @@ public class PlayerAttacker : MonoBehaviour
             HandleLightAttack(playerInventory.rightWeapon);
         }
     }
-  
+
     private void PerformRBSpellAction(WeaponItem weapon)
     {
         if (playerManager.isInteracting)
@@ -150,12 +159,16 @@ public class PlayerAttacker : MonoBehaviour
 
     public void AttempBackStabOrRiposte()
     {
+        if (playerStats.currentStamina <= 0)
+            return;
+
         RaycastHit hit;
 
         if (Physics.Raycast(playerInputManager.criticalAttackRayCastStartPoint.position,
          transform.TransformDirection(Vector3.forward), out hit, 0.5f, backStabLayer))
         {
             CharacterManager enemyCharacterManager = hit.transform.gameObject.GetComponentInParent<CharacterManager>();
+            DamageCollider rightWeapon = weaponSlotManager.rightHandDamageCollider;
 
             if (enemyCharacterManager != null)
             {
@@ -168,6 +181,9 @@ public class PlayerAttacker : MonoBehaviour
                 Quaternion tr = Quaternion.LookRotation(rotationDirection);
                 Quaternion targetRotation = Quaternion.Slerp(playerManager.transform.rotation, tr, 500 * Time.deltaTime);
                 playerManager.transform.rotation = targetRotation;
+
+                int criticalDamage = playerInventory.rightWeapon.criticalDamageMultiplier * rightWeapon.currentWeaponDamage;
+                enemyCharacterManager.pendingCriticalDamage = criticalDamage;
 
                 playerAnimatorManager.PlayTargetAnimation("Back Stab", true);
                 enemyCharacterManager.GetComponentInChildren<CharacterAnimatorManager>().PlayTargetAnimation("Back Stabbed", true);

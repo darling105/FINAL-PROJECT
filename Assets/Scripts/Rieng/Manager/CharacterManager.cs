@@ -10,4 +10,8 @@ public class CharacterManager : MonoBehaviour
    [Header("Combat Colliders")]
    public BoxCollider backStabBoxCollider;
    public BackStabCollider backStabCollider;
+
+   public int pendingCriticalDamage;
+
+
 }

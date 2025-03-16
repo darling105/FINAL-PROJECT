@@ -6,6 +6,7 @@ public class PlayerManager : CharacterManager
 {
     PlayerStats playerStats;
     PlayerInputManager playerInputManager;
+    PlayerAnimatorManager playerAnimatorManager;
     Animator anim;
     PlayerCamera playerCamera;
     PlayerLocomotion playerLocomotion;
@@ -29,11 +30,8 @@ public class PlayerManager : CharacterManager
         //instance = this;
         playerCamera = FindAnyObjectByType<PlayerCamera>();
         backStabCollider = GetComponentInChildren<BackStabCollider>();
-    }
-
-    void Start()
-    {
         playerInputManager = GetComponent<PlayerInputManager>();
+        playerAnimatorManager = GetComponentInChildren<PlayerAnimatorManager>();
         anim = GetComponentInChildren<Animator>();
         playerStats = GetComponent<PlayerStats>();
         playerLocomotion = GetComponent<PlayerLocomotion>();
@@ -42,17 +40,20 @@ public class PlayerManager : CharacterManager
     void Update()
     {
         float delta = Time.deltaTime;
+
         isInteracting = anim.GetBool("isInteracting");
         canDoCombo = anim.GetBool("canDoCombo");
         isUsingRightHand = anim.GetBool("isUsingRightHand");
         isUsingLeftHand = anim.GetBool("isUsingLeftHand");
         isInvulnerable = anim.GetBool("isInvulnerable");
         anim.SetBool("isInAir", isInAir);
+        anim.SetBool("isDead", playerStats.isDead);
+
         playerInputManager.TickInput(delta);
+        playerAnimatorManager.canRotate = anim.GetBool("canRotate");
         playerLocomotion.HandleRollingAndSprinting(delta);
         playerLocomotion.HandleJumping();
         playerStats.RegenerateStanima();
-
 
         CheckForInteractableObject();
     }
@@ -62,6 +63,7 @@ public class PlayerManager : CharacterManager
         float delta = Time.fixedDeltaTime;
         playerLocomotion.HandleMovement(delta);
         playerLocomotion.HandleFalling(delta, playerLocomotion.moveDirection);
+        playerLocomotion.HandleRotation(delta);
     }
 
     private void LateUpdate()

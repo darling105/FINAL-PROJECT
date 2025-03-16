@@ -8739,6 +8739,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3128238165855008369, guid: fb7390e78cb8a9d43b8bba7a75e477ba, type: 3}
+      propertyPath: fallingSpeed
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 3128238165855008369, guid: fb7390e78cb8a9d43b8bba7a75e477ba, type: 3}
+      propertyPath: rotationSpeed
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 4959607258285592211, guid: fb7390e78cb8a9d43b8bba7a75e477ba, type: 3}
       propertyPath: backStabCollider
       value: 
@@ -8755,6 +8763,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5797938323225647892, guid: fb7390e78cb8a9d43b8bba7a75e477ba, type: 3}
+      propertyPath: weaponsInventory.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5797938323225647892, guid: fb7390e78cb8a9d43b8bba7a75e477ba, type: 3}
+      propertyPath: weaponsInventory.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 57db7ae764f6b564599330b3146d1405, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
