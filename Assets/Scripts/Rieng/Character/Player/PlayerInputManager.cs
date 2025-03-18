@@ -13,6 +13,7 @@ public class PlayerInputManager : MonoBehaviour
     PlayerInventory playerInventory;
     PlayerManager playerManager;
     PlayerStats playerStats;
+    BlockingCollider blockingCollider;
     WeaponSlotManager weaponSlotManager;
     PlayerCamera playerCamera;
     PlayerAnimatorManager playerAnimatorManager;
@@ -36,6 +37,7 @@ public class PlayerInputManager : MonoBehaviour
     public bool twoHandInput;
     public bool rbInput;
     public bool rtInput;
+    public bool lbInput;
     public bool ltInput;
     public bool criticalAttackInput;
     public bool jumpInput;
@@ -68,6 +70,7 @@ public class PlayerInputManager : MonoBehaviour
         playerManager = GetComponent<PlayerManager>();
         playerStats = GetComponent<PlayerStats>();
         weaponSlotManager = GetComponentInChildren<WeaponSlotManager>();
+        blockingCollider = GetComponentInChildren<BlockingCollider>();
         uiManager = FindObjectOfType<UIManager>();
         playerCamera = FindObjectOfType<PlayerCamera>();
         playerAnimatorManager = GetComponentInChildren<PlayerAnimatorManager>();
@@ -82,6 +85,8 @@ public class PlayerInputManager : MonoBehaviour
             playerControls.PlayerMovement.Camera.performed += i => cameraInput = i.ReadValue<Vector2>();
             playerControls.PlayerActions.RB.performed += i => rbInput = true;
             playerControls.PlayerActions.RT.performed += i => rtInput = true;
+            playerControls.PlayerActions.LB.performed += i => lbInput = true;
+            playerControls.PlayerActions.LB.canceled += i => lbInput = false;
             playerControls.PlayerActions.LT.performed += i => ltInput = true;
             playerControls.PlayerInventory.Right.performed += i => rightArrow = true;
             playerControls.PlayerInventory.Left.performed += i => leftArrow = true;
@@ -106,7 +111,7 @@ public class PlayerInputManager : MonoBehaviour
     {
         HandlePlayerMovementInput(delta);
         HandleRollInput(delta);
-        HandleAttackInput(delta);
+        HandleCombatInput(delta);
         HandleQuickSlotsInput();
         HandleInventoryInput();
         HandleLockOnInput();
@@ -151,7 +156,7 @@ public class PlayerInputManager : MonoBehaviour
 
         }
     }
-    private void HandleAttackInput(float delta)
+    private void HandleCombatInput(float delta)
     {
         if (rbInput)
         {
@@ -162,9 +167,9 @@ public class PlayerInputManager : MonoBehaviour
             playerAttacker.HandleHeavyAttack(playerInventory.rightWeapon);
         }
 
-        if(ltInput)
+        if (ltInput)
         {
-            if(twoHandFlag)
+            if (twoHandFlag)
             {
 
             }
@@ -173,6 +178,22 @@ public class PlayerInputManager : MonoBehaviour
                 playerAttacker.HandleLTAction();
             }
         }
+
+        if (lbInput)
+        {
+            playerAttacker.HandleLBAction();
+        }
+        else
+        {
+            playerManager.isBlocking = false;
+
+            if(blockingCollider.blockingCollider.enabled)
+            {
+                blockingCollider.DisableBlockingCollider();
+            }
+        }
+
+
     }
     private void HandleQuickSlotsInput()
     {

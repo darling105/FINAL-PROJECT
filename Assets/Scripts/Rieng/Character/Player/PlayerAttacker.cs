@@ -6,6 +6,7 @@ public class PlayerAttacker : MonoBehaviour
 {
 
     PlayerAnimatorManager playerAnimatorManager;
+    PlayerEquipmentManager playerEquipmentManager;
     PlayerManager playerManager;
     PlayerStats playerStats;
     PlayerInventory playerInventory;
@@ -18,6 +19,7 @@ public class PlayerAttacker : MonoBehaviour
     private void Awake()
     {
         playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
+        playerEquipmentManager = GetComponent<PlayerEquipmentManager>();
         playerManager = GetComponentInParent<PlayerManager>();
         playerStats = GetComponentInParent<PlayerStats>();
         playerInventory = GetComponentInParent<PlayerInventory>();
@@ -104,6 +106,11 @@ public class PlayerAttacker : MonoBehaviour
         }
     }
 
+    public void HandleLBAction()
+    {
+        PerformLBBlockingAction();
+    }
+
     public void HandleLTAction()
     {
         if (playerInventory.leftWeapon.isShieldWeapon)
@@ -168,7 +175,7 @@ public class PlayerAttacker : MonoBehaviour
 
         if (isTwoHanding)
         {
-            
+
         }
         else
         {
@@ -180,6 +187,23 @@ public class PlayerAttacker : MonoBehaviour
     private void SuccessfullyCastSpell()
     {
         playerInventory.currentSpell.SuccessfullyCastSpell(playerAnimatorManager, playerStats);
+    }
+
+    #endregion
+
+    #region Defense Actions
+
+    private void PerformLBBlockingAction()
+    {
+        if (playerManager.isInteracting)
+            return;
+
+        if (playerManager.isBlocking)
+            return;
+
+        playerAnimatorManager.PlayTargetAnimation("Block_Start", false, true);
+        playerEquipmentManager.OpenBlockingCollider();
+        playerManager.isBlocking = true;
     }
 
     #endregion

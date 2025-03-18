@@ -46,6 +46,7 @@ public class PlayerManager : CharacterManager
         isUsingRightHand = anim.GetBool("isUsingRightHand");
         isUsingLeftHand = anim.GetBool("isUsingLeftHand");
         isInvulnerable = anim.GetBool("isInvulnerable");
+        anim.SetBool("isBlocking", isBlocking);
         anim.SetBool("isInAir", isInAir);
         anim.SetBool("isDead", playerStats.isDead);
 
@@ -131,7 +132,7 @@ public class PlayerManager : CharacterManager
             }
         }
     }
-    
+
     public void OpenChestInteraction(Transform playerStandHereWhenOpenChest)
     {
         playerLocomotion.rigidbody.velocity = Vector3.zero;
