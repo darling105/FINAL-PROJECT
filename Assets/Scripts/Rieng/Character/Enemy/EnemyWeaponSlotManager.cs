@@ -67,22 +67,23 @@ public class EnemyWeaponSlotManager : MonoBehaviour
         if (isLeft)
         {
             leftHandDamageCollider = leftHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
+            leftHandDamageCollider.characterManager = GetComponentInParent<CharacterManager>();
         }
         else
         {
             rightHandDamageCollider = rightHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
-
+            rightHandDamageCollider.characterManager = GetComponentInParent<CharacterManager>();
         }
     }
 
     public void OpenDamageCollider()
     {
-            rightHandDamageCollider.EnableDamageCollider();
+        rightHandDamageCollider.EnableDamageCollider();
     }
 
     public void CloseDamageCollider()
     {
-            rightHandDamageCollider.DisableDamageCollider();
+        rightHandDamageCollider.DisableDamageCollider();
     }
 
     public void DrainStaminaLightAttack()

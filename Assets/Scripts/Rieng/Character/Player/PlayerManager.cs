@@ -29,7 +29,7 @@ public class PlayerManager : CharacterManager
     {
         //instance = this;
         playerCamera = FindAnyObjectByType<PlayerCamera>();
-        backStabCollider = GetComponentInChildren<BackStabCollider>();
+        backStabCollider = GetComponentInChildren<CriticalDamageCollider>();
         playerInputManager = GetComponent<PlayerInputManager>();
         playerAnimatorManager = GetComponentInChildren<PlayerAnimatorManager>();
         anim = GetComponentInChildren<Animator>();
@@ -71,6 +71,7 @@ public class PlayerManager : CharacterManager
         playerInputManager.rollFlag = false;
         playerInputManager.rbInput = false;
         playerInputManager.rtInput = false;
+        playerInputManager.ltInput = false;
         playerInputManager.upArrow = false;
         playerInputManager.downArrow = false;
         playerInputManager.leftArrow = false;
@@ -93,6 +94,7 @@ public class PlayerManager : CharacterManager
 
     }
 
+    #region Player Interactions
     public void CheckForInteractableObject()
     {
         RaycastHit hit;
@@ -129,5 +131,14 @@ public class PlayerManager : CharacterManager
             }
         }
     }
+    
+    public void OpenChestInteraction(Transform playerStandHereWhenOpenChest)
+    {
+        playerLocomotion.rigidbody.velocity = Vector3.zero;
+        transform.position = playerStandHereWhenOpenChest.transform.position;
+        playerAnimatorManager.PlayTargetAnimation("Open Chest", true);
 
+    }
+
+    #endregion
 }

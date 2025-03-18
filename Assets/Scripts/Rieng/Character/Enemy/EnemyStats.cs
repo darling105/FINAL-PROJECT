@@ -5,10 +5,14 @@ using UnityEngine;
 public class EnemyStats : CharacterStats
 {
     Animator animator;
+    EnemyAnimatorManager enemyAnimatorManager;
+
+    public int shadesAwardedOnDeath = 100;
 
     private void Awake()
     {
         animator = GetComponentInChildren<Animator>();
+        enemyAnimatorManager = GetComponentInChildren<EnemyAnimatorManager>();
     }
 
     void Start()
@@ -42,14 +46,19 @@ public class EnemyStats : CharacterStats
 
         currentHealth = currentHealth - damage;
 
-        animator.Play("Damage_01");
+        enemyAnimatorManager.PlayTargetAnimation("Damage_01", true);
 
         if (currentHealth <= 0)
         {
-            currentHealth = 0;
-            animator.Play("Death_01");
-            isDead = true;
+            HandleDead();
         }
+    }
+
+    private void HandleDead()
+    {
+        currentHealth = 0;
+        enemyAnimatorManager.PlayTargetAnimation("Death_01", true);
+        isDead = true;
     }
 
 }

@@ -54,7 +54,7 @@ public class WeaponSlotManager : MonoBehaviour
         {
             leftHandSlot.currentWeapon = weaponItem;
             leftHandSlot.LoadWeaponModel(weaponItem);
-            LoadLeftWeaponDamageCollider();
+            LoadWeaponDamageCollider(true);
             quickSlotsUI.UpdateWeaponQuickSlotsUI(true, weaponItem);
             #region Handle Left Weapon Idle Animations
             if (weaponItem != null)
@@ -95,23 +95,25 @@ public class WeaponSlotManager : MonoBehaviour
             }
             rightHandSlot.currentWeapon = weaponItem;
             rightHandSlot.LoadWeaponModel(weaponItem);
-            LoadRightWeaponDamageCollider();
+            LoadWeaponDamageCollider(false);
             quickSlotsUI.UpdateWeaponQuickSlotsUI(false, weaponItem);
         }
     }
 
     #region Handle Weapon Damage Collider
 
-    private void LoadLeftWeaponDamageCollider()
+    public void LoadWeaponDamageCollider(bool isLeft)
     {
-        leftHandDamageCollider = leftHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
-        leftHandDamageCollider.currentWeaponDamage = playerInventory.leftWeapon.baseDamage;
-    }
-
-    private void LoadRightWeaponDamageCollider()
-    {
-        rightHandDamageCollider = rightHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
-        rightHandDamageCollider.currentWeaponDamage = playerInventory.rightWeapon.baseDamage;
+        if (isLeft)
+        {
+            leftHandDamageCollider = leftHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
+            leftHandDamageCollider.characterManager = GetComponentInChildren<CharacterManager>();
+        }
+        else
+        {
+            rightHandDamageCollider = rightHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
+            rightHandDamageCollider.characterManager = GetComponentInChildren<CharacterManager>();
+        }
     }
 
     public void OpenDamageCollider()

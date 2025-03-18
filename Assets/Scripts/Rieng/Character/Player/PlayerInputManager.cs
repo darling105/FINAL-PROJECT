@@ -36,6 +36,7 @@ public class PlayerInputManager : MonoBehaviour
     public bool twoHandInput;
     public bool rbInput;
     public bool rtInput;
+    public bool ltInput;
     public bool criticalAttackInput;
     public bool jumpInput;
     public bool inventoryInput;
@@ -81,6 +82,7 @@ public class PlayerInputManager : MonoBehaviour
             playerControls.PlayerMovement.Camera.performed += i => cameraInput = i.ReadValue<Vector2>();
             playerControls.PlayerActions.RB.performed += i => rbInput = true;
             playerControls.PlayerActions.RT.performed += i => rtInput = true;
+            playerControls.PlayerActions.LT.performed += i => ltInput = true;
             playerControls.PlayerInventory.Right.performed += i => rightArrow = true;
             playerControls.PlayerInventory.Left.performed += i => leftArrow = true;
             playerControls.PlayerActions.Interactable.performed += i => aInput = true;
@@ -158,6 +160,18 @@ public class PlayerInputManager : MonoBehaviour
         if (rtInput)
         {
             playerAttacker.HandleHeavyAttack(playerInventory.rightWeapon);
+        }
+
+        if(ltInput)
+        {
+            if(twoHandFlag)
+            {
+
+            }
+            else
+            {
+                playerAttacker.HandleLTAction();
+            }
         }
     }
     private void HandleQuickSlotsInput()
@@ -249,7 +263,6 @@ public class PlayerInputManager : MonoBehaviour
             }
         }
     }
-
     private void HandleCriticalAttackInput()
     {
         if (criticalAttackInput)

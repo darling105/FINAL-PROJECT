@@ -107,6 +107,26 @@ public class PlayerAnimatorManager : CharacterAnimatorManager
         anim.SetBool("isInvulnerable", false);
     }
 
+    public void EnableIsParrying()
+    {
+        playerManager.isParrying = true;
+    }
+
+    public void DisableIsParrying()
+    {
+        playerManager.isParrying = false;
+    }
+
+    public void EnableCanBeRiposted()
+    {
+        playerManager.canBeRiposted = true;
+    }
+
+    public void DisableCanBeRiposted()
+    {
+        playerManager.canBeRiposted = false;
+    }
+
     public override void TakeCriticalDamageAnimationEvent()
     {
         playerStats.TakeDamageNoAnimation(playerManager.pendingCriticalDamage);

@@ -14,10 +14,68 @@ public class EnemyAnimatorManager : CharacterAnimatorManager
         enemyStats = GetComponentInParent<EnemyStats>();
     }
 
+    public void CanRotate()
+    {
+        anim.SetBool("canRotate", true);
+    }
+
+    public void StopRotation()
+    {
+        anim.SetBool("canRotate", false);
+    }
+
+    public void EnableCombo()
+    {
+        anim.SetBool("canDoCombo", true);
+    }
+
+    public void DisableCombo()
+    {
+        anim.SetBool("canDoCombo", false);
+    }
+    
+    public void EnableIsParrying()
+    {
+        enemyManager.isParrying = true;
+    }
+    
+    public void DisableIsParrying()
+    {
+        enemyManager.isParrying = false;
+    }
+
+    public void EnableCanBeRiposted()
+    {
+        enemyManager.canBeRiposted = true;
+    }
+
+    public void DisableCanBeRiposted()
+    {
+        enemyManager.canBeRiposted = false;
+    }
+
     public override void TakeCriticalDamageAnimationEvent()
     {
         enemyStats.TakeDamageNoAnimation(enemyManager.pendingCriticalDamage);
         enemyManager.pendingCriticalDamage = 0;
+    }
+
+    public void AwardShadesOnDeath()
+    {
+        PlayerStats playerStats = FindObjectOfType<PlayerStats>();
+        ShadeCountBar shadeCountBar = FindObjectOfType<ShadeCountBar>();
+
+        if (playerStats != null)
+        {
+            playerStats.AddShades(enemyStats.shadesAwardedOnDeath);
+
+            if (shadeCountBar != null)
+            {
+                shadeCountBar.SetShadeCountText(playerStats.shadeCount);
+            }
+        }
+
+
     }
 
     private void OnAnimatorMove()
@@ -29,5 +87,6 @@ public class EnemyAnimatorManager : CharacterAnimatorManager
         Vector3 velocity = deltaPosition / delta;
         enemyManager.enemyRigidbody.velocity = velocity;
     }
+
 
 }

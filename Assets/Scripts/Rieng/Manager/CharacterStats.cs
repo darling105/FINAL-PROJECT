@@ -16,5 +16,7 @@ public class CharacterStats : MonoBehaviour
     public float maxFocusPoint;
     public float currentFocusPoint;
 
+    public int shadeCount = 0;
+
     public bool isDead;
 }

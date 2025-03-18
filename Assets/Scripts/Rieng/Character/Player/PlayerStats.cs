@@ -143,4 +143,9 @@ public class PlayerStats : CharacterStats
         focusPointBar.SetCurrentFocusPoint(currentFocusPoint);
     }
 
+    public void AddShades(int shades)
+    {
+        shadeCount += shades;
+    }
+
 }
