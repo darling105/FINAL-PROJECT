@@ -9230,6 +9230,10 @@ PrefabInstance:
       propertyPath: canBeParried
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5863155117199884155, guid: 7e90a7388b55e9d41b083d7ef8513233, type: 3}
+      propertyPath: comboLikelyHood
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 6271227581501009570, guid: 7e90a7388b55e9d41b083d7ef8513233, type: 3}
       propertyPath: m_LocalScale.x
       value: 2

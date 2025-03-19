@@ -6,6 +6,7 @@ public class EnemyStats : CharacterStats
 {
     Animator animator;
     EnemyAnimatorManager enemyAnimatorManager;
+    public UIEnemyHealthBar enemyHealthBar;
 
     public int shadesAwardedOnDeath = 100;
 
@@ -19,6 +20,7 @@ public class EnemyStats : CharacterStats
     {
         maxHealth = SetMaxHealthFromHealthLevel();
         currentHealth = maxHealth;
+        enemyHealthBar.SetMaxHealth(maxHealth);
     }
 
     private int SetMaxHealthFromHealthLevel()
@@ -31,6 +33,7 @@ public class EnemyStats : CharacterStats
     {
 
         currentHealth = currentHealth - damage;
+        enemyHealthBar.SetHealth(currentHealth);
 
         if (currentHealth <= 0)
         {
@@ -45,6 +48,7 @@ public class EnemyStats : CharacterStats
             return;
 
         currentHealth = currentHealth - damage;
+        enemyHealthBar.SetHealth(currentHealth);
 
         enemyAnimatorManager.PlayTargetAnimation(damageAnimation, true);
 

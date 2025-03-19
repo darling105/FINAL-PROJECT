@@ -89,7 +89,7 @@ public class PlayerLocomotion : MonoBehaviour
                 else
                 {
                     Vector3 rotationDirection = moveDirection;
-                    rotationDirection = playerCamera.currentLockOnTarget.position - transform.position;
+                    rotationDirection = playerCamera.currentLockOnTarget.transform.position - transform.position;
                     rotationDirection.y = 0;
                     rotationDirection.Normalize();
                     Quaternion tr = Quaternion.LookRotation(rotationDirection);
