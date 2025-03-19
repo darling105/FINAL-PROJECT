@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 346920eec4839464b8e9d1c593b14eea, type: 3}
+  m_Name: Coca Flask
+  m_EditorClassIdentifier: 
+  itemIcon: {fileID: 0}
+  itemName: Coca Flask
+  maxItemAmount: 10
+  currentItemAmount: 10
+  itemModel: {fileID: 3729230208740312926, guid: bda63f71f6a549740a182da85a3143c5, type: 3}
+  consumableAnimation: Drink
+  isInteracting: 0
+  cocaFlask: 1
+  pepsiFlask: 0
+  healthRecoveryAmount: 250
+  focusPointRecoveryAmount: 0
+  recoveryFX: {fileID: 8771972552311404799, guid: bbf9e36a48d6c5648a13889afab076fd, type: 3}

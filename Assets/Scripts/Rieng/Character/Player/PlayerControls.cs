@@ -257,6 +257,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Consumable"",
+                    ""type"": ""Button"",
+                    ""id"": ""59012fab-72f4-4b81-b0c8-7d43cf04880e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -446,6 +455,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""LB"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""35a04411-7136-4f82-92af-a6bed3f7cedd"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Consumable"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -559,6 +579,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_PlayerActions_Y = m_PlayerActions.FindAction("Y", throwIfNotFound: true);
         m_PlayerActions_LT = m_PlayerActions.FindAction("LT", throwIfNotFound: true);
         m_PlayerActions_LB = m_PlayerActions.FindAction("LB", throwIfNotFound: true);
+        m_PlayerActions_Consumable = m_PlayerActions.FindAction("Consumable", throwIfNotFound: true);
         // Player Inventory
         m_PlayerInventory = asset.FindActionMap("Player Inventory", throwIfNotFound: true);
         m_PlayerInventory_Up = m_PlayerInventory.FindAction("Up", throwIfNotFound: true);
@@ -707,6 +728,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerActions_Y;
     private readonly InputAction m_PlayerActions_LT;
     private readonly InputAction m_PlayerActions_LB;
+    private readonly InputAction m_PlayerActions_Consumable;
     public struct PlayerActionsActions
     {
         private @PlayerControls m_Wrapper;
@@ -722,6 +744,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @Y => m_Wrapper.m_PlayerActions_Y;
         public InputAction @LT => m_Wrapper.m_PlayerActions_LT;
         public InputAction @LB => m_Wrapper.m_PlayerActions_LB;
+        public InputAction @Consumable => m_Wrapper.m_PlayerActions_Consumable;
         public InputActionMap Get() { return m_Wrapper.m_PlayerActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -764,6 +787,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @LB.started += instance.OnLB;
             @LB.performed += instance.OnLB;
             @LB.canceled += instance.OnLB;
+            @Consumable.started += instance.OnConsumable;
+            @Consumable.performed += instance.OnConsumable;
+            @Consumable.canceled += instance.OnConsumable;
         }
 
         private void UnregisterCallbacks(IPlayerActionsActions instance)
@@ -801,6 +827,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @LB.started -= instance.OnLB;
             @LB.performed -= instance.OnLB;
             @LB.canceled -= instance.OnLB;
+            @Consumable.started -= instance.OnConsumable;
+            @Consumable.performed -= instance.OnConsumable;
+            @Consumable.canceled -= instance.OnConsumable;
         }
 
         public void RemoveCallbacks(IPlayerActionsActions instance)
@@ -908,6 +937,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnY(InputAction.CallbackContext context);
         void OnLT(InputAction.CallbackContext context);
         void OnLB(InputAction.CallbackContext context);
+        void OnConsumable(InputAction.CallbackContext context);
     }
     public interface IPlayerInventoryActions
     {

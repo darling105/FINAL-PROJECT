@@ -12,6 +12,7 @@ public class PlayerInputManager : MonoBehaviour
     PlayerAttacker playerAttacker;
     PlayerInventory playerInventory;
     PlayerManager playerManager;
+    PlayerEffectsManager playerEffectsManager;
     PlayerStats playerStats;
     BlockingCollider blockingCollider;
     WeaponSlotManager weaponSlotManager;
@@ -34,6 +35,7 @@ public class PlayerInputManager : MonoBehaviour
     [Header("Actions Input")]
     public bool bInput;
     public bool aInput;
+    public bool consumableInput;
     public bool twoHandInput;
     public bool rbInput;
     public bool rtInput;
@@ -69,6 +71,7 @@ public class PlayerInputManager : MonoBehaviour
         playerInventory = GetComponent<PlayerInventory>();
         playerManager = GetComponent<PlayerManager>();
         playerStats = GetComponent<PlayerStats>();
+        playerEffectsManager = GetComponentInChildren<PlayerEffectsManager>();
         weaponSlotManager = GetComponentInChildren<WeaponSlotManager>();
         blockingCollider = GetComponentInChildren<BlockingCollider>();
         uiManager = FindObjectOfType<UIManager>();
@@ -95,6 +98,7 @@ public class PlayerInputManager : MonoBehaviour
             playerControls.PlayerActions.Roll.canceled += i => bInput = false;
             playerControls.PlayerActions.Jump.performed += i => jumpInput = true;
             playerControls.PlayerActions.Inventory.performed += i => inventoryInput = true;
+            playerControls.PlayerActions.Consumable.performed += i => consumableInput = true;
             playerControls.PlayerActions.LockOn.performed += i => lockOnInput = true;
             playerControls.PlayerMovement.LockOnTargetRight.performed += i => lockRight = true;
             playerControls.PlayerMovement.LockOnTargetLeft.performed += i => lockLeft = true;
@@ -117,6 +121,7 @@ public class PlayerInputManager : MonoBehaviour
         HandleLockOnInput();
         HandleTwoHandInput();
         HandleCriticalAttackInput();
+        HandleUseConsumableInput();
     }
     private void HandlePlayerMovementInput(float delta)
     {
@@ -187,7 +192,7 @@ public class PlayerInputManager : MonoBehaviour
         {
             playerManager.isBlocking = false;
 
-            if(blockingCollider.blockingCollider.enabled)
+            if (blockingCollider.blockingCollider.enabled)
             {
                 blockingCollider.DisableBlockingCollider();
             }
@@ -290,6 +295,15 @@ public class PlayerInputManager : MonoBehaviour
         {
             criticalAttackInput = false;
             playerAttacker.AttempBackStabOrRiposte();
+        }
+    }
+
+    private void HandleUseConsumableInput()
+    {
+        if (consumableInput)
+        {
+            consumableInput = false;
+            playerInventory.currentConsumable.AttemptToConsumeItem(playerAnimatorManager, weaponSlotManager, playerEffectsManager);
         }
     }
 

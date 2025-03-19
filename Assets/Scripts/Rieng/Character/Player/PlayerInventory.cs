@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
@@ -10,6 +11,7 @@ public class PlayerInventory : MonoBehaviour
     public SpellItem currentSpell;
     public WeaponItem rightWeapon;
     public WeaponItem leftWeapon;
+    public ConsumableItem currentConsumable;
     public WeaponItem unarmedWeapon;
 
     public WeaponItem[] weaponsInRightHandSlots = new WeaponItem[1];

@@ -235,6 +235,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Consumable",
+                    "type": "Button",
+                    "id": "59012fab-72f4-4b81-b0c8-7d43cf04880e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -422,6 +431,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "LB",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "35a04411-7136-4f82-92af-a6bed3f7cedd",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Consumable",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

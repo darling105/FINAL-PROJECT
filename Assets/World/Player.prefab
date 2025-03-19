@@ -529,6 +529,7 @@ MonoBehaviour:
   mouseX: 0
   bInput: 0
   aInput: 0
+  consumableInput: 0
   twoHandInput: 0
   rbInput: 0
   rtInput: 0
@@ -597,13 +598,14 @@ MonoBehaviour:
   currentSpell: {fileID: 11400000, guid: 56b8d908381390d49868be0908987ac4, type: 2}
   rightWeapon: {fileID: 0}
   leftWeapon: {fileID: 0}
+  currentConsumable: {fileID: 11400000, guid: bbe9aa65b72f49b47b8bee8589da1d8e, type: 2}
   unarmedWeapon: {fileID: 11400000, guid: 91953b025a8e11c4b9c510e51990ead3, type: 2}
   weaponsInRightHandSlots:
   - {fileID: 11400000, guid: 78aeff6faba875544b543a157afa33a0, type: 2}
   - {fileID: 11400000, guid: 3d7755ee4cdf8174791c7bac8ed46170, type: 2}
   weaponsInLeftHandSlots:
   - {fileID: 11400000, guid: bbe04f6cadf4b874598cd5997fc6ab6f, type: 2}
-  - {fileID: 11400000, guid: 57db7ae764f6b564599330b3146d1405, type: 2}
+  - {fileID: 11400000, guid: 0b765b61982647743ab05e905ea479a3, type: 2}
   currentRightWeaponIndex: 0
   currentLeftWeaponIndex: 0
   weaponsInventory: []
@@ -5608,6 +5610,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1710930315257156, guid: 152b29d807bbe004b93872b8086c1b0b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2595003051944454837}
+    - targetCorrespondingSourceObject: {fileID: 1710930315257156, guid: 152b29d807bbe004b93872b8086c1b0b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7471504441175035554}
     - targetCorrespondingSourceObject: {fileID: 7194480159278739865, guid: 152b29d807bbe004b93872b8086c1b0b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2972993550879844882}
@@ -5635,6 +5640,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackingWeapon: {fileID: 0}
+  leftHandSlot: {fileID: 0}
+  rightHandSlot: {fileID: 0}
   leftHandDamageCollider: {fileID: 0}
   rightHandDamageCollider: {fileID: 0}
 --- !u!114 &4870222919480690784
@@ -5662,6 +5669,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74b4744bc95f741499765c0129427715, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blockingCollider: {fileID: 3109722750694111287}
+--- !u!114 &7471504441175035554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 529886962607514364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce28ca1740158c8429c308199b54f713, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentParticleFX: {fileID: 0}
+  instantiatedFXModel: {fileID: 0}
+  amountToBeHealed: 0
 --- !u!1 &7245008540138370593 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7194480159278739865, guid: 152b29d807bbe004b93872b8086c1b0b, type: 3}
