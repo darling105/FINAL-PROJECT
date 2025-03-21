@@ -798,6 +798,24 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ff4556f964b9f0448c031a10afabb46, type: 3}
+--- !u!1 &194751824 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6917939540835305928, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+  m_PrefabInstance: {fileID: 2985886996228776675}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &194751826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 194751824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71675599786b3d946af1133f6a26d93e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  legModels: []
 --- !u!1001 &197908916
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2817,6 +2835,24 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 726459f9041ad074592da564916bac1d, type: 3}
+--- !u!1 &700580020 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6917686461933496680, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+  m_PrefabInstance: {fileID: 2985886996228776675}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &700580022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 700580020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3161ea1a1f2f1064b806bf152071025c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  models: []
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -3137,7 +3173,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1222879297}
+  - {fileID: 6381402708733921940}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &742109525
@@ -3610,6 +3646,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 326164271226477067, guid: 716f658dd02a88c48973e5f556e44e26, type: 3}
   m_PrefabInstance: {fileID: 603971082}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &825448947 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6918201991665084642, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+  m_PrefabInstance: {fileID: 2985886996228776675}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &825448949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 825448947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66a70aa38471b1548844471e6ce86a6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  models: []
 --- !u!1 &859369592 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8696482617218564254, guid: 4e4ae207bef64494986ca3bfeed90b05, type: 3}
@@ -4908,6 +4962,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4781411585807976, guid: fefd1221c84376442aa6e0e980ce18ac, type: 3}
   m_PrefabInstance: {fileID: 1103294822}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1116521049 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6918080412544805626, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+  m_PrefabInstance: {fileID: 2985886996228776675}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1116521051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1116521049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 072907c14accfe34dbdc666d1d671b9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hipModels: []
 --- !u!1001 &1129779870
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5283,22 +5355,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6835935351536815891, guid: b3205841b2c54e84e941859841c61959, type: 3}
   m_PrefabInstance: {fileID: 936257204}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1222879297 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1746455288084225382, guid: fb7390e78cb8a9d43b8bba7a75e477ba, type: 3}
-  m_PrefabInstance: {fileID: 4662329664672487410}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1222879298 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5797938323225647892, guid: fb7390e78cb8a9d43b8bba7a75e477ba, type: 3}
-  m_PrefabInstance: {fileID: 4662329664672487410}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ccf99ddf30eae247974c15a4d8cc5da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1235787487
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6027,6 +6083,24 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 578ec68902cb8ec49ba61bb7ad1af10a, type: 3}
+--- !u!1 &1426334045 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6917779362204882960, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+  m_PrefabInstance: {fileID: 2985886996228776675}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1426334047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1426334045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fd8e64b34cfa3c41afdcaa799cad927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  models: []
 --- !u!1 &1427638813
 GameObject:
   m_ObjectHideFlags: 0
@@ -6355,6 +6429,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4781411585807976, guid: fefd1221c84376442aa6e0e980ce18ac, type: 3}
   m_PrefabInstance: {fileID: 1472553992}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1478146052 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6917817173736378902, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+  m_PrefabInstance: {fileID: 2985886996228776675}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1478146054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1478146052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81688fa147f51194091930d3b5aee562, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  legModels: []
 --- !u!1001 &1478567078
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6457,6 +6549,24 @@ Transform:
   - {fileID: 968585568}
   m_Father: {fileID: 1531300494}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1531166174 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6918023691223398540, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+  m_PrefabInstance: {fileID: 2985886996228776675}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1531166176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1531166174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e31bcea889a8ff42922787b54564ca9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  models: []
 --- !u!1 &1531300492
 GameObject:
   m_ObjectHideFlags: 0
@@ -6535,6 +6645,24 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 2792592484033676519, guid: 1da7dc19fb648f44f911554e642ca06b, type: 3}
+--- !u!1 &1542513360 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6917547922954798630, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+  m_PrefabInstance: {fileID: 2985886996228776675}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1542513362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1542513360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 457a93b15ddbf544fb150f0d7976297c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  models: []
 --- !u!4 &1555246737 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: cdd65cb6904f9fb4faeebb37342b1932, type: 3}
@@ -8057,6 +8185,24 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1836080110}
   m_SourcePrefab: {fileID: 100100000, guid: 5fcb4455afa303d4aaaf176983888312, type: 3}
+--- !u!1 &1959549466 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6918246829896350054, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+  m_PrefabInstance: {fileID: 2985886996228776675}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1959549468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1959549466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e23566a457e8cae45851e97ebadb41a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  models: []
 --- !u!1001 &1972546827
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8709,7 +8855,7 @@ PrefabInstance:
     - target: {fileID: 5074472882602858639, guid: 335c0df480206754d9104fa5957e1755, type: 3}
       propertyPath: targetTransform
       value: 
-      objectReference: {fileID: 1222879297}
+      objectReference: {fileID: 6381402708733921940}
     - target: {fileID: 6300925969023560447, guid: 335c0df480206754d9104fa5957e1755, type: 3}
       propertyPath: m_LocalPosition.x
       value: 65.357056
@@ -8812,6 +8958,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6b62853455e5f245ba3b8c1c3499394, type: 3}
+--- !u!114 &1208519475778604262 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7734206476922863807, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+  m_PrefabInstance: {fileID: 2985886996228776675}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ccf99ddf30eae247974c15a4d8cc5da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2050553229319459782 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6037430753255764517, guid: c4fdca7bc1d70c548a121c6eec8a768d, type: 3}
@@ -8920,7 +9077,7 @@ PrefabInstance:
     - target: {fileID: 6555599807543480176, guid: c4fdca7bc1d70c548a121c6eec8a768d, type: 3}
       propertyPath: playerInventory
       value: 
-      objectReference: {fileID: 1222879298}
+      objectReference: {fileID: 1208519475778604262}
     - target: {fileID: 7762920509153384727, guid: c4fdca7bc1d70c548a121c6eec8a768d, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -9006,6 +9163,838 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96bab19c185e94f4385c4ff0681d1c56, type: 3}
+--- !u!1001 &2985886996228776675
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 737713215}
+    m_Modifications:
+    - target: {fileID: 369056458444547068, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: nakedHipModel
+      value: Male_Hips_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 369056458444547068, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: nakedLefHandModel
+      value: Chr_HandLeft_Male_00
+      objectReference: {fileID: 0}
+    - target: {fileID: 369056458444547068, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: nakedLeftLegModel
+      value: Male_Leg_Left_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 369056458444547068, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: nakedRightLegModel
+      value: Male_Leg_Right_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 369056458444547068, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: nakedRightHandModel
+      value: Chr_HandRight_Male_00
+      objectReference: {fileID: 0}
+    - target: {fileID: 369056458444547068, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: nakedLowerLeftArmModel
+      value: Male_Arm_Lower_Left_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 369056458444547068, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: nakedUpperLeftArmModel
+      value: Male_Arm_Upper_Left_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 369056458444547068, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: nakedLowerRightArmModel
+      value: Male_Arm_Lower_Right_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 369056458444547068, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: nakedUpperRightArmModel
+      value: Male_Arm_Upper_Right_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1063028291653050904, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 60.797
+      objectReference: {fileID: 0}
+    - target: {fileID: 1063028291653050904, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 17.824
+      objectReference: {fileID: 0}
+    - target: {fileID: 1063028291653050904, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 165.75002
+      objectReference: {fileID: 0}
+    - target: {fileID: 1063028291653050904, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1063028291653050904, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1063028291653050904, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1063028291653050904, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1063028291653050904, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1063028291653050904, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1063028291653050904, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2744267981461131699, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: interactableUIGameObject
+      value: 
+      objectReference: {fileID: 3384682633796899757}
+    - target: {fileID: 2744267981461131699, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: itemInteractableGameObject
+      value: 
+      objectReference: {fileID: 2050553229319459782}
+    - target: {fileID: 6115625000253451573, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917533833055319378, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Leg_Right_13
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917539171751552216, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Leg_Left_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917539171751552216, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917539854449053906, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Upper_Left_03
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917546097066384512, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Hips_24
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917547922954798630, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Lower_Right
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917583237952375792, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Upper_Right_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917596152290103320, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Upper_Right_11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917607706776500934, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Leg_Right_09
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917608063281042954, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Upper_Right_20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917608063281042954, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917617041130174584, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Lower_Left_08
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917618605524749474, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Hips_14
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917619822206820510, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Leg_Right_05
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917625098707056518, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Hips_28
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917638266737342606, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Lower_Right_18
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917638759845729620, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Leg_Left_09
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917644649710018942, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Leg_Left_04
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917645797262537718, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Lower_Left_10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917653369542772824, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Lower_Left_06
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917655542294994068, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Lower_Left_16
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917665710279280210, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Leg_Right_17
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917665748575322960, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Leg_Left_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917672512665693990, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Hips_16
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917679969967140810, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Upper_Right_14
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917681272088700564, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Upper_Left_07
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917681791382266576, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Upper_Left_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917686461933496680, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Lower_Left
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917687127065869168, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Leg_Right_18
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917692844760006822, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Lower_Left_04
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917693491835997366, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Lower_Right_08
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917694545742299008, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Leg_Right_03
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917709057476067730, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Hips_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917712702611675546, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Upper_Right_10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917724344950761574, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Lower_Right_10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917732250337499144, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917735086576205114, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Leg_Left_03
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917737592024621982, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Hips_11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917738324121589704, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Leg_Right_15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917757631102216766, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Upper_Right_09
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917759465890484526, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917765220529723252, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Lower_Left_07
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917767187760043810, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Upper_Left_18
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917774325800084524, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Upper_Right_07
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917777601938511778, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Leg_Left_18
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917779362204882960, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Upper_Right
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917794390827065178, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Leg_Left_12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917796098208655804, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Hips_25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917796486034487384, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Upper_Left_14
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917803452383709698, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Leg_Left_05
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917806402117003626, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Upper_Left_11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917817173736378902, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Leg_Right
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917822994709257636, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Leg_Left_10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917837860658283874, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Lower_Left_15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917840969185083520, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Leg_Left_19
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917863681640237024, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Lower_Right_12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917863681640237024, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917868498305114306, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Lower_Left_05
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917873301321236232, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Leg_Right_08
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917876001991849094, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Lower_Right_03
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917879855144329120, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Upper_Right_18
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917895892569492704, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Leg_Right_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917904437492259542, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Leg_Left_16
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917911022837003004, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Lower_Right_17
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917913342203072418, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Hips_08
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917915912673841182, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Hips_10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917918536788302780, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Upper_Left_15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917921841032573058, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Lower_Right_05
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917924136918542728, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Upper_Right_12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917925735289272350, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Leg_Right_12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917938560167548990, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Hips_09
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917939540835305928, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Leg_Left
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917943261896468004, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Hips_04
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917953514652055852, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Upper_Right_06
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917958076614867754, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Hips_22
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917972793304292446, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Lower_Left_19
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917975404179539842, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Leg_Left_11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917977905398637784, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Hips_03
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917979345916330902, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Upper_Right_03
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917986284110004908, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Upper_Left_19
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917989974930828178, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Upper_Right_05
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917992659761130116, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Leg_Left_17
+      objectReference: {fileID: 0}
+    - target: {fileID: 6917998281337665226, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Upper_Right_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918010077976385058, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Upper_Left_21
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918012004455713124, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Upper_Right_15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918016484261638984, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Hips_23
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918021568510072994, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Lower_Left_14
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918023691223398540, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Upper_Left
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918026039123106606, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Lower_Right_19
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918042136097715048, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Leg_Right_07
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918048390679709566, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918048947839762470, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Upper_Left_10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918054518068493636, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Lower_Left_11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918061934257420610, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Upper_Right_19
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918062645444870178, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Upper_Right_04
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918069159043507792, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Upper_Left_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918073730188123112, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Hips_21
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918080412544805626, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Hips
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918087007721091374, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Lower_Left_13
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918101477449559330, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Leg_Left_06
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918112206737252226, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Lower_Right_06
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918116924922300872, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Lower_Left_17
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918118008002145562, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Upper_Right_08
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918135602438575824, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Leg_Left_08
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918138456995151976, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Leg_Left_13
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918155880203602844, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Upper_Right_21
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918155880203602844, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918156638684764446, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Hips_26
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918156813260537782, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Upper_Left_06
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918157897539230612, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Hips_29
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918164808186827934, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Lower_Right_07
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918171476240955134, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Lower_Left_03
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918172879044220796, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Hips_20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918183421068772156, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Hips_12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918192519035133788, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Upper_Left_09
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918198688539721488, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Hips_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918200295916943502, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Hips_27
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918201991665084642, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Hand_Right
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918212554947575270, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Hips_17
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918221019983213460, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Leg_Right_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918221019983213460, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918238359752105582, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Upper_Left_08
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918245693671104038, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Leg_Right_16
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918246829896350054, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Hand_Left
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918249462697876514, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Leg_Right_19
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918254125575951092, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Lower_Left_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918271414154247064, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Lower_Right_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918278883699393404, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Lower_Right_14
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918288104085663356, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Upper_Left_12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918293989079705216, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Lower_Right_15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918300320931390894, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Upper_Left_05
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918304239073113002, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Upper_Left_20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918304721641749022, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Upper_Right_16
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918313112762535246, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Lower_Right_09
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918325217562060786, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Leg_Left_14
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918338804520105158, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Leg_Right_11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918348973093079532, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Upper_Left_16
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918353048399428258, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Leg_Right_06
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918353048399428258, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918353081851964062, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918353462105895564, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Lower_Left_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918357769618143818, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Upper_Right_13
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918367072544170398, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Hips_05
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918367072544170398, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918380524077449778, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Hips_06
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918380524077449778, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918387384766691694, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Upper_Left_04
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918387801885833590, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Upper_Left_17
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918395375158476900, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Lower_Right_11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918396742153862982, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Lower_Left_09
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918403134792386234, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Lower_Right_13
+      objectReference: {fileID: 0}
+    - target: {fileID: 6919660244028128302, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Upper_Right_17
+      objectReference: {fileID: 0}
+    - target: {fileID: 6919683306999419536, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Lower_Right_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 6919683306999419536, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6919696823159074246, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Hips_13
+      objectReference: {fileID: 0}
+    - target: {fileID: 6919700491444845188, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Lower_Left_12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6919703015803374980, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Hips_19
+      objectReference: {fileID: 0}
+    - target: {fileID: 6919721536413313298, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Lower_Right_04
+      objectReference: {fileID: 0}
+    - target: {fileID: 6919722290771159910, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Leg_Right_14
+      objectReference: {fileID: 0}
+    - target: {fileID: 6919722290771159910, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6919727620062983094, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Lower_Left_18
+      objectReference: {fileID: 0}
+    - target: {fileID: 6919729984220119874, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Hips_15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6919734921312297712, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Lower_Right_16
+      objectReference: {fileID: 0}
+    - target: {fileID: 6919740513095709086, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Leg_Right_10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6919746807572100660, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Arm_Upper_Left_13
+      objectReference: {fileID: 0}
+    - target: {fileID: 6919747180404539878, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Leg_Left_15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6919750455197198544, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Leg_Right_20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6919751210924543500, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Leg_Left_20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6919754785154477458, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Leg_Left_07
+      objectReference: {fileID: 0}
+    - target: {fileID: 6919767164464253106, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Leg_Right_04
+      objectReference: {fileID: 0}
+    - target: {fileID: 6919768911243956242, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Hips_18
+      objectReference: {fileID: 0}
+    - target: {fileID: 6919778260621740650, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: m_Name
+      value: Male_Hips_07
+      objectReference: {fileID: 0}
+    - target: {fileID: 7734206476922863807, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: currentLegEquipment
+      value: 
+      objectReference: {fileID: 11400000, guid: 81dca248b326a9d4b8d14f528d7ddd3f, type: 2}
+    - target: {fileID: 7734206476922863807, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: currentHandEquipment
+      value: 
+      objectReference: {fileID: 11400000, guid: 717d6abc454e722408f3ce35d05008cd, type: 2}
+    - target: {fileID: 7734206476922863807, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: currentTorsoEquipment
+      value: 
+      objectReference: {fileID: 11400000, guid: 52f565005203ab044afc139795b0520a, type: 2}
+    - target: {fileID: 7734206476922863807, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      propertyPath: currentHelmetEquipment
+      value: 
+      objectReference: {fileID: 11400000, guid: e87ea6bf7cd511242a5f6ec08d1c664b, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6917779362204882960, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1426334047}
+    - targetCorrespondingSourceObject: {fileID: 6918023691223398540, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1531166176}
+    - targetCorrespondingSourceObject: {fileID: 6917547922954798630, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1542513362}
+    - targetCorrespondingSourceObject: {fileID: 6917686461933496680, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 700580022}
+    - targetCorrespondingSourceObject: {fileID: 6918201991665084642, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 825448949}
+    - targetCorrespondingSourceObject: {fileID: 6918246829896350054, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1959549468}
+    - targetCorrespondingSourceObject: {fileID: 6918080412544805626, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1116521051}
+    - targetCorrespondingSourceObject: {fileID: 6917817173736378902, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1478146054}
+    - targetCorrespondingSourceObject: {fileID: 6917939540835305928, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 194751826}
+  m_SourcePrefab: {fileID: 100100000, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
 --- !u!1 &3384682633796899757 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7008879650234184270, guid: c4fdca7bc1d70c548a121c6eec8a768d, type: 3}
@@ -9016,71 +10005,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3355628860031292245, guid: c6b62853455e5f245ba3b8c1c3499394, type: 3}
   m_PrefabInstance: {fileID: 632543544403065277}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &4662329664672487410
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 737713215}
-    m_Modifications:
-    - target: {fileID: 1746455288084225382, guid: fb7390e78cb8a9d43b8bba7a75e477ba, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 61.357056
-      objectReference: {fileID: 0}
-    - target: {fileID: 1746455288084225382, guid: fb7390e78cb8a9d43b8bba7a75e477ba, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 17.824
-      objectReference: {fileID: 0}
-    - target: {fileID: 1746455288084225382, guid: fb7390e78cb8a9d43b8bba7a75e477ba, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 165.75002
-      objectReference: {fileID: 0}
-    - target: {fileID: 1746455288084225382, guid: fb7390e78cb8a9d43b8bba7a75e477ba, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1746455288084225382, guid: fb7390e78cb8a9d43b8bba7a75e477ba, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1746455288084225382, guid: fb7390e78cb8a9d43b8bba7a75e477ba, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1746455288084225382, guid: fb7390e78cb8a9d43b8bba7a75e477ba, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1746455288084225382, guid: fb7390e78cb8a9d43b8bba7a75e477ba, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1746455288084225382, guid: fb7390e78cb8a9d43b8bba7a75e477ba, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1746455288084225382, guid: fb7390e78cb8a9d43b8bba7a75e477ba, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4959607258285592211, guid: fb7390e78cb8a9d43b8bba7a75e477ba, type: 3}
-      propertyPath: interactableUIGameObject
-      value: 
-      objectReference: {fileID: 3384682633796899757}
-    - target: {fileID: 4959607258285592211, guid: fb7390e78cb8a9d43b8bba7a75e477ba, type: 3}
-      propertyPath: itemInteractableGameObject
-      value: 
-      objectReference: {fileID: 2050553229319459782}
-    - target: {fileID: 5137419121506484718, guid: fb7390e78cb8a9d43b8bba7a75e477ba, type: 3}
-      propertyPath: m_Name
-      value: Player
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: fb7390e78cb8a9d43b8bba7a75e477ba, type: 3}
+--- !u!4 &6381402708733921940 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1063028291653050904, guid: 6ab3852303aab0f47bf454195699aae5, type: 3}
+  m_PrefabInstance: {fileID: 2985886996228776675}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &6533330119273176290 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1519763821163101441, guid: c4fdca7bc1d70c548a121c6eec8a768d, type: 3}
