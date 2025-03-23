@@ -4,23 +4,28 @@ using UnityEngine;
 
 public class EnemyStats : CharacterStats
 {
-    Animator animator;
     EnemyAnimatorManager enemyAnimatorManager;
+    EnemyBossManager enemyBossManager;
     public UIEnemyHealthBar enemyHealthBar;
 
     public int shadesAwardedOnDeath = 100;
 
+    public bool isBoss;
+
     private void Awake()
     {
-        animator = GetComponentInChildren<Animator>();
+        maxHealth = SetMaxHealthFromHealthLevel();
+        currentHealth = maxHealth;
         enemyAnimatorManager = GetComponentInChildren<EnemyAnimatorManager>();
+        enemyBossManager = GetComponent<EnemyBossManager>();
     }
 
     void Start()
     {
-        maxHealth = SetMaxHealthFromHealthLevel();
-        currentHealth = maxHealth;
-        enemyHealthBar.SetMaxHealth(maxHealth);
+        if (!isBoss)
+        {
+            enemyHealthBar.SetMaxHealth(maxHealth);
+        }
     }
 
     private int SetMaxHealthFromHealthLevel()
@@ -45,7 +50,15 @@ public class EnemyStats : CharacterStats
     public override void TakeDamage(int damage, string damageAnimation = "Damage_01")
     {
         base.TakeDamage(damage, damageAnimation = "Damage_01");
-        enemyHealthBar.SetHealth(currentHealth);
+
+        if (!isBoss)
+        {
+            enemyHealthBar.SetHealth(currentHealth);
+        }
+        else if (isBoss && enemyBossManager != null)
+        {
+            enemyBossManager.UpdateBossHealthBar(currentHealth);
+        }
         enemyAnimatorManager.PlayTargetAnimation(damageAnimation, true);
 
         if (currentHealth <= 0)
