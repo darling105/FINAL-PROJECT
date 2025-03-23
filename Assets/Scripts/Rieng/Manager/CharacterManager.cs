@@ -17,6 +17,10 @@ public class CharacterManager : MonoBehaviour
    public bool isParrying;
    public bool isBlocking;
 
+   [Header("Combat Stats")]
+   public bool isRotatingWithRootMotion;
+   public bool canRotate;
+
    public int pendingCriticalDamage;
 
 

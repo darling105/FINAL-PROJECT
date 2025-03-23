@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 0}
   itemName: Knight's Legging
-  physicalDefense: 0
+  physicalDefense: 10
   hipModelName: Male_Hips_05
   leftLegModelName: Male_Leg_Left_14
   rightLegModelName: Male_Leg_Right_14

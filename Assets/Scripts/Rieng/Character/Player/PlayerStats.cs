@@ -60,16 +60,13 @@ public class PlayerStats : CharacterStats
         return maxFocusPoint;
     }
 
-    public void TakeDamage(int damage, string damageAnimation = "Damage_01")
+    public override void TakeDamage(int damage, string damageAnimation = "Damage_01")
     {
         if (playerManager.isInvulnerable)
             return;
 
-        if (isDead)
-            return;
-        currentHealth = currentHealth - damage;
+        base.TakeDamage(damage, damageAnimation = "Damage_01");
         healthBar.SetCurrentHealth(currentHealth);
-
         playerAnimatorManager.PlayTargetAnimation(damageAnimation, true);
 
         if (currentHealth <= 0)

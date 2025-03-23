@@ -61,6 +61,7 @@ public class DamageCollider : MonoBehaviour
                 playerStats.TakeDamage(currentWeaponDamage);
             }
         }
+
         if (collision.tag == "Enemy")
         {
             EnemyStats enemyStats = collision.GetComponent<EnemyStats>();
@@ -90,5 +91,13 @@ public class DamageCollider : MonoBehaviour
                 enemyStats.TakeDamage(currentWeaponDamage);
             }
         }
+
+        if (collision.tag == "Illusionary Wall")
+        {
+            IllusionaryWall illusionaryWall = collision.GetComponent<IllusionaryWall>();
+
+            illusionaryWall.wallWasBeenHit = true;
+        }
+
     }
 }

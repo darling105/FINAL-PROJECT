@@ -6,6 +6,7 @@ public class PlayerEquipmentManager : MonoBehaviour
 {
     PlayerInputManager playerInputManager;
     PlayerInventory playerInventory;
+    PlayerStats playerStats;
 
     [Header("Equipment Model Changer")]
     //Head Equipment
@@ -47,6 +48,8 @@ public class PlayerEquipmentManager : MonoBehaviour
     {
         playerInputManager = GetComponentInParent<PlayerInputManager>();
         playerInventory = GetComponentInParent<PlayerInventory>();
+        playerStats = GetComponentInParent<PlayerStats>();
+
         helmetModelChanger = GetComponentInChildren<HelmetModelChanger>();
         torsoModelChanger = GetComponentInChildren<TorsoModelChanger>();
         hipModelChanger = GetComponentInChildren<HipModelChanger>();
@@ -74,10 +77,13 @@ public class PlayerEquipmentManager : MonoBehaviour
         {
             nakedHeadModel.SetActive(false);
             helmetModelChanger.EquipHelmetModelByName(playerInventory.currentHelmetEquipment.helmetModelName);
+            playerStats.physicalDamageAbsorptionHead = playerInventory.currentHelmetEquipment.physicalDefense;
+            Debug.Log("Body Absorption: " + playerStats.physicalDamageAbsorptionHead + "%");
         }
         else
         {
             nakedHeadModel.SetActive(true);
+            playerStats.physicalDamageAbsorptionHead = 0;
         }
 
         //TORSO EQUIPMENT
@@ -91,12 +97,15 @@ public class PlayerEquipmentManager : MonoBehaviour
             torsoModelChanger.EquipTorsoModelByName(playerInventory.currentTorsoEquipment.torsoModelName);
             upperLeftArmModelChanger.EquipModelByName(playerInventory.currentTorsoEquipment.upperLeftArmModelName);
             upperRightArmModelChanger.EquipModelByName(playerInventory.currentTorsoEquipment.upperRightArmModelName);
+            playerStats.physicalDamageAbsorptionBody = playerInventory.currentTorsoEquipment.physicalDefense;
+            Debug.Log("Body Absorption: " + playerStats.physicalDamageAbsorptionBody + "%");
         }
         else
         {
             torsoModelChanger.EquipTorsoModelByName(nakedTorsoModel);
             upperLeftArmModelChanger.EquipModelByName(nakedUpperLeftArmModel);
             upperRightArmModelChanger.EquipModelByName(nakedUpperRightArmModel);
+            playerStats.physicalDamageAbsorptionBody = 0;
         }
 
         //LEG EQUIPMENT
@@ -109,12 +118,15 @@ public class PlayerEquipmentManager : MonoBehaviour
             hipModelChanger.EquipHipModelByName(playerInventory.currentLegEquipment.hipModelName);
             leftLegModelChanger.EquipLeftLegModelByName(playerInventory.currentLegEquipment.leftLegModelName);
             rightLegModelChanger.EquipRightLegModelByName(playerInventory.currentLegEquipment.rightLegModelName);
+            playerStats.physicalDamageAbsorptionLegs = playerInventory.currentLegEquipment.physicalDefense;
+            Debug.Log("Body Absorption: " + playerStats.physicalDamageAbsorptionLegs + "%");
         }
         else
         {
             hipModelChanger.EquipHipModelByName(nakedHipModel);
             leftLegModelChanger.EquipLeftLegModelByName(nakedLeftLegModel);
             rightLegModelChanger.EquipRightLegModelByName(nakedRightLegModel);
+            playerStats.physicalDamageAbsorptionLegs = 0;
         }
 
         //HAND EQUIPMENT
@@ -129,6 +141,8 @@ public class PlayerEquipmentManager : MonoBehaviour
             lowerRightArmModelChanger.EquipModelByName(playerInventory.currentHandEquipment.lowerRightArmModelName);
             leftHandModelChanger.EquipModelByName(playerInventory.currentHandEquipment.leftHandModelName);
             rightHandModelChanger.EquipModelByName(playerInventory.currentHandEquipment.rightHandModelName);
+            playerStats.physicalDamageAbsorptionHands = playerInventory.currentHandEquipment.physicalDefense;
+            Debug.Log("Body Absorption: " + playerStats.physicalDamageAbsorptionHands + "%");
         }
         else
         {
@@ -136,6 +150,7 @@ public class PlayerEquipmentManager : MonoBehaviour
             lowerRightArmModelChanger.EquipModelByName(nakedLowerRightArmModel);
             leftHandModelChanger.EquipModelByName(nakedLefHandModel);
             rightHandModelChanger.EquipModelByName(nakedRightHandModel);
+            playerStats.physicalDamageAbsorptionHands = 0;
         }
     }
 

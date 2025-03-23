@@ -42,14 +42,10 @@ public class EnemyStats : CharacterStats
         }
     }
 
-    public void TakeDamage(int damage, string damageAnimation = "Damage_01")
+    public override void TakeDamage(int damage, string damageAnimation = "Damage_01")
     {
-        if (isDead)
-            return;
-
-        currentHealth = currentHealth - damage;
+        base.TakeDamage(damage, damageAnimation = "Damage_01");
         enemyHealthBar.SetHealth(currentHealth);
-
         enemyAnimatorManager.PlayTargetAnimation(damageAnimation, true);
 
         if (currentHealth <= 0)
