@@ -115,11 +115,15 @@ public class WeaponSlotManager : MonoBehaviour
         {
             leftHandDamageCollider = leftHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
             leftHandDamageCollider.characterManager = GetComponentInChildren<CharacterManager>();
+            leftHandDamageCollider.currentWeaponDamage = playerInventory.leftWeapon.baseDamage;
+            leftHandDamageCollider.poiseBreak = playerInventory.leftWeapon.poiseBreak;
         }
         else
         {
             rightHandDamageCollider = rightHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
             rightHandDamageCollider.characterManager = GetComponentInChildren<CharacterManager>();
+            rightHandDamageCollider.currentWeaponDamage = playerInventory.rightWeapon.baseDamage;
+            rightHandDamageCollider.poiseBreak = playerInventory.rightWeapon.poiseBreak;
         }
     }
 
@@ -137,8 +141,15 @@ public class WeaponSlotManager : MonoBehaviour
 
     public void CloseDamageCollider()
     {
-        rightHandDamageCollider.DisableDamageCollider();
-        leftHandDamageCollider.DisableDamageCollider();
+        if (rightHandDamageCollider != null)
+        {
+            rightHandDamageCollider.DisableDamageCollider();
+        }
+
+        if (leftHandDamageCollider != null)
+        {
+            leftHandDamageCollider.DisableDamageCollider();
+        }
     }
 
     #endregion
@@ -153,4 +164,19 @@ public class WeaponSlotManager : MonoBehaviour
         playerStats.TakeStaminaDamage(Mathf.RoundToInt(attackingWeapon.baseStamina * attackingWeapon.heavyAttackMultiplier));
     }
     #endregion
+
+    #region Handle Weapon's Poise Bonus
+
+    public void GrantWeaponAttackingPoiseBonus()
+    {
+        playerStats.totalPoiseDefence = playerStats.totalPoiseDefence + attackingWeapon.offensivePoiseBonus;
+    }
+
+    public void ResetWeaponAttackingPoiseBonus()
+    {
+        playerStats.totalPoiseDefence = playerStats.armorPoiseBonus;
+    }
+
+    #endregion
+
 }

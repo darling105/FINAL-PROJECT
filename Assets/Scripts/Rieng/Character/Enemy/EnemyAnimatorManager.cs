@@ -5,12 +5,15 @@ using UnityEngine;
 public class EnemyAnimatorManager : CharacterAnimatorManager
 {
     EnemyManager enemyManager;
+    EnemyBossManager enemyBossManager;
     EnemyStats enemyStats;
+
 
     private void Awake()
     {
         anim = GetComponent<Animator>();
         enemyManager = GetComponentInParent<EnemyManager>();
+        enemyBossManager = GetComponentInParent<EnemyBossManager>();
         enemyStats = GetComponentInParent<EnemyStats>();
     }
 
@@ -33,12 +36,12 @@ public class EnemyAnimatorManager : CharacterAnimatorManager
     {
         anim.SetBool("canDoCombo", false);
     }
-    
+
     public void EnableIsParrying()
     {
         enemyManager.isParrying = true;
     }
-    
+
     public void DisableIsParrying()
     {
         enemyManager.isParrying = false;
@@ -78,6 +81,12 @@ public class EnemyAnimatorManager : CharacterAnimatorManager
 
     }
 
+    public void InstantiateBossParticleFX()
+    {
+        BossFXTransform bossFXTransform = GetComponentInChildren<BossFXTransform>();
+        GameObject phaseFX = Instantiate(enemyBossManager.particleFX, bossFXTransform.transform);
+    }
+
     private void OnAnimatorMove()
     {
         float delta = Time.deltaTime;
@@ -87,7 +96,7 @@ public class EnemyAnimatorManager : CharacterAnimatorManager
         Vector3 velocity = deltaPosition / delta;
         enemyManager.enemyRigidbody.velocity = velocity;
 
-        if(enemyManager.isRotatingWithRootMotion)
+        if (enemyManager.isRotatingWithRootMotion)
         {
             enemyManager.transform.rotation *= anim.deltaRotation;
         }

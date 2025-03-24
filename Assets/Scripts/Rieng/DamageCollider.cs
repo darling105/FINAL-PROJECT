@@ -7,7 +7,13 @@ public class DamageCollider : MonoBehaviour
 {
     public CharacterManager characterManager;
     Collider damageCollider;
+    public bool enabledDamageColliderOnStartUp = false;
 
+    [Header("Poise")]
+    public float poiseBreak;
+    public float offensivePoiseBonus;
+
+    [Header("Damage")]
     public int currentWeaponDamage = 25;
 
     private void Awake()
@@ -54,11 +60,20 @@ public class DamageCollider : MonoBehaviour
                 }
             }
 
-
-
             if (playerStats != null)
             {
-                playerStats.TakeDamage(currentWeaponDamage);
+                playerStats.poiseResetTimer = playerStats.totalPoiseResetTime;
+                playerStats.totalPoiseDefence = playerStats.totalPoiseDefence - poiseBreak;
+                Debug.Log("Player poise defence: " + playerStats.totalPoiseDefence);
+
+                if (playerStats.totalPoiseDefence > poiseBreak)
+                {
+                    playerStats.TakeDamageNoAnimation(currentWeaponDamage);
+                }
+                else
+                {
+                    playerStats.TakeDamage(currentWeaponDamage);
+                }
             }
         }
 
@@ -88,7 +103,33 @@ public class DamageCollider : MonoBehaviour
 
             if (enemyStats != null)
             {
-                enemyStats.TakeDamage(currentWeaponDamage);
+                enemyStats.poiseResetTimer = enemyStats.totalPoiseResetTime;
+                enemyStats.totalPoiseDefence = enemyStats.totalPoiseDefence - poiseBreak;
+                Debug.Log("Enemy poise defence: " + enemyStats.totalPoiseDefence);
+
+                if (enemyStats.isBoss)
+                {
+                    if (enemyStats.totalPoiseDefence > poiseBreak)
+                    {
+                        enemyStats.TakeDamageNoAnimation(currentWeaponDamage);
+                    }
+                    else
+                    {
+                        enemyStats.TakeDamageNoAnimation(currentWeaponDamage);
+                        enemyStats.BreakGuard();
+                    }
+                }
+                else
+                {
+                    if (enemyStats.totalPoiseDefence > poiseBreak)
+                    {
+                        enemyStats.TakeDamageNoAnimation(currentWeaponDamage);
+                    }
+                    else
+                    {
+                        enemyStats.TakeDamage(currentWeaponDamage);
+                    }
+                }
             }
         }
 

@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4ec84b8a92d1a6041817e4fe57c19a55, type: 3}
-  m_Name: Attack 02
+  m_Name: Second Phase Attack 01
   m_EditorClassIdentifier: 
-  actionAnimation: OH_Light_Attack_02
-  canCombo: 0
-  comboAction: {fileID: 11400000, guid: cc15d612557c22a41b0ee6eb1802495a, type: 2}
+  actionAnimation: OH_Light_Attack_01
+  canCombo: 1
+  comboAction: {fileID: 11400000, guid: c8f1ba435ac6f4e49bde2a88510b9cd2, type: 2}
   attackScore: 3
-  recoveryTime: 5
+  recoveryTime: 2
   maximumAttackAngle: 35
   minimumAttackAngle: -35
   minimumDistanceNeededToAttack: 0

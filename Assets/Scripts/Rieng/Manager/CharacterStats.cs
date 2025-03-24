@@ -18,6 +18,13 @@ public class CharacterStats : MonoBehaviour
 
     public int shadeCount = 0;
 
+    [Header("Poise")]
+    public float totalPoiseDefence;
+    public float offensivePoiseBonus;
+    public float armorPoiseBonus;
+    public float totalPoiseResetTime = 15;
+    public float poiseResetTimer = 0;
+
     [Header("Armor Absorption")]
     public float physicalDamageAbsorptionHead;
     public float physicalDamageAbsorptionBody;
@@ -31,6 +38,15 @@ public class CharacterStats : MonoBehaviour
 
     public bool isDead;
 
+    protected virtual void Update()
+    {
+        HandlePoiseResetTimer();
+    }
+
+    private void Start()
+    {
+        totalPoiseDefence = armorPoiseBonus;
+    }
 
     public virtual void TakeDamage(int physicalDamage, string damageAnimation = "Damage_01")
     {
@@ -53,10 +69,23 @@ public class CharacterStats : MonoBehaviour
 
         Debug.Log("Final Damage Dealt is: " + finalDamage);
 
-        if(currentHealth <= 0)
+        if (currentHealth <= 0)
         {
             currentHealth = 0;
             isDead = true;
         }
     }
+
+    public virtual void HandlePoiseResetTimer()
+    {
+        if (poiseResetTimer > 0)
+        {
+            poiseResetTimer = poiseResetTimer - Time.deltaTime;
+        }
+        else
+        {
+            totalPoiseDefence = armorPoiseBonus;
+        }
+    }
+
 }

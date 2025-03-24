@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyStats : CharacterStats
 {
+    EnemyManager enemyManager;
     EnemyAnimatorManager enemyAnimatorManager;
     EnemyBossManager enemyBossManager;
     public UIEnemyHealthBar enemyHealthBar;
@@ -14,10 +15,11 @@ public class EnemyStats : CharacterStats
 
     private void Awake()
     {
-        maxHealth = SetMaxHealthFromHealthLevel();
-        currentHealth = maxHealth;
+        enemyManager = GetComponent<EnemyManager>();
         enemyAnimatorManager = GetComponentInChildren<EnemyAnimatorManager>();
         enemyBossManager = GetComponent<EnemyBossManager>();
+        maxHealth = SetMaxHealthFromHealthLevel();
+        currentHealth = maxHealth;
     }
 
     void Start()
@@ -27,7 +29,6 @@ public class EnemyStats : CharacterStats
             enemyHealthBar.SetMaxHealth(maxHealth);
         }
     }
-
     private int SetMaxHealthFromHealthLevel()
     {
         maxHealth = healthLevel * 10;
@@ -36,9 +37,16 @@ public class EnemyStats : CharacterStats
 
     public void TakeDamageNoAnimation(int damage)
     {
-
         currentHealth = currentHealth - damage;
-        enemyHealthBar.SetHealth(currentHealth);
+
+        if (!isBoss)
+        {
+            enemyHealthBar.SetHealth(currentHealth);
+        }
+        else if (isBoss && enemyBossManager != null)
+        {
+            enemyBossManager.UpdateBossHealthBar(currentHealth, maxHealth);
+        }
 
         if (currentHealth <= 0)
         {
@@ -47,8 +55,14 @@ public class EnemyStats : CharacterStats
         }
     }
 
+    public void BreakGuard()
+    {
+        enemyAnimatorManager.PlayTargetAnimation("Break_Guard", true);
+    }
+
     public override void TakeDamage(int damage, string damageAnimation = "Damage_01")
     {
+
         base.TakeDamage(damage, damageAnimation = "Damage_01");
 
         if (!isBoss)
@@ -57,8 +71,9 @@ public class EnemyStats : CharacterStats
         }
         else if (isBoss && enemyBossManager != null)
         {
-            enemyBossManager.UpdateBossHealthBar(currentHealth);
+            enemyBossManager.UpdateBossHealthBar(currentHealth, maxHealth);
         }
+
         enemyAnimatorManager.PlayTargetAnimation(damageAnimation, true);
 
         if (currentHealth <= 0)

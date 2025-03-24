@@ -32,6 +32,7 @@ public class EnemyManager : CharacterManager
 
     [Header("AI Combat Settings")]
     public bool allowAIToPerformCombos;
+    public bool isPhaseShifting;
     public float comboLikelyHood;
 
     private void Awake()
@@ -51,11 +52,13 @@ public class EnemyManager : CharacterManager
 
     private void Update()
     {
-        handleRecoveryTimer();
+        HandleRecoveryTimer();
         HandleStateMachine();
 
         isRotatingWithRootMotion = enemyAnimatorManager.anim.GetBool("isRotatingWithRootMotion");
         isInteracting = enemyAnimatorManager.anim.GetBool("isInteracting");
+        isPhaseShifting = enemyAnimatorManager.anim.GetBool("isPhaseShifting");
+        isInvulnerable = enemyAnimatorManager.anim.GetBool("isInvulnerable");
         canDoCombo = enemyAnimatorManager.anim.GetBool("canDoCombo");
         canRotate = enemyAnimatorManager.anim.GetBool("canRotate");
         enemyAnimatorManager.anim.SetBool("isDead", enemyStats.isDead);
@@ -85,7 +88,7 @@ public class EnemyManager : CharacterManager
         currentState = state;
     }
 
-    private void handleRecoveryTimer()
+    private void HandleRecoveryTimer()
     {
         if (currentRecoveryTime > 0)
         {

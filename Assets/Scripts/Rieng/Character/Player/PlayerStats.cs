@@ -42,6 +42,18 @@ public class PlayerStats : CharacterStats
 
     }
 
+    public override void HandlePoiseResetTimer()
+    {
+        if (poiseResetTimer > 0)
+        {
+            poiseResetTimer = poiseResetTimer - Time.deltaTime;
+        }
+        else if(poiseResetTimer <= 0 && !playerManager.isInteracting)
+        {
+            totalPoiseDefence = armorPoiseBonus;
+        }
+    }
+
     private int SetMaxHealthFromHealthLevel()
     {
         maxHealth = healthLevel * 10;
