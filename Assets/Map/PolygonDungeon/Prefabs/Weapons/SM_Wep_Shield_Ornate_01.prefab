@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3380052}
   - component: {fileID: 2319804}
   - component: {fileID: 81495847323502032}
+  - component: {fileID: 4529604916706952193}
   m_Layer: 0
   m_Name: SM_Wep_Shield_Ornate_01
   m_TagString: Untagged
@@ -105,3 +106,25 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.9279786, y: 1.6043743, z: 0.16867356}
   m_Center: {x: 0.00000000884104, y: 0.028545909, z: 0.07244062}
+--- !u!114 &4529604916706952193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 141166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64d9842d6179fd943b885ba437bd9816, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterManager: {fileID: 0}
+  enabledDamageColliderOnStartUp: 0
+  teamIDNumber: 0
+  poiseBreak: 0
+  offensivePoiseBonus: 0
+  physicalDamage: 0
+  fireDamage: 0
+  magicDamage: 0
+  lightningDamage: 0
+  darkDamage: 0

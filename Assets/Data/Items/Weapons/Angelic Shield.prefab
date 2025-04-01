@@ -116,33 +116,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4529604916706952193, guid: 76e5869740b242247a097e9b9b65e634, type: 3}
+      propertyPath: enabledDamageColliderOnStartUp
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 141166, guid: 76e5869740b242247a097e9b9b65e634, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7329448702859258743}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76e5869740b242247a097e9b9b65e634, type: 3}
---- !u!1 &160075640149681065 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 141166, guid: 76e5869740b242247a097e9b9b65e634, type: 3}
-  m_PrefabInstance: {fileID: 160075640149804231}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7329448702859258743
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 160075640149681065}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64d9842d6179fd943b885ba437bd9816, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterManager: {fileID: 0}
-  currentWeaponDamage: 0
 --- !u!4 &160075640150007059 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 465364, guid: 76e5869740b242247a097e9b9b65e634, type: 3}

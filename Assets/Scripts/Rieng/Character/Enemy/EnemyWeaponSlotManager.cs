@@ -70,15 +70,21 @@ public class EnemyWeaponSlotManager : CharacterWeaponSlotManager
         {
             leftHandDamageCollider = leftHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
             leftHandDamageCollider.characterManager = GetComponentInParent<CharacterManager>();
+
             leftHandDamageCollider.physicalDamage = leftHandWeapon.physicalDamage;
             leftHandDamageCollider.fireDamage = leftHandWeapon.fireDamage;
+            
+            leftHandDamageCollider.teamIDNumber = enemyStatsManager.teamIDNumber;
         }
         else
         {
             rightHandDamageCollider = rightHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
             rightHandDamageCollider.characterManager = GetComponentInParent<CharacterManager>();
+
             rightHandDamageCollider.physicalDamage = rightHandWeapon.physicalDamage;
             rightHandDamageCollider.fireDamage = rightHandWeapon.fireDamage;
+
+            rightHandDamageCollider.teamIDNumber = enemyStatsManager.teamIDNumber;
         }
     }
 

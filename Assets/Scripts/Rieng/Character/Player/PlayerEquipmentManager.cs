@@ -156,6 +156,12 @@ public class PlayerEquipmentManager : MonoBehaviour
 
     public void OpenBlockingCollider()
     {
+        if (blockingCollider == null)
+        {
+            Debug.LogError("BlockingCollider is NULL in PlayerEquipmentManager! Make sure it's assigned.");
+            return;
+        }
+
         if (playerInputManager.twoHandFlag)
         {
             blockingCollider.SetColliderDamageAbsorption(playerInventoryManager.rightWeapon);

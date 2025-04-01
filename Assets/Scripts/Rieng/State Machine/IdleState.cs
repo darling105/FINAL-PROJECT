@@ -11,7 +11,7 @@ public class IdleState : State
     public override State Tick(EnemyManager enemyManager, EnemyStatsManager enemyStats, EnemyAnimatorManager enemyAnimatorManager)
     {
         #region Handle Enemy Target Detection
-    
+
         Collider[] colliders = Physics.OverlapSphere(transform.position, enemyManager.detectionRadius, detectionLayer);
         for (int i = 0; i < colliders.Length; i++)
         {
@@ -19,17 +19,21 @@ public class IdleState : State
 
             if (characterStats != null)
             {
-                Vector3 targetDirection = characterStats.transform.position - transform.position;
-                float viewableAngle = Vector3.Angle(targetDirection, transform.forward);
 
-                if (viewableAngle > enemyManager.minimumDetectionAngle && viewableAngle < enemyManager.maximumDetectionAngle)
+                if (characterStats.teamIDNumber != enemyStats.teamIDNumber)
                 {
-                    enemyManager.currentTarget = characterStats;
+                    Vector3 targetDirection = characterStats.transform.position - transform.position;
+                    float viewableAngle = Vector3.Angle(targetDirection, transform.forward);
+
+                    if (viewableAngle > enemyManager.minimumDetectionAngle && viewableAngle < enemyManager.maximumDetectionAngle)
+                    {
+                        enemyManager.currentTarget = characterStats;
+                    }
                 }
             }
         }
         #endregion
-        
+
         #region Handle Switching To Next State
         if (enemyManager.currentTarget != null)
         {

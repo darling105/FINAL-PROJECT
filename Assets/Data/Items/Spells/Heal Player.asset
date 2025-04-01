@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22e5f3d3cfef6ce4bbad970b643cb95a, type: 3}
   m_Name: Heal Player
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: d87c02f9d2105b04dab8330b2faba45b, type: 3}
   itemName: Heal Player
   spellWarmUpFX: {fileID: 1590415177872986601, guid: b8805731e465b034da616d5209c8519a, type: 3}
   spellCastFX: {fileID: 3280519133390621005, guid: 70588c0c4cffc9c4d9ddb2624363369e, type: 3}

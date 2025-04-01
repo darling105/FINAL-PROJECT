@@ -10,6 +10,9 @@ public class DamageCollider : MonoBehaviour
     protected Collider damageCollider;
     public bool enabledDamageColliderOnStartUp = false;
 
+    [Header("Team I.D")]
+    public int teamIDNumber = 0;
+
     [Header("Poise")]
     public float poiseBreak;
     public float offensivePoiseBonus;
@@ -50,6 +53,9 @@ public class DamageCollider : MonoBehaviour
 
             if (enemyManager != null)
             {
+                if (enemyStats.teamIDNumber == teamIDNumber)
+                    return;
+
                 if (enemyManager.isParrying)
                 {
                     characterManager.GetComponentInChildren<CharacterAnimatorManager>().PlayTargetAnimation("Parried", true);
@@ -63,7 +69,7 @@ public class DamageCollider : MonoBehaviour
 
                     if (enemyStats != null)
                     {
-                        enemyStats.TakeDamage(Mathf.RoundToInt(physicalDamageAfterBlock),0, "Block_Guard");
+                        enemyStats.TakeDamage(Mathf.RoundToInt(physicalDamageAfterBlock), 0, "Block_Guard");
                         return;
                     }
                 }
@@ -71,6 +77,9 @@ public class DamageCollider : MonoBehaviour
 
             if (enemyStats != null)
             {
+                if (enemyStats.teamIDNumber == teamIDNumber)
+                    return;
+
                 enemyStats.poiseResetTimer = enemyStats.totalPoiseResetTime;
                 enemyStats.totalPoiseDefence = enemyStats.totalPoiseDefence - poiseBreak;
 
@@ -79,7 +88,7 @@ public class DamageCollider : MonoBehaviour
 
                 if (enemyStats.totalPoiseDefence > poiseBreak)
                 {
-                    enemyStats.TakeDamageNoAnimation(physicalDamage,0);
+                    enemyStats.TakeDamageNoAnimation(physicalDamage, 0);
                 }
                 else
                 {

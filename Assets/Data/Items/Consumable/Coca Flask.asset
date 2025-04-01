@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 346920eec4839464b8e9d1c593b14eea, type: 3}
   m_Name: Coca Flask
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 47f290a00b1f4e948813b2286db65343, type: 3}
   itemName: Coca Flask
   maxItemAmount: 10
   currentItemAmount: 10
