@@ -2,21 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyWeaponSlotManager : MonoBehaviour
+public class EnemyWeaponSlotManager : CharacterWeaponSlotManager
 {
     public WeaponItem rightHandWeapon;
     public WeaponItem leftHandWeapon;
-    WeaponHolderSlot rightHandSlot;
-    WeaponHolderSlot leftHandSlot;
-
-    DamageCollider rightHandDamageCollider;
-    DamageCollider leftHandDamageCollider;
-
-    EnemyStats enemyStats;
+    EnemyStatsManager enemyStatsManager;
 
     private void Awake()
     {
-        enemyStats = GetComponentInParent<EnemyStats>();
+        enemyStatsManager = GetComponent<EnemyStatsManager>();
         LoadWeaponHolderSlots();
     }
 
@@ -47,13 +41,13 @@ public class EnemyWeaponSlotManager : MonoBehaviour
         {
             leftHandSlot.currentWeapon = weapon;
             leftHandSlot.LoadWeaponModel(weapon);
-            LoadWeaponDamageCollider(true);
+            LoadWeaponsDamageCollider(true);
         }
         else
         {
             rightHandSlot.currentWeapon = weapon;
             rightHandSlot.LoadWeaponModel(weapon);
-            LoadWeaponDamageCollider(false);
+            LoadWeaponsDamageCollider(false);
         }
     }
 
@@ -70,17 +64,21 @@ public class EnemyWeaponSlotManager : MonoBehaviour
         }
     }
 
-    public void LoadWeaponDamageCollider(bool isLeft)
+    public void LoadWeaponsDamageCollider(bool isLeft)
     {
         if (isLeft)
         {
             leftHandDamageCollider = leftHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
             leftHandDamageCollider.characterManager = GetComponentInParent<CharacterManager>();
+            leftHandDamageCollider.physicalDamage = leftHandWeapon.physicalDamage;
+            leftHandDamageCollider.fireDamage = leftHandWeapon.fireDamage;
         }
         else
         {
             rightHandDamageCollider = rightHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
             rightHandDamageCollider.characterManager = GetComponentInParent<CharacterManager>();
+            rightHandDamageCollider.physicalDamage = rightHandWeapon.physicalDamage;
+            rightHandDamageCollider.fireDamage = rightHandWeapon.fireDamage;
         }
     }
 
@@ -115,12 +113,12 @@ public class EnemyWeaponSlotManager : MonoBehaviour
 
     public void GrantWeaponAttackingPoiseBonus()
     {
-        enemyStats.totalPoiseDefence = enemyStats.totalPoiseDefence + enemyStats.offensivePoiseBonus;
+        enemyStatsManager.totalPoiseDefence = enemyStatsManager.totalPoiseDefence + enemyStatsManager.offensivePoiseBonus;
     }
 
     public void ResetWeaponAttackingPoiseBonus()
     {
-        enemyStats.totalPoiseDefence = enemyStats.armorPoiseBonus;
+        enemyStatsManager.totalPoiseDefence = enemyStatsManager.armorPoiseBonus;
     }
 
 }

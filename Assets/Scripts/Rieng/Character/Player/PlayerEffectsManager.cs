@@ -2,33 +2,72 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerEffectsManager : MonoBehaviour
+public class PlayerEffectsManager : CharacterEffectsManager
 {
-    PlayerStats playerStats;
-    WeaponSlotManager weaponSlotManager;
+    PlayerStatsManager playerStatsManager;
+    PlayerWeaponSlotManager playerWeaponSlotManager;
+
+    PoisonBuildUpBar poisonBuildUpBar;
+    PoisonAmountBar poisonAmountBar;
+
     public GameObject currentParticleFX;
     public GameObject instantiatedFXModel;
     public int amountToBeHealed;
 
-    private void Awake()
+    protected override void Awake()
     {
-        playerStats = GetComponentInParent<PlayerStats>();
-        weaponSlotManager = GetComponent<WeaponSlotManager>();
+        base.Awake();
+        playerStatsManager = GetComponentInParent<PlayerStatsManager>();
+        playerWeaponSlotManager = GetComponent<PlayerWeaponSlotManager>();
+
+        poisonBuildUpBar = FindObjectOfType<PoisonBuildUpBar>();
+        poisonAmountBar = FindObjectOfType<PoisonAmountBar>();
     }
 
     public void HealPlayerFromEffect()
     {
-        playerStats.HealPlayer(amountToBeHealed);
-        GameObject healParticles = Instantiate(currentParticleFX, playerStats.transform);
-        Destroy(instantiatedFXModel.gameObject,1);
+        playerStatsManager.HealPlayer(amountToBeHealed);
+        GameObject healParticles = Instantiate(currentParticleFX, playerStatsManager.transform);
+        Destroy(instantiatedFXModel.gameObject, 1);
         StartCoroutine(DelayLoadWeapons());
     }
     private IEnumerator DelayLoadWeapons()
-{
-    yield return new WaitForSeconds(1f);
-    if (weaponSlotManager != null)
     {
-        weaponSlotManager.LoadBothWeaponOnSlot();
+        yield return new WaitForSeconds(1f);
+        if (playerWeaponSlotManager != null)
+        {
+            playerWeaponSlotManager.LoadBothWeaponOnSlot();
+        }
     }
-}
+
+    protected override void HandlePoisonBuildUp()
+    {
+        if (poisonBuildup <= 0)
+        {
+            poisonBuildUpBar.gameObject.SetActive(false);
+        }
+        else
+        {
+            poisonBuildUpBar.gameObject.SetActive(true);
+        }
+        base.HandlePoisonBuildUp();
+        poisonBuildUpBar.SetPoisonBuildUp(Mathf.RoundToInt(poisonBuildup));
+    }
+
+    protected override void HandleIsPoisonEffect()
+    {
+        if (isPoisoned == false)
+        {
+            poisonAmountBar.gameObject.SetActive(false);
+        }
+        else
+        {
+            poisonAmountBar.gameObject.SetActive(true);
+        }
+
+        base.HandleIsPoisonEffect();
+
+        poisonAmountBar.SetPoisonAmount(Mathf.RoundToInt(poisonAmount));
+    }
+
 }

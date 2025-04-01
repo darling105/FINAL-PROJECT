@@ -16,7 +16,11 @@ MonoBehaviour:
   itemName: Boss_Sword_01
   modelPrefab: {fileID: 8806402179936019626, guid: e90aca3a551ab7246b0567d426e76670, type: 3}
   isUnarmed: 0
-  baseDamage: 500
+  physicalDamage: 50
+  fireDamage: 25
+  magicDamage: 0
+  lightningDamage: 0
+  darkDamage: 0
   criticalDamageMultiplier: 4
   poiseBreak: 0
   offensivePoiseBonus: 0

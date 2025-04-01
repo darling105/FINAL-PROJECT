@@ -6,7 +6,7 @@ public class FogWall : MonoBehaviour
 {
     private void Awake()
     {
-        gameObject.SetActive(false);
+        gameObject.SetActive(true);
     }
 
     public void ActivateFogWall()

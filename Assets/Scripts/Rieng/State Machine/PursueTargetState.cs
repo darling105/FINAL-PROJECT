@@ -8,7 +8,7 @@ public class PursueTargetState : State
     public CombatStanceState combatStanceState;
     public RotateTowardsTargetState rotateTowardsTargetState;
 
-    public override State Tick(EnemyManager enemyManager, EnemyStats enemyStats, EnemyAnimatorManager enemyAnimatorManager)
+    public override State Tick(EnemyManager enemyManager, EnemyStatsManager enemyStats, EnemyAnimatorManager enemyAnimatorManager)
     {
         Vector3 targetDirection = enemyManager.currentTarget.transform.position - enemyManager.transform.position;
         float distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, enemyManager.transform.position);
@@ -21,14 +21,14 @@ public class PursueTargetState : State
 
         if (enemyManager.isPerformingAction)
         {
-            enemyAnimatorManager.anim.SetFloat("Vertical", 0, 0.1f, Time.deltaTime);
+            enemyAnimatorManager.animator.SetFloat("Vertical", 0, 0.1f, Time.deltaTime);
             return this;
         }
 
 
         if (distanceFromTarget > enemyManager.maximumAggroRadius)
         {
-            enemyAnimatorManager.anim.SetFloat("Vertical", 1, 0.1f, Time.deltaTime);
+            enemyAnimatorManager.animator.SetFloat("Vertical", 1, 0.1f, Time.deltaTime);
         }
 
 

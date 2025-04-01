@@ -18,12 +18,12 @@ public class WeaponPickUp : Interactable
 
     private void PickUpItem(PlayerManager playerManager)
     {
-        PlayerInventory playerInventory;
-        PlayerLocomotion playerLocomotion;
+        PlayerInventoryManager playerInventory;
+        PlayerLocomotionManager playerLocomotion;
         PlayerAnimatorManager playerAnimatorManager;
 
-        playerInventory = playerManager.GetComponent<PlayerInventory>();
-        playerLocomotion = playerManager.GetComponent<PlayerLocomotion>();
+        playerInventory = playerManager.GetComponent<PlayerInventoryManager>();
+        playerLocomotion = playerManager.GetComponent<PlayerLocomotionManager>();
         playerAnimatorManager = playerManager.GetComponentInChildren<PlayerAnimatorManager>();
 
         playerLocomotion.rigidbody.velocity = Vector3.zero; // dung nguoi choi khi dang nhat do

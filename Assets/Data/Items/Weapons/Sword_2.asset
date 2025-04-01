@@ -16,6 +16,15 @@ MonoBehaviour:
   itemName: Sword_2
   modelPrefab: {fileID: 6026466178562424889, guid: f888a96f58f03b14f832d1c98b919630, type: 3}
   isUnarmed: 0
+  physicalDamage: 20
+  fireDamage: 0
+  magicDamage: 0
+  lightningDamage: 0
+  darkDamage: 0
+  criticalDamageMultiplier: 4
+  poiseBreak: 0
+  offensivePoiseBonus: 0
+  physicalDamageAbsorption: 0
   right_hand_idle: Right_Arm_Idle_01
   left_hand_idle: Left_Arm_Idle_01
   TH_Idle: TH_Idle_01
@@ -25,6 +34,7 @@ MonoBehaviour:
   TH_Light_Attack_1: TH_Sword_Attack_01
   TH_Light_Attack_2: TH_Sword_Attack_02
   TH_Light_Attack_3: TH_Sword_Attack_03
+  weaponArt: 
   baseStamina: 20
   lightAttackMultiplier: 1
   heavyAttackMultiplier: 2
@@ -32,3 +42,4 @@ MonoBehaviour:
   isFaithCaster: 0
   isPyroCaster: 0
   isMeleeWeapon: 1
+  isShieldWeapon: 0

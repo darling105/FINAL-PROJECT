@@ -21,6 +21,12 @@ public class HandEquipmentSlotUI : MonoBehaviour
 
     public void AddItem(WeaponItem newItem)
     {
+        if (newItem == null)
+            return;
+
+        if (icon == null)
+            return;
+
         weapon = newItem;
         icon.sprite = weapon.itemIcon;
         icon.enabled = true;

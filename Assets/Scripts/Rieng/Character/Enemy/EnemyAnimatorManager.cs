@@ -6,79 +6,29 @@ public class EnemyAnimatorManager : CharacterAnimatorManager
 {
     EnemyManager enemyManager;
     EnemyBossManager enemyBossManager;
-    EnemyStats enemyStats;
 
-
-    private void Awake()
+    protected override void Awake()
     {
-        anim = GetComponent<Animator>();
-        enemyManager = GetComponentInParent<EnemyManager>();
-        enemyBossManager = GetComponentInParent<EnemyBossManager>();
-        enemyStats = GetComponentInParent<EnemyStats>();
-    }
-
-    public void CanRotate()
-    {
-        anim.SetBool("canRotate", true);
-    }
-
-    public void StopRotation()
-    {
-        anim.SetBool("canRotate", false);
-    }
-
-    public void EnableCombo()
-    {
-        anim.SetBool("canDoCombo", true);
-    }
-
-    public void DisableCombo()
-    {
-        anim.SetBool("canDoCombo", false);
-    }
-
-    public void EnableIsParrying()
-    {
-        enemyManager.isParrying = true;
-    }
-
-    public void DisableIsParrying()
-    {
-        enemyManager.isParrying = false;
-    }
-
-    public void EnableCanBeRiposted()
-    {
-        enemyManager.canBeRiposted = true;
-    }
-
-    public void DisableCanBeRiposted()
-    {
-        enemyManager.canBeRiposted = false;
-    }
-
-    public override void TakeCriticalDamageAnimationEvent()
-    {
-        enemyStats.TakeDamageNoAnimation(enemyManager.pendingCriticalDamage);
-        enemyManager.pendingCriticalDamage = 0;
+        base.Awake();
+        animator = GetComponent<Animator>();
+        enemyManager = GetComponent<EnemyManager>();
+        enemyBossManager = GetComponent<EnemyBossManager>();
     }
 
     public void AwardShadesOnDeath()
     {
-        PlayerStats playerStats = FindObjectOfType<PlayerStats>();
+        PlayerStatsManager playerStats = FindObjectOfType<PlayerStatsManager>();
         ShadeCountBar shadeCountBar = FindObjectOfType<ShadeCountBar>();
 
         if (playerStats != null)
         {
-            playerStats.AddShades(enemyStats.shadesAwardedOnDeath);
+            playerStats.AddShades(characterStatsManager.shadesAwardedOnDeath);
 
             if (shadeCountBar != null)
             {
                 shadeCountBar.SetShadeCountText(playerStats.shadeCount);
             }
         }
-
-
     }
 
     public void InstantiateBossParticleFX()
@@ -91,14 +41,14 @@ public class EnemyAnimatorManager : CharacterAnimatorManager
     {
         float delta = Time.deltaTime;
         enemyManager.enemyRigidbody.drag = 0;
-        Vector3 deltaPosition = anim.deltaPosition;
+        Vector3 deltaPosition = animator.deltaPosition;
         deltaPosition.y = 0;
         Vector3 velocity = deltaPosition / delta;
         enemyManager.enemyRigidbody.velocity = velocity;
 
         if (enemyManager.isRotatingWithRootMotion)
         {
-            enemyManager.transform.rotation *= anim.deltaRotation;
+            enemyManager.transform.rotation *= animator.deltaRotation;
         }
     }
 

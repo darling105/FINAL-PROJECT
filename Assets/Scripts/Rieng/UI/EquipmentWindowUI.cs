@@ -16,7 +16,7 @@ public class EquipmentWindowUI : MonoBehaviour
         handEquimentSlotUI = GetComponentsInChildren<HandEquipmentSlotUI>();
     }
 
-    public void LoadWeaponsOnEquimentScreen(PlayerInventory playerInventory)
+    public void LoadWeaponsOnEquimentScreen(PlayerInventoryManager playerInventory)
     {
         for (int i = 0; i < handEquimentSlotUI.Length; i++)
         {

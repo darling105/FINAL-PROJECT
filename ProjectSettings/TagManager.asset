@@ -8,6 +8,7 @@ TagManager:
   - NPC
   - Interactable
   - Illusionary Wall
+  - Character
   layers:
   - Default
   - TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   - Player
   - BackStab
   - Riposte
-  - 
+  - Poison
   - 
   - 
   - 
