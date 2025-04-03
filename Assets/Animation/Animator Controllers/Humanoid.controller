@@ -1194,6 +1194,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80d6358c88fbb394dae1f686603dba2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isUsingRightHandBool: isUsingRightHand
+  isUsingRightHandStatus: 0
+  isUsingLeftHandBool: isUsingLeftHand
+  isUsingLeftHandStatus: 0
   isInvulnerableBool: isInvulnerable
   isInvulnerableStatus: 0
   isInteractingBool: isInteracting
