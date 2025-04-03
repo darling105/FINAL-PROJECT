@@ -18,6 +18,9 @@ public class CharacterManager : MonoBehaviour
    public bool isParrying;
    public bool isBlocking;
    public bool isInvulnerable;
+   public bool isUsingRightHand;
+   public bool isUsingLeftHand;
+   public bool isTwoHandingWeapon;
 
    [Header("Movement Flags")]
    public bool isInteracting;
@@ -26,8 +29,6 @@ public class CharacterManager : MonoBehaviour
    public bool isSprinting;
    public bool isInAir;
    public bool isGrounded;
-   public bool isUsingRightHand;
-   public bool isUsingLeftHand;
 
    public int pendingCriticalDamage;
 

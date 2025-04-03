@@ -11,12 +11,13 @@ public class PlayerAnimatorManager : CharacterAnimatorManager
     protected override void Awake()
     {
         base.Awake();
-        animator = GetComponentInChildren<Animator>();
+        animator = GetComponent<Animator>();
         playerInputManager = GetComponentInParent<PlayerInputManager>();
         playerLocomotionManager = GetComponentInParent<PlayerLocomotionManager>();
         vertical = Animator.StringToHash("Vertical");
         horizontal = Animator.StringToHash("Horizontal");
     }
+    
 
     public void UpdateAnimatorValues(float verticalMovement, float horizontalMovement, bool isSprinting)
     {

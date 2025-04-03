@@ -7,7 +7,14 @@ public class WeaponItem : Item
 {
     public GameObject modelPrefab;
     public bool isUnarmed;
-    
+
+    [Header("Animator Replacer")]
+    public AnimatorOverrideController weaponController;
+    public string offHandIdleAnimation = "Left_Arm_Idle_01";
+
+    [Header("Weapon Types")]
+    public WeaponType weaponType;
+
     [Header("Damage")]
     public int physicalDamage;
     public int fireDamage;
@@ -19,35 +26,12 @@ public class WeaponItem : Item
     [Header("Poise")]
     public float poiseBreak;
     public float offensivePoiseBonus;
-    
+
     [Header("Absorption")]
     public float physicalDamageAbsorption;
-
-    [Header("Idle Animations")]
-    public string right_hand_idle;
-    public string left_hand_idle;
-    public string TH_Idle;
-
-    [Header("Attack Animations")]
-    public string OH_Light_Attack_1;
-    public string OH_Light_Attack_2;
-    public string OH_Heavy_Attack_1;
-    public string TH_Light_Attack_1;
-    public string TH_Light_Attack_2;
-    public string TH_Light_Attack_3;
-
-    [Header("Weapon Art")]
-    public string weaponArt;
 
     [Header("Stamina Costs")]
     public int baseStamina;
     public float lightAttackMultiplier;
     public float heavyAttackMultiplier;
-
-    [Header("Weapon Type")]
-    public bool isSpellCaster;
-    public bool isFaithCaster;
-    public bool isPyroCaster;
-    public bool isMeleeWeapon;
-    public bool isShieldWeapon;
 }

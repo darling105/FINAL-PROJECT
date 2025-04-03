@@ -16,24 +16,18 @@ MonoBehaviour:
   itemName: Angelic Shield
   modelPrefab: {fileID: 5756865189391288211, guid: 7194fcef32e984f4093c69e957ef16fa, type: 3}
   isUnarmed: 0
-  baseDamage: 25
+  weaponController: {fileID: 0}
+  offHandIdleAnimation: Left_Arm_Idle_01
+  weaponType: 4
+  physicalDamage: 0
+  fireDamage: 0
+  magicDamage: 0
+  lightningDamage: 0
+  darkDamage: 0
   criticalDamageMultiplier: 4
+  poiseBreak: 0
+  offensivePoiseBonus: 0
   physicalDamageAbsorption: 99
-  right_hand_idle: 
-  left_hand_idle: 
-  TH_Idle: 
-  OH_Light_Attack_1: 
-  OH_Light_Attack_2: 
-  OH_Heavy_Attack_1: 
-  TH_Light_Attack_1: 
-  TH_Light_Attack_2: 
-  TH_Light_Attack_3: 
-  weaponArt: Parry
   baseStamina: 0
   lightAttackMultiplier: 0
   heavyAttackMultiplier: 0
-  isSpellCaster: 0
-  isFaithCaster: 0
-  isPyroCaster: 0
-  isMeleeWeapon: 0
-  isShieldWeapon: 1

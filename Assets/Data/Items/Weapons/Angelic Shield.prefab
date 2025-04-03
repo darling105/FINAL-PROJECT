@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8295436144275997617}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Shield Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4093664025486523225}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Angelic Shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,6 +75,10 @@ PrefabInstance:
     - target: {fileID: 141166, guid: 76e5869740b242247a097e9b9b65e634, type: 3}
       propertyPath: m_Name
       value: SM_Wep_Shield_Ornate_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 141166, guid: 76e5869740b242247a097e9b9b65e634, type: 3}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 465364, guid: 76e5869740b242247a097e9b9b65e634, type: 3}
       propertyPath: m_LocalPosition.x

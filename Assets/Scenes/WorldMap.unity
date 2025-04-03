@@ -10182,14 +10182,15 @@ MonoBehaviour:
   isParrying: 0
   isBlocking: 0
   isInvulnerable: 0
+  isUsingRightHand: 0
+  isUsingLeftHand: 0
+  isTwoHandingWeapon: 0
   isInteracting: 0
   isRotatingWithRootMotion: 0
   canRotate: 0
   isSprinting: 0
   isInAir: 0
   isGrounded: 0
-  isUsingRightHand: 0
-  isUsingLeftHand: 0
   pendingCriticalDamage: 0
   navMeshAgent: {fileID: 0}
   currentState: {fileID: 310999642}
@@ -17364,9 +17365,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Camera Holder
       objectReference: {fileID: 0}
+    - target: {fileID: 4998718603044791485, guid: 335c0df480206754d9104fa5957e1755, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5074472882602858639, guid: 335c0df480206754d9104fa5957e1755, type: 3}
       propertyPath: targetTransform
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5074472882602858639, guid: 335c0df480206754d9104fa5957e1755, type: 3}
+      propertyPath: ignoreLayers.m_Bits
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6300925969023560447, guid: 335c0df480206754d9104fa5957e1755, type: 3}
       propertyPath: m_LocalPosition.x
@@ -17990,7 +17999,7 @@ Transform:
   m_GameObject: {fileID: 6322504505349149087}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0, y: 0.232, z: 0.165}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -21894,14 +21903,15 @@ MonoBehaviour:
   isParrying: 0
   isBlocking: 0
   isInvulnerable: 0
+  isUsingRightHand: 0
+  isUsingLeftHand: 0
+  isTwoHandingWeapon: 0
   isInteracting: 0
   isRotatingWithRootMotion: 0
   canRotate: 0
   isSprinting: 0
   isInAir: 0
   isGrounded: 0
-  isUsingRightHand: 0
-  isUsingLeftHand: 0
   pendingCriticalDamage: 0
   navMeshAgent: {fileID: 0}
   currentState: {fileID: 8646198047487534517}
@@ -85800,16 +85810,16 @@ MonoBehaviour:
   currentSpell: {fileID: 11400000, guid: 56b8d908381390d49868be0908987ac4, type: 2}
   rightWeapon: {fileID: 0}
   leftWeapon: {fileID: 0}
-  currentConsumable: {fileID: 11400000, guid: bbe9aa65b72f49b47b8bee8589da1d8e, type: 2}
+  currentConsumable: {fileID: 11400000, guid: 245dd3b3321974c41922f03a6f1097a9, type: 2}
   currentHelmetEquipment: {fileID: 11400000, guid: e87ea6bf7cd511242a5f6ec08d1c664b, type: 2}
   currentTorsoEquipment: {fileID: 11400000, guid: 52f565005203ab044afc139795b0520a, type: 2}
   currentLegEquipment: {fileID: 11400000, guid: 81dca248b326a9d4b8d14f528d7ddd3f, type: 2}
   currentHandEquipment: {fileID: 11400000, guid: 717d6abc454e722408f3ce35d05008cd, type: 2}
   weaponsInRightHandSlots:
-  - {fileID: 11400000, guid: 987c8d7b9becc0a40a2a295d618858ba, type: 2}
   - {fileID: 11400000, guid: 78aeff6faba875544b543a157afa33a0, type: 2}
+  - {fileID: 0}
   weaponsInLeftHandSlots:
-  - {fileID: 11400000, guid: 0b765b61982647743ab05e905ea479a3, type: 2}
+  - {fileID: 0}
   - {fileID: 0}
   currentRightWeaponIndex: 0
   currentLeftWeaponIndex: 0
@@ -85835,14 +85845,15 @@ MonoBehaviour:
   isParrying: 0
   isBlocking: 0
   isInvulnerable: 0
+  isUsingRightHand: 0
+  isUsingLeftHand: 0
+  isTwoHandingWeapon: 0
   isInteracting: 0
   isRotatingWithRootMotion: 0
   canRotate: 0
   isSprinting: 0
   isInAir: 0
   isGrounded: 1
-  isUsingRightHand: 0
-  isUsingLeftHand: 0
   pendingCriticalDamage: 0
   interactableUIGameObject: {fileID: 9197804859119787842}
   itemInteractableGameObject: {fileID: 5559943782369746729}
@@ -94308,7 +94319,7 @@ GameObject:
   - component: {fileID: 1171488456202510653}
   - component: {fileID: 6383324172773319572}
   - component: {fileID: 7403300228008054597}
-  m_Layer: 9
+  m_Layer: 15
   m_Name: Blocking Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}

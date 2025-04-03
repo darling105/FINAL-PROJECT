@@ -16,6 +16,9 @@ MonoBehaviour:
   itemName: Boss_Sword_01
   modelPrefab: {fileID: 8806402179936019626, guid: e90aca3a551ab7246b0567d426e76670, type: 3}
   isUnarmed: 0
+  weaponController: {fileID: 0}
+  offHandIdleAnimation: Left_Arm_Idle_01
+  weaponType: 3
   physicalDamage: 50
   fireDamage: 25
   magicDamage: 0
@@ -25,21 +28,6 @@ MonoBehaviour:
   poiseBreak: 0
   offensivePoiseBonus: 0
   physicalDamageAbsorption: 0
-  right_hand_idle: Right_Arm_Idle_01
-  left_hand_idle: Left_Arm_Idle_01
-  TH_Idle: TH_Idle_01
-  OH_Light_Attack_1: OH_Light_Attack_01
-  OH_Light_Attack_2: OH_Light_Attack_02
-  OH_Heavy_Attack_1: OH_Heavy_Attack_01
-  TH_Light_Attack_1: TH_Sword_Attack_01
-  TH_Light_Attack_2: TH_Sword_Attack_02
-  TH_Light_Attack_3: TH_Sword_Attack_03
-  weaponArt: 
   baseStamina: 20
   lightAttackMultiplier: 1
   heavyAttackMultiplier: 2
-  isSpellCaster: 0
-  isFaithCaster: 0
-  isPyroCaster: 0
-  isMeleeWeapon: 1
-  isShieldWeapon: 0

@@ -11,6 +11,7 @@ public class PlayerWeaponSlotManager : CharacterWeaponSlotManager
     PlayerStatsManager playerStatsManager;
     PlayerInputManager playerInputManager;
     PlayerEffectsManager playerEffectsManager;
+    PlayerAnimatorManager playerAnimatorManager;
     PlayerCamera playerCamera;
 
     [Header("Attacking Weapon")]
@@ -24,6 +25,7 @@ public class PlayerWeaponSlotManager : CharacterWeaponSlotManager
         playerManager = GetComponent<PlayerManager>();
         playerInventoryManager = GetComponent<PlayerInventoryManager>();
         playerEffectsManager = GetComponent<PlayerEffectsManager>();
+        playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
         animator = GetComponent<Animator>();
         quickSlotsUI = FindObjectOfType<QuickSlotsUI>();
         LoadWeaponHolderSlot();
@@ -65,27 +67,26 @@ public class PlayerWeaponSlotManager : CharacterWeaponSlotManager
                 leftHandSlot.LoadWeaponModel(weaponItem);
                 LoadLeftWeaponDamageCollider();
                 quickSlotsUI.UpdateWeaponQuickSlotsUI(true, weaponItem);
-                animator.CrossFade(weaponItem.left_hand_idle, 0.2f);
+                playerAnimatorManager.PlayTargetAnimation(weaponItem.offHandIdleAnimation, false, true);
             }
             else
             {
                 if (playerInputManager.twoHandFlag)
                 {
                     backSlot.LoadWeaponModel(leftHandSlot.currentWeapon);
-                    leftHandSlot.UnloadWeapon();
-                    animator.CrossFade(weaponItem.TH_Idle, 0.2f);
+                    leftHandSlot.UnloadWeaponAndDestroy();
+                    playerAnimatorManager.PlayTargetAnimation("Left Arm Empty", false, true);
                 }
                 else
                 {
-                    animator.CrossFade("Both Arms Empty", 0.2f);
                     backSlot.UnloadWeaponAndDestroy();
-                    animator.CrossFade(weaponItem.right_hand_idle, 0.2f);
                 }
 
                 rightHandSlot.currentWeapon = weaponItem;
                 rightHandSlot.LoadWeaponModel(weaponItem);
                 LoadRightWeaponDamageCollider();
                 quickSlotsUI.UpdateWeaponQuickSlotsUI(false, weaponItem);
+                playerAnimatorManager.animator.runtimeAnimatorController = weaponItem.weaponController;
             }
         }
         else
@@ -93,21 +94,21 @@ public class PlayerWeaponSlotManager : CharacterWeaponSlotManager
             weaponItem = unarmedWeapon;
             if (isLeft)
             {
-                animator.CrossFade("Left Arm Empty", 0.2f);
                 playerInventoryManager.leftWeapon = unarmedWeapon;
                 leftHandSlot.currentWeapon = unarmedWeapon;
                 leftHandSlot.LoadWeaponModel(weaponItem);
                 LoadLeftWeaponDamageCollider();
                 quickSlotsUI.UpdateWeaponQuickSlotsUI(true, weaponItem);
+                playerAnimatorManager.PlayTargetAnimation(weaponItem.offHandIdleAnimation, false, true);
             }
             else
             {
-                animator.CrossFade("Right Arm Empty", 0.2f);
                 playerInventoryManager.rightWeapon = unarmedWeapon;
                 rightHandSlot.currentWeapon = unarmedWeapon;
                 rightHandSlot.LoadWeaponModel(weaponItem);
                 LoadRightWeaponDamageCollider();
                 quickSlotsUI.UpdateWeaponQuickSlotsUI(false, weaponItem);
+                playerAnimatorManager.animator.runtimeAnimatorController = weaponItem.weaponController;
             }
         }
 
@@ -153,7 +154,7 @@ public class PlayerWeaponSlotManager : CharacterWeaponSlotManager
         rightHandDamageCollider.fireDamage = playerInventoryManager.rightWeapon.fireDamage;
 
         rightHandDamageCollider.teamIDNumber = playerStatsManager.teamIDNumber;
-        
+
         rightHandDamageCollider.poiseBreak = playerInventoryManager.rightWeapon.poiseBreak;
         playerEffectsManager.rightWeaponFX = rightHandSlot.currentWeaponModel.GetComponentInChildren<WeaponFX>();
     }
