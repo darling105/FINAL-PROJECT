@@ -34,8 +34,8 @@ MonoBehaviour:
   holdRBAction: {fileID: 0}
   tapRBAction: {fileID: 0}
   holdLBAction: {fileID: 11400000, guid: 623c5560bc1996944b0d1f49bdb4fb6f, type: 2}
-  tapLBAction: {fileID: 11400000, guid: 623c5560bc1996944b0d1f49bdb4fb6f, type: 2}
+  tapLBAction: {fileID: 0}
   holdRTAction: {fileID: 0}
   tapRTAction: {fileID: 0}
   holdLTAction: {fileID: 0}
-  tapLTAction: {fileID: 0}
+  tapLTAction: {fileID: 11400000, guid: 6cdfeb9a665ba034a952b5a883b5abc7, type: 2}

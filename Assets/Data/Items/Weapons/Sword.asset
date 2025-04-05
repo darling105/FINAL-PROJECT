@@ -31,9 +31,9 @@ MonoBehaviour:
   baseStamina: 20
   lightAttackMultiplier: 1
   heavyAttackMultiplier: 2
-  holdRBAction: {fileID: 0}
+  holdRBAction: {fileID: 11400000, guid: 3c9a9f81704f8f54081411000b52b148, type: 2}
   tapRBAction: {fileID: 11400000, guid: ab96b338eea6c474a8bf9d00b7962f3b, type: 2}
-  holdLBAction: {fileID: 11400000, guid: ab96b338eea6c474a8bf9d00b7962f3b, type: 2}
+  holdLBAction: {fileID: 0}
   tapLBAction: {fileID: 11400000, guid: ab96b338eea6c474a8bf9d00b7962f3b, type: 2}
   holdRTAction: {fileID: 0}
   tapRTAction: {fileID: 11400000, guid: 5f3144c18219dbe4b87df301de6ba747, type: 2}

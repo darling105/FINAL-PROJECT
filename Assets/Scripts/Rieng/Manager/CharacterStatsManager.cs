@@ -7,20 +7,29 @@ public class CharacterStatsManager : MonoBehaviour
     CharacterAnimatorManager characterAnimatorManager;
     [Header("Team I.D")]
     public int teamIDNumber = 0;
-    public int healthLevel = 10;
     public int maxHealth;
     public int currentHealth;
 
-    public int staminaLevel = 10;
     public float maxStamina;
     public float currentStamina;
 
-    public int focusLevel = 10;
     public float maxFocusPoint;
     public float currentFocusPoint;
 
     public int shadeCount = 0;
     public int shadesAwardedOnDeath = 100;
+
+
+    [Header("Levels")]
+    public int healthLevel = 10;
+    public int staminaLevel = 10;
+    public int focusLevel = 10;
+    public int poiseLevel = 10;
+    public int strengthLevel = 10;
+    public int dexterityLevel = 10;
+    public int intelligenceLevel = 10;
+    public int faithLevel = 10;
+
 
     [Header("Poise")]
     public float totalPoiseDefence;

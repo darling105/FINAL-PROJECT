@@ -16,7 +16,7 @@ MonoBehaviour:
   itemName: Talisman
   modelPrefab: {fileID: 2823297675337959708, guid: 3bc56b8aa23629a4999fc7e509ce6e99, type: 3}
   isUnarmed: 0
-  weaponController: {fileID: 0}
+  weaponController: {fileID: 22100000, guid: 44f73316d7977df45a11b5fb2b3df1d1, type: 2}
   offHandIdleAnimation: Left_Arm_Idle_01
   weaponType: 2
   physicalDamage: 0
@@ -31,3 +31,11 @@ MonoBehaviour:
   baseStamina: 0
   lightAttackMultiplier: 0
   heavyAttackMultiplier: 0
+  holdRBAction: {fileID: 11400000, guid: ccd6f588159bddb4da2b326a81c2037e, type: 2}
+  tapRBAction: {fileID: 11400000, guid: ccd6f588159bddb4da2b326a81c2037e, type: 2}
+  holdLBAction: {fileID: 11400000, guid: ccd6f588159bddb4da2b326a81c2037e, type: 2}
+  tapLBAction: {fileID: 11400000, guid: ccd6f588159bddb4da2b326a81c2037e, type: 2}
+  holdRTAction: {fileID: 0}
+  tapRTAction: {fileID: 0}
+  holdLTAction: {fileID: 0}
+  tapLTAction: {fileID: 0}
