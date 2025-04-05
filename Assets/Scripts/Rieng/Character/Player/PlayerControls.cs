@@ -188,7 +188,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Critical Attack"",
-                    ""type"": ""Button"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""c075d70e-bd0a-4e57-9dab-60ba700c88f7"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -253,6 +253,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""name"": ""LB"",
                     ""type"": ""Button"",
                     ""id"": ""d4a6279e-b146-4cbe-b3eb-c87e79ee6681"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""HoldLB"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""048fc6d2-6b63-455c-b0c8-1b13e8fbb872"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -466,6 +475,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""Consumable"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5684c006-5559-4437-a673-eae72c584f4c"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": ""Hold"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HoldLB"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -579,6 +599,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_PlayerActions_Y = m_PlayerActions.FindAction("Y", throwIfNotFound: true);
         m_PlayerActions_LT = m_PlayerActions.FindAction("LT", throwIfNotFound: true);
         m_PlayerActions_LB = m_PlayerActions.FindAction("LB", throwIfNotFound: true);
+        m_PlayerActions_HoldLB = m_PlayerActions.FindAction("HoldLB", throwIfNotFound: true);
         m_PlayerActions_Consumable = m_PlayerActions.FindAction("Consumable", throwIfNotFound: true);
         // Player Inventory
         m_PlayerInventory = asset.FindActionMap("Player Inventory", throwIfNotFound: true);
@@ -728,6 +749,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerActions_Y;
     private readonly InputAction m_PlayerActions_LT;
     private readonly InputAction m_PlayerActions_LB;
+    private readonly InputAction m_PlayerActions_HoldLB;
     private readonly InputAction m_PlayerActions_Consumable;
     public struct PlayerActionsActions
     {
@@ -744,6 +766,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @Y => m_Wrapper.m_PlayerActions_Y;
         public InputAction @LT => m_Wrapper.m_PlayerActions_LT;
         public InputAction @LB => m_Wrapper.m_PlayerActions_LB;
+        public InputAction @HoldLB => m_Wrapper.m_PlayerActions_HoldLB;
         public InputAction @Consumable => m_Wrapper.m_PlayerActions_Consumable;
         public InputActionMap Get() { return m_Wrapper.m_PlayerActions; }
         public void Enable() { Get().Enable(); }
@@ -787,6 +810,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @LB.started += instance.OnLB;
             @LB.performed += instance.OnLB;
             @LB.canceled += instance.OnLB;
+            @HoldLB.started += instance.OnHoldLB;
+            @HoldLB.performed += instance.OnHoldLB;
+            @HoldLB.canceled += instance.OnHoldLB;
             @Consumable.started += instance.OnConsumable;
             @Consumable.performed += instance.OnConsumable;
             @Consumable.canceled += instance.OnConsumable;
@@ -827,6 +853,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @LB.started -= instance.OnLB;
             @LB.performed -= instance.OnLB;
             @LB.canceled -= instance.OnLB;
+            @HoldLB.started -= instance.OnHoldLB;
+            @HoldLB.performed -= instance.OnHoldLB;
+            @HoldLB.canceled -= instance.OnHoldLB;
             @Consumable.started -= instance.OnConsumable;
             @Consumable.performed -= instance.OnConsumable;
             @Consumable.canceled -= instance.OnConsumable;
@@ -937,6 +966,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnY(InputAction.CallbackContext context);
         void OnLT(InputAction.CallbackContext context);
         void OnLB(InputAction.CallbackContext context);
+        void OnHoldLB(InputAction.CallbackContext context);
         void OnConsumable(InputAction.CallbackContext context);
     }
     public interface IPlayerInventoryActions

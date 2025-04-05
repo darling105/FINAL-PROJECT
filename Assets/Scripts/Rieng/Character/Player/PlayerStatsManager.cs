@@ -13,8 +13,9 @@ public class PlayerStatsManager : CharacterStatsManager
     public float staminaRegenerationAmount = 1;
     public float staminaRegenTimer = 0;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         playerManager = GetComponent<PlayerManager>();
         staminaBar = FindObjectOfType<StaminaBar>();
         focusPointBar = FindObjectOfType<FocusPointBar>();
@@ -70,12 +71,12 @@ public class PlayerStatsManager : CharacterStatsManager
         return maxFocusPoint;
     }
 
-    public override void TakeDamage(int physicalDamage, int fireDamage, string damageAnimation = "Damage_01")
+    public override void TakeDamage(int physicalDamage, int fireDamage, string damageAnimation)
     {
         if (playerManager.isInvulnerable)
             return;
 
-        base.TakeDamage(physicalDamage, fireDamage, damageAnimation = "Damage_01");
+        base.TakeDamage(physicalDamage, fireDamage, damageAnimation);
         healthBar.SetCurrentHealth(currentHealth);
         playerAnimatorManager.PlayTargetAnimation(damageAnimation, true);
 
@@ -84,8 +85,6 @@ public class PlayerStatsManager : CharacterStatsManager
             currentHealth = 0;
             isDead = true;
             playerAnimatorManager.PlayTargetAnimation("Death_01", true);
-            
-            //handle dead
         }
     }
 

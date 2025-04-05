@@ -4,29 +4,41 @@ using UnityEngine;
 
 public class PlayerManager : CharacterManager
 {
-    PlayerStatsManager playerStatsManager;
-    PlayerEffectsManager playerEffectsManager;
-    PlayerInputManager playerInputManager;
-    PlayerAnimatorManager playerAnimatorManager;
-    Animator animator;
     PlayerCamera playerCamera;
-    PlayerLocomotionManager playerLocomotion;
+    Animator animator;
+    public PlayerInputManager playerInputManager;
+    public PlayerStatsManager playerStatsManager;
+    public PlayerWeaponSlotManager playerWeaponSlotManager;
+    public PlayerCombatManager playerCombatManager;
+    public PlayerEffectsManager playerEffectsManager;
+    public PlayerInventoryManager playerInventoryManager;
+    public PlayerEquipmentManager playerEquipmentManager;
+
+    public PlayerAnimatorManager playerAnimatorManager;
+
+
+    public PlayerLocomotionManager playerLocomotion;
 
     InteractableUI interactableUI;
     public GameObject interactableUIGameObject;
     public GameObject itemInteractableGameObject;
 
-    private void Awake()
+    protected override void Awake()
     {
         //instance = this;
+        base.Awake();
         playerCamera = FindAnyObjectByType<PlayerCamera>();
         backStabCollider = GetComponentInChildren<CriticalDamageCollider>();
         playerInputManager = GetComponent<PlayerInputManager>();
         playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
         animator = GetComponent<Animator>();
         playerStatsManager = GetComponent<PlayerStatsManager>();
+        playerWeaponSlotManager = GetComponent<PlayerWeaponSlotManager>();
+        playerCombatManager = GetComponent<PlayerCombatManager>();
         playerEffectsManager = GetComponent<PlayerEffectsManager>();
+        playerEquipmentManager = GetComponent<PlayerEquipmentManager>();
         playerLocomotion = GetComponent<PlayerLocomotionManager>();
+        playerInventoryManager = GetComponent<PlayerInventoryManager>();
         interactableUI = FindObjectOfType<InteractableUI>();
     }
 
@@ -36,8 +48,6 @@ public class PlayerManager : CharacterManager
 
         isInteracting = animator.GetBool("isInteracting");
         canDoCombo = animator.GetBool("canDoCombo");
-        isUsingRightHand = animator.GetBool("isUsingRightHand");
-        isUsingLeftHand = animator.GetBool("isUsingLeftHand");
         isInvulnerable = animator.GetBool("isInvulnerable");
         animator.SetBool("isTwoHandingWeapon", isTwoHandingWeapon);
         animator.SetBool("isBlocking", isBlocking);
@@ -46,28 +56,25 @@ public class PlayerManager : CharacterManager
 
         playerInputManager.TickInput(delta);
         playerAnimatorManager.canRotate = animator.GetBool("canRotate");
-        playerLocomotion.HandleRollingAndSprinting(delta);
+        playerLocomotion.HandleRollingAndSprinting();
         playerLocomotion.HandleJumping();
         playerStatsManager.RegenerateStanima();
 
         CheckForInteractableObject();
     }
 
-    private void FixedUpdate()
+    protected override void FixedUpdate()
     {
+        base.FixedUpdate();
         float delta = Time.fixedDeltaTime;
-        playerLocomotion.HandleMovement(delta);
-        playerLocomotion.HandleFalling(delta, playerLocomotion.moveDirection);
-        playerLocomotion.HandleRotation(delta);
+        playerLocomotion.HandleMovement();
+        playerLocomotion.HandleFalling(playerLocomotion.moveDirection);
+        playerLocomotion.HandleRotation();
         playerEffectsManager.HandleAllBuildUpEffects();
     }
 
     private void LateUpdate()
     {
-        playerInputManager.rollFlag = false;
-        playerInputManager.rbInput = false;
-        playerInputManager.rtInput = false;
-        playerInputManager.ltInput = false;
         playerInputManager.upArrow = false;
         playerInputManager.downArrow = false;
         playerInputManager.leftArrow = false;
@@ -76,11 +83,10 @@ public class PlayerManager : CharacterManager
         playerInputManager.jumpInput = false;
         playerInputManager.inventoryInput = false;
 
-        float delta = Time.deltaTime;
         if (playerCamera != null)
         {
-            playerCamera.FollowTarget(delta);
-            playerCamera.HandleCameraRotation(delta, playerInputManager.mouseX, playerInputManager.mouseY);
+            playerCamera.FollowTarget();
+            playerCamera.HandleCameraRotation(playerInputManager.mouseX, playerInputManager.mouseY);
         }
 
         if (isInAir)

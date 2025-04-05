@@ -8,7 +8,8 @@ public enum WeaponType
     SpellCaster,
     FaithCaster,
     StraightSword,
-    Shield
+    Shield,
+    SmallShield
     
 }
 public class Enums : MonoBehaviour

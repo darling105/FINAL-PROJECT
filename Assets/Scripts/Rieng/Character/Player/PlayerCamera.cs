@@ -59,20 +59,20 @@ public class PlayerCamera : MonoBehaviour
         environmentLayer = LayerMask.NameToLayer("Environment");
     }
 
-    public void FollowTarget(float delta)
+    public void FollowTarget()
     {
-        Vector3 targetPosition = Vector3.SmoothDamp(myTransform.position, targetTransform.position, ref cameraFollowVelocity, delta / followSpeed);
+        Vector3 targetPosition = Vector3.SmoothDamp(myTransform.position, targetTransform.position, ref cameraFollowVelocity, Time.deltaTime / followSpeed);
         myTransform.position = targetPosition;
 
-        HandleCameraCollision(delta);
+        HandleCameraCollision();
     }
 
-    public void HandleCameraRotation(float delta, float mouseXInput, float mouseYInput)
+    public void HandleCameraRotation(float mouseXInput, float mouseYInput)
     {
         if (playerInputManager.lockOnFlag == false && currentLockOnTarget == null)
         {
-            lookAngle += (mouseXInput * lookSpeed) / delta;
-            pivotAngle -= (mouseYInput * pivotSpeed) / delta;
+            lookAngle += mouseXInput * lookSpeed * Time.deltaTime;
+            pivotAngle -= mouseYInput * pivotSpeed * Time.deltaTime;
             pivotAngle = Mathf.Clamp(pivotAngle, minPivot, maxPivot);
 
             Vector3 rotation = Vector3.zero;
@@ -95,7 +95,9 @@ public class PlayerCamera : MonoBehaviour
 
             Quaternion targetRotation = Quaternion.LookRotation(dir);
             transform.rotation = targetRotation;
+
             dir = currentLockOnTarget.transform.position - cameraPivotTransform.position;
+            dir.Normalize();
 
             targetRotation = Quaternion.LookRotation(dir);
             Vector3 eulerAngle = targetRotation.eulerAngles;
@@ -104,7 +106,7 @@ public class PlayerCamera : MonoBehaviour
         }
     }
 
-    private void HandleCameraCollision(float delta)
+    private void HandleCameraCollision()
     {
         targetPosition = defaultPosition;
         RaycastHit hit;
@@ -122,7 +124,7 @@ public class PlayerCamera : MonoBehaviour
             targetPosition = -minimumCollisionOffset;
         }
 
-        cameraTransformPosition.z = Mathf.Lerp(cameraTransform.localPosition.z, targetPosition, delta / 0.2f);
+        cameraTransformPosition.z = Mathf.Lerp(cameraTransform.localPosition.z, targetPosition, Time.deltaTime / 0.2f);
         cameraTransform.localPosition = cameraTransformPosition;
     }
 

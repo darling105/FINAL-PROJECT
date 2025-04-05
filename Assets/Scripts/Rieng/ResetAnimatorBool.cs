@@ -22,13 +22,20 @@ public class ResetAnimatorBool : StateMachineBehaviour
     public string canRotateBool = "canRotate";
     public bool canRotateStatus = true;
 
+    public string isMirroredBool = "isMirrored";
+    public bool isMirroredStatus = false;
+
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.SetBool(isUsingRightHandBool, isUsingRightHandStatus);
-        animator.SetBool(isUsingLeftHandBool, isUsingLeftHandStatus);
+        CharacterManager characterManager = animator.GetComponent<CharacterManager>();
+
+        characterManager.isUsingLeftHand = false;
+        characterManager.isUsingRightHand = false;
+        
         animator.SetBool(isInvulnerableBool, isInvulnerableStatus);
         animator.SetBool(isInteractingBool, isInteractingStatus);
         animator.SetBool(isRotatingWithRootMotion, isRotatingWithRootMotionStatus);
         animator.SetBool(canRotateBool, canRotateStatus);
+        animator.SetBool(isMirroredBool, isMirroredStatus);
     }
 }

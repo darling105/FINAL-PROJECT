@@ -14,6 +14,8 @@ public class CharacterAnimatorManager : MonoBehaviour
     public TwoBoneIKConstraint leftHandIKConstraint;
     public TwoBoneIKConstraint rightHandIKConstraint;
 
+    bool handIKWeightReset = false;
+
     protected virtual void Awake()
     {
         characterManager = GetComponent<CharacterManager>();
@@ -21,11 +23,12 @@ public class CharacterAnimatorManager : MonoBehaviour
         rigBuilder = GetComponent<RigBuilder>();
     }
 
-    public void PlayTargetAnimation(string targetAnim, bool isInteracting, bool canRotate = false)
+    public void PlayTargetAnimation(string targetAnim, bool isInteracting, bool canRotate = false, bool mirrorAnim = false)
     {
         animator.applyRootMotion = isInteracting;
         animator.SetBool("canRotate", canRotate);
         animator.SetBool("isInteracting", isInteracting);
+        animator.SetBool("isMirrored", mirrorAnim);
         animator.CrossFade(targetAnim, 0.2f);
     }
 
@@ -97,13 +100,19 @@ public class CharacterAnimatorManager : MonoBehaviour
     {
         if (isTwoHandingWeapon)
         {
-            rightHandIKConstraint.data.target = rightHandTarget.transform;
-            rightHandIKConstraint.data.targetPositionWeight = 1;
-            rightHandIKConstraint.data.targetRotationWeight = 1;
+            if (rightHandTarget != null)
+            {
+                rightHandIKConstraint.data.target = rightHandTarget.transform;
+                rightHandIKConstraint.data.targetPositionWeight = 1;
+                rightHandIKConstraint.data.targetRotationWeight = 1;
+            }
 
-            leftHandIKConstraint.data.target = leftHandTarget.transform;
-            leftHandIKConstraint.data.targetPositionWeight = 1;
-            leftHandIKConstraint.data.targetRotationWeight = 1;
+            if (leftHandTarget != null)
+            {
+                leftHandIKConstraint.data.target = leftHandTarget.transform;
+                leftHandIKConstraint.data.targetPositionWeight = 1;
+                leftHandIKConstraint.data.targetRotationWeight = 1;
+            }
         }
         else
         {
@@ -114,9 +123,46 @@ public class CharacterAnimatorManager : MonoBehaviour
         rigBuilder.Build();
     }
 
+    public virtual void CheckHandIKWeight(RightHandIKTarget rightHandIK, LeftHandIKTarget leftHandIK, bool isTwoHandingWeapon)
+    {
+        if (characterManager.isInteracting)
+            return;
+
+        if (handIKWeightReset)
+        {
+            handIKWeightReset = false;
+
+            if (rightHandIKConstraint.data.target != null)
+            {
+                rightHandIKConstraint.data.target = rightHandIK.transform;
+                rightHandIKConstraint.data.targetPositionWeight = 1;
+                rightHandIKConstraint.data.targetRotationWeight = 1;
+            }
+
+            if (leftHandIKConstraint.data.target != null)
+            {
+                leftHandIKConstraint.data.target = leftHandIK.transform;
+                leftHandIKConstraint.data.targetPositionWeight = 1;
+                leftHandIKConstraint.data.targetRotationWeight = 1;
+            }
+        }
+    }
+
     public virtual void EraseHandIKForWeapon()
     {
+        handIKWeightReset = true;
 
+        if (rightHandIKConstraint.data.target != null)
+        {
+            rightHandIKConstraint.data.targetPositionWeight = 0;
+            rightHandIKConstraint.data.targetRotationWeight = 0;
+        }
+
+        if (leftHandIKConstraint.data.target != null)
+        {
+            leftHandIKConstraint.data.targetPositionWeight = 0;
+            leftHandIKConstraint.data.targetRotationWeight = 0;
+        }
     }
 
 }

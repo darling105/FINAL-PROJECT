@@ -122,7 +122,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4529604916706952193, guid: 76e5869740b242247a097e9b9b65e634, type: 3}
       propertyPath: enabledDamageColliderOnStartUp
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

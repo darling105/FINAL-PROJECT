@@ -32,8 +32,9 @@ public class EnemyManager : CharacterManager
     public bool isPhaseShifting;
     public float comboLikelyHood;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         enemyLocomotionManager = GetComponent<EnemyLocomotionManager>();
         enemyAnimatorManager = GetComponent<EnemyAnimatorManager>();
         enemyStatsManager = GetComponent<EnemyStatsManager>();
@@ -53,8 +54,6 @@ public class EnemyManager : CharacterManager
         HandleRecoveryTimer();
         HandleStateMachine();
 
-        isUsingLeftHand = enemyAnimatorManager.animator.GetBool("isUsingLeftHand");
-        isUsingRightHand = enemyAnimatorManager.animator.GetBool("isUsingRightHand");
         isRotatingWithRootMotion = enemyAnimatorManager.animator.GetBool("isRotatingWithRootMotion");
         isInteracting = enemyAnimatorManager.animator.GetBool("isInteracting");
         isPhaseShifting = enemyAnimatorManager.animator.GetBool("isPhaseShifting");
@@ -64,8 +63,9 @@ public class EnemyManager : CharacterManager
         enemyAnimatorManager.animator.SetBool("isDead", enemyStatsManager.isDead);
     }
 
-    private void FixedUpdate()
+    protected override void FixedUpdate()
     {
+        base.FixedUpdate();
         enemyEffectsManager.HandleAllBuildUpEffects();
     }
 

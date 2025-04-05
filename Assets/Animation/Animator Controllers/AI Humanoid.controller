@@ -1142,6 +1142,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4570086d18ea05148ac0f0ab796efb70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isUsingRightHandBool: isUsingRightHand
+  isUsingRightHandStatus: 0
+  isUsingLeftHandBool: isUsingLeftHand
+  isUsingLeftHandStatus: 0
   isInvulnerableBool: isInvulnerable
   isInvulnerableStatus: 0
   isInteractingBool: isInteracting
@@ -1150,6 +1154,8 @@ MonoBehaviour:
   isRotatingWithRootMotionStatus: 0
   canRotateBool: canRotate
   canRotateStatus: 1
+  isMirroredBool: isMirrored
+  isMirroredStatus: 0
   isPhaseShiftingBool: isPhaseShifting
   isPhaseShiftingStatus: 0
 --- !u!1101 &-586905073208303583
@@ -1301,18 +1307,6 @@ AnimatorController:
     m_Controller: {fileID: 9100000}
   - m_Name: Vertical
     m_Type: 1
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
-  - m_Name: isUsingRightHand
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
-  - m_Name: isUsingLeftHand
-    m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0

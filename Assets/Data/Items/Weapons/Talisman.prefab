@@ -116,13 +116,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5672717594027863552, guid: 579fd4f9ae39463408f463e41662bff8, type: 3}
-      propertyPath: m_Enabled
+    - target: {fileID: 5083793651535442374, guid: 579fd4f9ae39463408f463e41662bff8, type: 3}
+      propertyPath: enabledDamageColliderOnStartUp
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5672717594027863552, guid: 579fd4f9ae39463408f463e41662bff8, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

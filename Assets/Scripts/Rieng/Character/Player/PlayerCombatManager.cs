@@ -15,16 +15,17 @@ public class PlayerCombatManager : MonoBehaviour
     PlayerEffectsManager playerEffectsManager;
 
     [Header("Attack Animations")]
-    string oh_light_attack_01 = "OH_Light_Attack_01";
-    string oh_light_attack_02 = "OH_Light_Attack_02";
+    public string oh_light_attack_01 = "OH_Light_Attack_01";
+    public string oh_light_attack_02 = "OH_Light_Attack_02";
 
-    string th_light_attack_01 = "TH_Light_Attack_01";
-    string th_light_attack_02 = "TH_Light_Attack_02";
-    string th_light_attack_03 = "TH_Light_Attack_03";
+    public string th_light_attack_01 = "TH_Light_Attack_01";
+    public string th_light_attack_02 = "TH_Light_Attack_02";
+    public string th_light_attack_03 = "TH_Light_Attack_03";
 
-    string oh_heavy_attack_01 = "OH_Heavy_Attack_01";
+    public string oh_heavy_attack_01 = "OH_Heavy_Attack_01";
+    public string th_heavy_attack_01 = "TH_Heavy_Attack_01";
 
-    string weaponArt = "Weapon Art";
+    public string weaponArt = "Weapon Art";
 
     public string lastAttack;
 
@@ -44,182 +45,9 @@ public class PlayerCombatManager : MonoBehaviour
         playerEffectsManager = GetComponent<PlayerEffectsManager>();
     }
 
-    public void HandleRBAction()
-    {
-        playerAnimatorManager.EraseHandIKForWeapon();
-        if (playerInventoryManager.rightWeapon.weaponType == WeaponType.StraightSword
-        || playerInventoryManager.rightWeapon.weaponType == WeaponType.Unarmed)
-        {
-            PerformRBMeleeAction();
-        }
-        else if (playerInventoryManager.rightWeapon.weaponType == WeaponType.SpellCaster
-        || playerInventoryManager.rightWeapon.weaponType == WeaponType.FaithCaster)
-        {
-            PerformRBSpellAction(playerInventoryManager.rightWeapon);
-        }
-    }
-
-    public void HandleLBAction()
-    {
-        PerformLBBlockingAction();
-    }
-
-    public void HandleLTAction()
-    {
-        if (playerInventoryManager.leftWeapon.weaponType == WeaponType.Shield
-        || playerInventoryManager.rightWeapon.weaponType == WeaponType.Unarmed)
-        {
-            PerformLTWeaponArt(playerInputManager.twoHandFlag);
-        }
-        else if (playerInventoryManager.leftWeapon.weaponType == WeaponType.StraightSword)
-        {
-            //PerformMeleeAction();
-        }
-    }
-
-
-    public void HandleWeaponCombo(WeaponItem weapon)
-    {
-        if (playerStatsManager.currentStamina <= 0)
-            return;
-
-        if (playerInputManager.comboFlag)
-        {
-            playerAnimatorManager.animator.SetBool("canDoCombo", false);
-
-            if (lastAttack == oh_light_attack_01)
-            {
-                playerAnimatorManager.PlayTargetAnimation(oh_light_attack_02, true);
-            }
-
-            if (lastAttack == th_light_attack_01)
-            {
-                playerAnimatorManager.PlayTargetAnimation(th_light_attack_02, true);
-                lastAttack = th_light_attack_02;
-            }
-            else if (lastAttack == th_light_attack_02)
-            {
-                playerAnimatorManager.PlayTargetAnimation(th_light_attack_03, true);
-            }
-        }
-    }
-
-    public void HandleLightAttack(WeaponItem weapon)
-    {
-        if (playerStatsManager.currentStamina <= 0)
-            return;
-
-        playerWeaponSlotManager.attackingWeapon = weapon;
-
-        if (playerInputManager.twoHandFlag)
-        {
-            playerAnimatorManager.PlayTargetAnimation(th_light_attack_01, true);
-            lastAttack = th_light_attack_01;
-        }
-        else
-        {
-            playerAnimatorManager.PlayTargetAnimation(oh_light_attack_01, true);
-            lastAttack = oh_light_attack_01;
-        }
-    }
-
-    public void HandleHeavyAttack(WeaponItem weapon)
-    {
-        if (playerStatsManager.currentStamina <= 0)
-            return;
-
-        playerWeaponSlotManager.attackingWeapon = weapon;
-
-        if (playerInputManager.twoHandFlag)
-        {
-
-        }
-        else
-        {
-            playerAnimatorManager.PlayTargetAnimation(oh_heavy_attack_01, true);
-            lastAttack = oh_heavy_attack_01;
-        }
-
-
-    }
-
-
-    private void PerformRBMeleeAction()
-    {
-        if (playerManager.canDoCombo)
-        {
-            playerInputManager.comboFlag = true;
-            HandleWeaponCombo(playerInventoryManager.rightWeapon);
-            playerInputManager.comboFlag = false;
-        }
-        else
-        {
-            if (playerManager.isInteracting)
-                return;
-            if (playerManager.canDoCombo)
-                return;
-
-            playerAnimatorManager.animator.SetBool("isUsingRightHand", true);
-            HandleLightAttack(playerInventoryManager.rightWeapon);
-        }
-
-        playerEffectsManager.PlayWeaponEffect(false);
-    }
-
-    private void PerformRBSpellAction(WeaponItem weapon)
-    {
-        if (playerManager.isInteracting)
-            return;
-
-        if (weapon.weaponType == WeaponType.FaithCaster)
-        {
-            if (playerInventoryManager.currentSpell != null && playerInventoryManager.currentSpell.isFaithSpell)
-            {
-                if (playerStatsManager.currentFocusPoint >= playerInventoryManager.currentSpell.focusPointCost)
-                {
-                    playerInventoryManager.currentSpell.AttemptToCastSpell(playerAnimatorManager, playerStatsManager);
-                }
-                else
-                {
-                    playerAnimatorManager.PlayTargetAnimation("Shrug", true);
-                }
-            }
-        }
-    }
-
-    private void PerformLTWeaponArt(bool isTwoHanding)
-    {
-        if (playerManager.isInteracting)
-            return;
-
-        if (isTwoHanding)
-        {
-
-        }
-        else
-        {
-            playerAnimatorManager.PlayTargetAnimation(weaponArt, true);
-
-        }
-    }
-
-    private void PerformLBBlockingAction()
-    {
-        if (playerManager.isInteracting)
-            return;
-
-        if (playerManager.isBlocking)
-            return;
-
-        playerAnimatorManager.PlayTargetAnimation("Block_Start", false, true);
-        playerEquipmentManager.OpenBlockingCollider();
-        playerManager.isBlocking = true;
-    }
-
-
     private void SuccessfullyCastSpell()
     {
-        playerInventoryManager.currentSpell.SuccessfullyCastSpell(playerAnimatorManager, playerStatsManager);
+        playerInventoryManager.currentSpell.SuccessfullyCastSpell(playerAnimatorManager, playerStatsManager, playerWeaponSlotManager, playerManager.isUsingLeftHand);
     }
 
     public void AttempBackStabOrRiposte()

@@ -103,13 +103,4 @@ public class PlayerWeaponSlotManager : CharacterWeaponSlotManager
         //tinhs dame vaof nguowif minhf 
     }
 
-    public override void DrainStaminaLightAttack()
-    {
-        playerStatsManager.TakeStaminaDamage(Mathf.RoundToInt(attackingWeapon.baseStamina * attackingWeapon.lightAttackMultiplier));
-    }
-    
-    public override void DrainStaminaHeavyAttack()
-    {
-        playerStatsManager.TakeStaminaDamage(Mathf.RoundToInt(attackingWeapon.baseStamina * attackingWeapon.heavyAttackMultiplier));
-    }
 }

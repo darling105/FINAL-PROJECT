@@ -29,6 +29,8 @@ public class PlayerLocomotionManager : MonoBehaviour
     [SerializeField] float sprintSpeed = 8;
     [SerializeField] float rotationSpeed = 10;
     [SerializeField] float fallingSpeed = 45;
+    public float jumpHeight = 5f;
+    public float jumpForwardMultiplier = 1f;
 
     [Header("Stamina Costs")]
     [SerializeField] int rollStaminaCost = 15;
@@ -59,7 +61,7 @@ public class PlayerLocomotionManager : MonoBehaviour
     #region Movement
     Vector3 normalVector;
     Vector3 targetPosition;
-    public void HandleRotation(float delta)
+    public void HandleRotation()
     {
         if (playerAnimatorManager.canRotate)
         {
@@ -111,12 +113,12 @@ public class PlayerLocomotionManager : MonoBehaviour
                 }
 
                 Quaternion newRotation = Quaternion.LookRotation(targetRotationDirection);
-                Quaternion targetRotation = Quaternion.Slerp(myTransform.rotation, newRotation, rotationSpeed * delta);
+                Quaternion targetRotation = Quaternion.Slerp(myTransform.rotation, newRotation, rotationSpeed * Time.deltaTime);
                 myTransform.rotation = targetRotation;
             }
         }
     }
-    public void HandleMovement(float delta)
+    public void HandleMovement()
     {
 
         if (playerInputManager.rollFlag)
@@ -164,7 +166,7 @@ public class PlayerLocomotionManager : MonoBehaviour
             playerAnimatorManager.UpdateAnimatorValues(playerInputManager.moveAmount, 0, playerManager.isSprinting);
         }
     }
-    public void HandleRollingAndSprinting(float delta)
+    public void HandleRollingAndSprinting()
     {
         if (playerAnimatorManager.animator.GetBool("isInteracting"))
             return;
@@ -174,12 +176,14 @@ public class PlayerLocomotionManager : MonoBehaviour
 
         if (playerInputManager.rollFlag)
         {
+            playerInputManager.rollFlag = false;
             moveDirection = cameraObject.forward * playerInputManager.verticalInput;
             moveDirection += cameraObject.right * playerInputManager.horizontalInput;
 
             if (playerInputManager.moveAmount > 0)
             {
                 playerAnimatorManager.PlayTargetAnimation("Rolling", true);
+                playerAnimatorManager.EraseHandIKForWeapon();
                 moveDirection.y = 0;
                 Quaternion rollRotation = Quaternion.LookRotation(moveDirection);
                 myTransform.rotation = rollRotation;
@@ -192,7 +196,7 @@ public class PlayerLocomotionManager : MonoBehaviour
             }
         }
     }
-    public void HandleFalling(float delta, Vector3 moveDirection)
+    public void HandleFalling(Vector3 moveDirection)
     {
         playerManager.isGrounded = false;
         RaycastHit hit;
@@ -280,15 +284,33 @@ public class PlayerLocomotionManager : MonoBehaviour
 
         if (playerInputManager.jumpInput)
         {
+
+            moveDirection = cameraObject.forward * playerInputManager.verticalInput;
+            moveDirection += cameraObject.right * playerInputManager.horizontalInput;
+            moveDirection.y = 0;
+            moveDirection.Normalize();
+
             if (playerInputManager.moveAmount > 0)
             {
-                moveDirection = cameraObject.forward * playerInputManager.verticalInput;
-                moveDirection += cameraObject.right * playerInputManager.horizontalInput;
+
+                playerAnimatorManager.EraseHandIKForWeapon();
                 playerAnimatorManager.PlayTargetAnimation("Jump", true);
-                moveDirection.y = 0;
                 Quaternion jumpRotation = Quaternion.LookRotation(moveDirection);
                 myTransform.rotation = jumpRotation;
+
+                Vector3 jumpVelocity = moveDirection * jumpForwardMultiplier;
+                jumpVelocity.y = jumpHeight;
+
+                // Apply to Rigidbody (make sure you have a reference to it)
+                rigidbody.velocity = jumpVelocity;
             }
+             else
+        {
+            // Vertical jump if no movement input
+            playerAnimatorManager.PlayTargetAnimation("Jump", true);
+            Vector3 jumpVelocity = new Vector3(0, jumpHeight, 0);
+            rigidbody.velocity = jumpVelocity;
+        }
         }
     }
 

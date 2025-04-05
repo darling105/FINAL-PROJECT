@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CharacterStatsManager : MonoBehaviour
 {
+    CharacterAnimatorManager characterAnimatorManager;
     [Header("Team I.D")]
     public int teamIDNumber = 0;
     public int healthLevel = 10;
@@ -61,6 +62,11 @@ public class CharacterStatsManager : MonoBehaviour
 
     public bool isDead;
 
+    protected virtual void Awake()
+    {
+        characterAnimatorManager = GetComponent<CharacterAnimatorManager>();
+    }
+
     protected virtual void Update()
     {
         HandlePoiseResetTimer();
@@ -71,11 +77,12 @@ public class CharacterStatsManager : MonoBehaviour
         totalPoiseDefence = armorPoiseBonus;
     }
 
-    public virtual void TakeDamage(int physicalDamage, int fireDamage, string damageAnimation = "Damage_01")
+    public virtual void TakeDamage(int physicalDamage, int fireDamage, string damageAnimation)
     {
         if (isDead)
             return;
 
+        characterAnimatorManager.EraseHandIKForWeapon();
         //PHYSIC
 
         float totalPhysicalDamageAbsorption = 1 -
@@ -84,7 +91,6 @@ public class CharacterStatsManager : MonoBehaviour
         (1 - physicalDamageAbsorptionHands / 100) *
         (1 - physicalDamageAbsorptionLegs / 100);
 
-        Debug.Log("Total Physical Damage Absorption: " + totalPhysicalDamageAbsorption + "%");
 
         physicalDamage = Mathf.RoundToInt(physicalDamage - (physicalDamage * totalPhysicalDamageAbsorption));
 
@@ -96,15 +102,11 @@ public class CharacterStatsManager : MonoBehaviour
         (1 - fireDamageAbsorptionHands / 100) *
         (1 - fireDamageAbsorptionLegs / 100);
 
-        Debug.Log("Total Fire Damage Absorption: " + totalFireDamageAbsorption + "%");
-
         fireDamage = Mathf.RoundToInt(fireDamage - (fireDamage * totalFireDamageAbsorption));
 
         float finalDamage = physicalDamage + fireDamage;
 
         currentHealth = Mathf.RoundToInt(currentHealth - finalDamage);
-
-        Debug.Log("Final Damage Dealt is: " + finalDamage);
 
         if (currentHealth <= 0)
         {
@@ -129,7 +131,7 @@ public class CharacterStatsManager : MonoBehaviour
         physicalDamage = Mathf.RoundToInt(physicalDamage - (physicalDamage * totalPhysicalDamageAbsorption));
 
         //FIRE
-        
+
         float totalFireDamageAbsorption = 1 -
         (1 - fireDamageAbsorptionHead / 100) *
         (1 - fireDamageAbsorptionBody / 100) *
@@ -170,6 +172,11 @@ public class CharacterStatsManager : MonoBehaviour
         {
             totalPoiseDefence = armorPoiseBonus;
         }
+    }
+
+    public virtual void DrainStaminaBasedOnAttackType()
+    {
+
     }
 
 }

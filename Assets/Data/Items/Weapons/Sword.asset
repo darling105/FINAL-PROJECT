@@ -19,15 +19,23 @@ MonoBehaviour:
   weaponController: {fileID: 22100000, guid: 44ef03ea5e1522942a9c32a3d280d55d, type: 2}
   offHandIdleAnimation: Left_Arm_Idle_01
   weaponType: 3
-  physicalDamage: 35
-  fireDamage: 35
+  physicalDamage: 25
+  fireDamage: 0
   magicDamage: 0
   lightningDamage: 0
   darkDamage: 0
   criticalDamageMultiplier: 4
-  poiseBreak: 30
+  poiseBreak: 25
   offensivePoiseBonus: 10
   physicalDamageAbsorption: 0
   baseStamina: 20
   lightAttackMultiplier: 1
   heavyAttackMultiplier: 2
+  holdRBAction: {fileID: 0}
+  tapRBAction: {fileID: 11400000, guid: ab96b338eea6c474a8bf9d00b7962f3b, type: 2}
+  holdLBAction: {fileID: 11400000, guid: ab96b338eea6c474a8bf9d00b7962f3b, type: 2}
+  tapLBAction: {fileID: 11400000, guid: ab96b338eea6c474a8bf9d00b7962f3b, type: 2}
+  holdRTAction: {fileID: 0}
+  tapRTAction: {fileID: 11400000, guid: 5f3144c18219dbe4b87df301de6ba747, type: 2}
+  holdLTAction: {fileID: 0}
+  tapLTAction: {fileID: 0}

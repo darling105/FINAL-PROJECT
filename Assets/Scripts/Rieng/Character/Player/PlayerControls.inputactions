@@ -166,7 +166,7 @@
                 },
                 {
                     "name": "Critical Attack",
-                    "type": "Button",
+                    "type": "PassThrough",
                     "id": "c075d70e-bd0a-4e57-9dab-60ba700c88f7",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -231,6 +231,15 @@
                     "name": "LB",
                     "type": "Button",
                     "id": "d4a6279e-b146-4cbe-b3eb-c87e79ee6681",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "HoldLB",
+                    "type": "PassThrough",
+                    "id": "048fc6d2-6b63-455c-b0c8-1b13e8fbb872",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -442,6 +451,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Consumable",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5684c006-5559-4437-a673-eae72c584f4c",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HoldLB",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

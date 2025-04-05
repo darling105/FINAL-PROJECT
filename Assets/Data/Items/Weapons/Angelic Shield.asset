@@ -31,3 +31,11 @@ MonoBehaviour:
   baseStamina: 0
   lightAttackMultiplier: 0
   heavyAttackMultiplier: 0
+  holdRBAction: {fileID: 0}
+  tapRBAction: {fileID: 0}
+  holdLBAction: {fileID: 11400000, guid: 623c5560bc1996944b0d1f49bdb4fb6f, type: 2}
+  tapLBAction: {fileID: 11400000, guid: 623c5560bc1996944b0d1f49bdb4fb6f, type: 2}
+  holdRTAction: {fileID: 0}
+  tapRTAction: {fileID: 0}
+  holdLTAction: {fileID: 0}
+  tapLTAction: {fileID: 0}
