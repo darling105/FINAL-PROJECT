@@ -53,24 +53,6 @@ public class PlayerStatsManager : CharacterStatsManager
         }
     }
 
-    private int SetMaxHealthFromHealthLevel()
-    {
-        maxHealth = healthLevel * 10;
-        return maxHealth;
-    }
-
-    private float SetMaxStaminaFromStaminaLevel()
-    {
-        maxStamina = staminaLevel * 10;
-        return maxStamina;
-    }
-
-    private float SetMaxFocusPointFromFocusLevel()
-    {
-        maxFocusPoint = focusLevel * 10;
-        return maxFocusPoint;
-    }
-
     public override void TakeDamage(int physicalDamage, int fireDamage, string damageAnimation)
     {
         if (playerManager.isInvulnerable)
@@ -160,7 +142,7 @@ public class PlayerStatsManager : CharacterStatsManager
 
     public void AddShades(int shades)
     {
-        shadeCount += shades;
+        currentShadesCount += shades;
     }
 
 }

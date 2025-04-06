@@ -16,11 +16,13 @@ public class CharacterStatsManager : MonoBehaviour
     public float maxFocusPoint;
     public float currentFocusPoint;
 
-    public int shadeCount = 0;
+    public int currentShadesCount = 0;
     public int shadesAwardedOnDeath = 100;
 
+    [Header("Player Level")]
+    public int playerLevel = 1;
 
-    [Header("Levels")]
+    [Header("Stats Levels")]
     public int healthLevel = 10;
     public int staminaLevel = 10;
     public int focusLevel = 10;
@@ -85,6 +87,26 @@ public class CharacterStatsManager : MonoBehaviour
     {
         totalPoiseDefence = armorPoiseBonus;
     }
+
+
+    public int SetMaxHealthFromHealthLevel()
+    {
+        maxHealth = healthLevel * 10;
+        return maxHealth;
+    }
+
+    public float SetMaxStaminaFromStaminaLevel()
+    {
+        maxStamina = staminaLevel * 10;
+        return maxStamina;
+    }
+
+    public float SetMaxFocusPointFromFocusLevel()
+    {
+        maxFocusPoint = focusLevel * 10;
+        return maxFocusPoint;
+    }
+
 
     public virtual void TakeDamage(int physicalDamage, int fireDamage, string damageAnimation)
     {

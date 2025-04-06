@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Den.Tools.GUI;
 using UnityEngine;
 
 public class PlayerManager : CharacterManager
@@ -7,6 +8,7 @@ public class PlayerManager : CharacterManager
     PlayerCamera playerCamera;
     Animator animator;
     public PlayerInputManager playerInputManager;
+    public UIManager uiManager;
     public PlayerStatsManager playerStatsManager;
     public PlayerWeaponSlotManager playerWeaponSlotManager;
     public PlayerCombatManager playerCombatManager;
@@ -28,6 +30,7 @@ public class PlayerManager : CharacterManager
         //instance = this;
         base.Awake();
         playerCamera = FindAnyObjectByType<PlayerCamera>();
+        uiManager = FindObjectOfType<UIManager>();
         backStabCollider = GetComponentInChildren<CriticalDamageCollider>();
         playerInputManager = GetComponent<PlayerInputManager>();
         playerAnimatorManager = GetComponent<PlayerAnimatorManager>();

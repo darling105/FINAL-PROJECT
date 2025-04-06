@@ -26,7 +26,7 @@ public class EnemyAnimatorManager : CharacterAnimatorManager
 
             if (shadeCountBar != null)
             {
-                shadeCountBar.SetShadeCountText(playerStats.shadeCount);
+                shadeCountBar.SetShadeCountText(playerStats.currentShadesCount);
             }
         }
     }

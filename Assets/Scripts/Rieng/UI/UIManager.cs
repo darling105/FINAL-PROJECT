@@ -5,15 +5,19 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-   public PlayerInventoryManager playerInventory;
+   PlayerManager playerManager;
    public EquipmentWindowUI equipmentWindowUI;
    private QuickSlotsUI quickSlotsUI;
+
+   [Header("HUD")]
+   public Text shadesCount;
 
    [Header("UI Window")]
    public GameObject hudWindow;
    public GameObject selectWindow;
    public GameObject equipmentScreenWindow;
    public GameObject weaponInventoryWindow;
+   public GameObject levelUpWindow;
 
    [Header("Equipment Window Slot Selected")]
    public bool rightHandSlot01Selected;
@@ -29,28 +33,30 @@ public class UIManager : MonoBehaviour
    public void Awake()
    {
       quickSlotsUI = GetComponentInChildren<QuickSlotsUI>();
+      playerManager = FindObjectOfType<PlayerManager>();
    }
 
    private void Start()
    {
       weaponInventorySlots = weaponInventorySlotsParent.GetComponentsInChildren<WeaponInventorySlot>();
-      equipmentWindowUI.LoadWeaponsOnEquimentScreen(playerInventory);
-      quickSlotsUI.UpdateCurrentConsumableIcon(playerInventory.currentConsumable);
-      quickSlotsUI.UpdateCurrentSpellIcon(playerInventory.currentSpell);
+      equipmentWindowUI.LoadWeaponsOnEquimentScreen(playerManager.playerInventoryManager);
+      quickSlotsUI.UpdateCurrentConsumableIcon(playerManager.playerInventoryManager.currentConsumable);
+      quickSlotsUI.UpdateCurrentSpellIcon(playerManager.playerInventoryManager.currentSpell);
+      shadesCount.text = playerManager.playerStatsManager.currentShadesCount.ToString();
    }
    public void UpdateUI()
    {
       #region Weapon Inventory Slots
       for (int i = 0; i < weaponInventorySlots.Length; i++)
       {
-         if (i < playerInventory.weaponsInventory.Count)
+         if (i < playerManager.playerInventoryManager.weaponsInventory.Count)
          {
-            if (weaponInventorySlots.Length < playerInventory.weaponsInventory.Count)
+            if (weaponInventorySlots.Length < playerManager.playerInventoryManager.weaponsInventory.Count)
             {
                Instantiate(weaponInventorySlotPrefab, weaponInventorySlotsParent);
                weaponInventorySlots = weaponInventorySlotsParent.GetComponentsInChildren<WeaponInventorySlot>();
             }
-            weaponInventorySlots[i].AddItem(playerInventory.weaponsInventory[i]);
+            weaponInventorySlots[i].AddItem(playerManager.playerInventoryManager.weaponsInventory[i]);
          }
          else
          {

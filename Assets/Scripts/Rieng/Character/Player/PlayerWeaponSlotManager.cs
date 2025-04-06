@@ -13,8 +13,6 @@ public class PlayerWeaponSlotManager : CharacterWeaponSlotManager
     PlayerAnimatorManager playerAnimatorManager;
     PlayerCamera playerCamera;
 
-
-
     protected override void Awake()
     {
         base.Awake();
