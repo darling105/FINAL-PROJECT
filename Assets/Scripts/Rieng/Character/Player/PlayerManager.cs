@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Den.Tools.GUI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerManager : CharacterManager
 {
@@ -43,6 +44,11 @@ public class PlayerManager : CharacterManager
         playerLocomotion = GetComponent<PlayerLocomotionManager>();
         playerInventoryManager = GetComponent<PlayerInventoryManager>();
         interactableUI = FindObjectOfType<InteractableUI>();
+    }
+
+    private void Start()
+    {
+        WorldSaveGameManager.instance.playerManager = this;
     }
 
     void Update()
@@ -158,4 +164,21 @@ public class PlayerManager : CharacterManager
     }
 
     #endregion
+
+    public void SaveGameDataToCurrentCharacterData(ref CharacterSaveData currentCharacterData)
+    {
+        currentCharacterData.sceneIndex = SceneManager.GetActiveScene().buildIndex;
+        currentCharacterData.characterName = characterName;
+        currentCharacterData.xPosition = transform.position.x;
+        currentCharacterData.yPosition = transform.position.y;
+        currentCharacterData.zPosition = transform.position.z;
+    }
+
+    public void LoadGameDataFromCurrentCharacterData(ref CharacterSaveData currentCharacterData)
+    {
+        characterName = currentCharacterData.characterName;
+        Vector3 myPosition = new Vector3(currentCharacterData.xPosition, currentCharacterData.yPosition, currentCharacterData.zPosition);
+        transform.position = myPosition;
+    }
+
 }

@@ -35,6 +35,8 @@ public class CharacterManager : MonoBehaviour
 
    public int pendingCriticalDamage;
 
+   public string characterName = "Character";
+
    protected virtual void Awake()
    {
       characterAnimatorManager = GetComponent<CharacterAnimatorManager>();
