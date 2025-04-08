@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ad61a61412dbf4f438c93493e845fb32, type: 3}
-  m_Name: Fallen Knight's Faunlets
+  m_Name: Fallen Knight's Gaunlets
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
-  itemName: Fallen Knight's Faunlets
+  itemIcon: {fileID: 21300000, guid: e12da0c38f48e1046ae8196d810463a7, type: 3}
+  itemName: Fallen Knight's Gaunlets
   physicalDefense: 0
   leftHandModelName: Chr_HandLeft_Male_14
   rightHandModelName: Chr_HandRight_Male_14

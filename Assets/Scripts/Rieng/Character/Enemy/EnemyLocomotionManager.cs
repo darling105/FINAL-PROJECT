@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class EnemyLocomotionManager : MonoBehaviour
 {
-    EnemyManager enemyManager;
-    EnemyAnimatorManager enemyAnimatorManager;
+    EnemyManager enemy;
 
     public CapsuleCollider characterCollider;
     public CapsuleCollider characterCollisionBlockerCollider;
@@ -13,8 +12,7 @@ public class EnemyLocomotionManager : MonoBehaviour
 
     private void Awake()
     {
-        enemyManager = GetComponent<EnemyManager>();
-        enemyAnimatorManager = GetComponent<EnemyAnimatorManager>();
+        enemy = GetComponent<EnemyManager>();
     }
 
     private void Start()

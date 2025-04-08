@@ -6,44 +6,53 @@ using UnityEngine.SceneManagement;
 
 public class PlayerManager : CharacterManager
 {
-    PlayerCamera playerCamera;
-    Animator animator;
+    [Header("Camera")]
+    public PlayerCamera playerCamera;
+
+    [Header("Input")]
     public PlayerInputManager playerInputManager;
+
+    [Header("UI")]
     public UIManager uiManager;
+
+    [Header("Player")]
     public PlayerStatsManager playerStatsManager;
     public PlayerWeaponSlotManager playerWeaponSlotManager;
     public PlayerCombatManager playerCombatManager;
     public PlayerEffectsManager playerEffectsManager;
     public PlayerInventoryManager playerInventoryManager;
     public PlayerEquipmentManager playerEquipmentManager;
-
     public PlayerAnimatorManager playerAnimatorManager;
+    public PlayerLocomotionManager playerLocomotionManager;
 
+    [Header("Colliders")]
+    public BlockingCollider blockingCollider;
 
-    public PlayerLocomotionManager playerLocomotion;
-
+    [Header("Interactables")]
     InteractableUI interactableUI;
     public GameObject interactableUIGameObject;
     public GameObject itemInteractableGameObject;
 
     protected override void Awake()
     {
-        //instance = this;
         base.Awake();
         playerCamera = FindAnyObjectByType<PlayerCamera>();
         uiManager = FindObjectOfType<UIManager>();
-        backStabCollider = GetComponentInChildren<CriticalDamageCollider>();
+        interactableUI = FindObjectOfType<InteractableUI>();
         playerInputManager = GetComponent<PlayerInputManager>();
-        playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
         animator = GetComponent<Animator>();
+
+        backStabCollider = GetComponentInChildren<CriticalDamageCollider>();
+        blockingCollider = GetComponentInChildren<BlockingCollider>();
+
+        playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
         playerStatsManager = GetComponent<PlayerStatsManager>();
         playerWeaponSlotManager = GetComponent<PlayerWeaponSlotManager>();
         playerCombatManager = GetComponent<PlayerCombatManager>();
         playerEffectsManager = GetComponent<PlayerEffectsManager>();
         playerEquipmentManager = GetComponent<PlayerEquipmentManager>();
-        playerLocomotion = GetComponent<PlayerLocomotionManager>();
+        playerLocomotionManager = GetComponent<PlayerLocomotionManager>();
         playerInventoryManager = GetComponent<PlayerInventoryManager>();
-        interactableUI = FindObjectOfType<InteractableUI>();
     }
 
     private void Start()
@@ -57,16 +66,16 @@ public class PlayerManager : CharacterManager
 
         isInteracting = animator.GetBool("isInteracting");
         canDoCombo = animator.GetBool("canDoCombo");
+        canRotate = animator.GetBool("canRotate");
         isInvulnerable = animator.GetBool("isInvulnerable");
         animator.SetBool("isTwoHandingWeapon", isTwoHandingWeapon);
         animator.SetBool("isBlocking", isBlocking);
         animator.SetBool("isInAir", isInAir);
-        animator.SetBool("isDead", playerStatsManager.isDead);
+        animator.SetBool("isDead", isDead);
 
         playerInputManager.TickInput(delta);
-        playerAnimatorManager.canRotate = animator.GetBool("canRotate");
-        playerLocomotion.HandleRollingAndSprinting();
-        playerLocomotion.HandleJumping();
+        playerLocomotionManager.HandleRollingAndSprinting();
+        playerLocomotionManager.HandleJumping();
         playerStatsManager.RegenerateStanima();
 
         CheckForInteractableObject();
@@ -76,9 +85,9 @@ public class PlayerManager : CharacterManager
     {
         base.FixedUpdate();
         float delta = Time.fixedDeltaTime;
-        playerLocomotion.HandleMovement();
-        playerLocomotion.HandleFalling(playerLocomotion.moveDirection);
-        playerLocomotion.HandleRotation();
+        playerLocomotionManager.HandleMovement();
+        playerLocomotionManager.HandleFalling(playerLocomotionManager.moveDirection);
+        playerLocomotionManager.HandleRotation();
         playerEffectsManager.HandleAllBuildUpEffects();
     }
 
@@ -100,7 +109,7 @@ public class PlayerManager : CharacterManager
 
         if (isInAir)
         {
-            playerLocomotion.inAirTimer = playerLocomotion.inAirTimer + Time.deltaTime;
+            playerLocomotionManager.inAirTimer = playerLocomotionManager.inAirTimer + Time.deltaTime;
         }
 
     }
@@ -145,7 +154,7 @@ public class PlayerManager : CharacterManager
 
     public void OpenChestInteraction(Transform playerStandHereWhenOpenChest)
     {
-        playerLocomotion.rigidbody.velocity = Vector3.zero;
+        playerLocomotionManager.rigidbody.velocity = Vector3.zero;
         transform.position = playerStandHereWhenOpenChest.transform.position;
         playerAnimatorManager.PlayTargetAnimation("Open Chest", true);
 
@@ -153,7 +162,7 @@ public class PlayerManager : CharacterManager
 
     public void PassThroughFogWallInteraction(Transform fogWallEntrance)
     {
-        playerLocomotion.rigidbody.velocity = Vector3.zero;
+        playerLocomotionManager.rigidbody.velocity = Vector3.zero;
 
         Vector3 rotationDirection = fogWallEntrance.transform.forward;
         Quaternion turnRotation = Quaternion.LookRotation(rotationDirection);

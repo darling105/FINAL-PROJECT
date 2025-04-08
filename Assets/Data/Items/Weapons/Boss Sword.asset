@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71a4ad6d74deeb946abefa87e825c20a, type: 3}
   m_Name: Boss Sword
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 0e925a8e16d850c489a08b09f03025b6, type: 3}
   itemName: Boss_Sword_01
   modelPrefab: {fileID: 8806402179936019626, guid: e90aca3a551ab7246b0567d426e76670, type: 3}
   isUnarmed: 0
-  weaponController: {fileID: 0}
+  weaponController: {fileID: 22100000, guid: 44ef03ea5e1522942a9c32a3d280d55d, type: 2}
   offHandIdleAnimation: Left_Arm_Idle_01
   weaponType: 3
   physicalDamage: 50
@@ -31,3 +31,11 @@ MonoBehaviour:
   baseStamina: 20
   lightAttackMultiplier: 1
   heavyAttackMultiplier: 2
+  holdRBAction: {fileID: 11400000, guid: 3c9a9f81704f8f54081411000b52b148, type: 2}
+  tapRBAction: {fileID: 11400000, guid: ab96b338eea6c474a8bf9d00b7962f3b, type: 2}
+  holdLBAction: {fileID: 0}
+  tapLBAction: {fileID: 11400000, guid: ab96b338eea6c474a8bf9d00b7962f3b, type: 2}
+  holdRTAction: {fileID: 0}
+  tapRTAction: {fileID: 11400000, guid: 5f3144c18219dbe4b87df301de6ba747, type: 2}
+  holdLTAction: {fileID: 0}
+  tapLTAction: {fileID: 0}

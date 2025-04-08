@@ -4,26 +4,12 @@ using UnityEngine;
 
 public class PlayerWeaponSlotManager : CharacterWeaponSlotManager
 {
-    QuickSlotsUI quickSlotsUI;
-    PlayerManager playerManager;
-    PlayerInventoryManager playerInventoryManager;
-    PlayerStatsManager playerStatsManager;
-    PlayerInputManager playerInputManager;
-    PlayerEffectsManager playerEffectsManager;
-    PlayerAnimatorManager playerAnimatorManager;
-    PlayerCamera playerCamera;
+    PlayerManager player;
 
     protected override void Awake()
     {
         base.Awake();
-        playerCamera = FindObjectOfType<PlayerCamera>();
-        playerInputManager = GetComponent<PlayerInputManager>();
-        playerStatsManager = GetComponent<PlayerStatsManager>();
-        playerManager = GetComponent<PlayerManager>();
-        playerInventoryManager = GetComponent<PlayerInventoryManager>();
-        playerEffectsManager = GetComponent<PlayerEffectsManager>();
-        playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
-        quickSlotsUI = FindObjectOfType<QuickSlotsUI>();
+        player = GetComponent<PlayerManager>();
     }
 
     public override void LoadWeaponOnSlot(WeaponItem weaponItem, bool isLeft)
@@ -35,16 +21,16 @@ public class PlayerWeaponSlotManager : CharacterWeaponSlotManager
                 leftHandSlot.currentWeapon = weaponItem;
                 leftHandSlot.LoadWeaponModel(weaponItem);
                 LoadLeftWeaponDamageCollider();
-                quickSlotsUI.UpdateWeaponQuickSlotsUI(true, weaponItem);
-                playerAnimatorManager.PlayTargetAnimation(weaponItem.offHandIdleAnimation, false, true);
+                player.uiManager.quickSlotsUI.UpdateWeaponQuickSlotsUI(true, weaponItem);
+                player.playerAnimatorManager.PlayTargetAnimation(weaponItem.offHandIdleAnimation, false, true);
             }
             else
             {
-                if (playerInputManager.twoHandFlag)
+                if (player.playerInputManager.twoHandFlag)
                 {
                     backSlot.LoadWeaponModel(leftHandSlot.currentWeapon);
                     leftHandSlot.UnloadWeaponAndDestroy();
-                    playerAnimatorManager.PlayTargetAnimation("Left Arm Empty", false, true);
+                    player.playerAnimatorManager.PlayTargetAnimation("Left Arm Empty", false, true);
                 }
                 else
                 {
@@ -54,8 +40,8 @@ public class PlayerWeaponSlotManager : CharacterWeaponSlotManager
                 rightHandSlot.currentWeapon = weaponItem;
                 rightHandSlot.LoadWeaponModel(weaponItem);
                 LoadRightWeaponDamageCollider();
-                quickSlotsUI.UpdateWeaponQuickSlotsUI(false, weaponItem);
-                playerAnimatorManager.animator.runtimeAnimatorController = weaponItem.weaponController;
+                player.uiManager.quickSlotsUI.UpdateWeaponQuickSlotsUI(false, weaponItem);
+                player.animator.runtimeAnimatorController = weaponItem.weaponController;
             }
         }
         else
@@ -63,21 +49,21 @@ public class PlayerWeaponSlotManager : CharacterWeaponSlotManager
             weaponItem = unarmedWeapon;
             if (isLeft)
             {
-                playerInventoryManager.leftWeapon = unarmedWeapon;
+                player.playerInventoryManager.leftWeapon = unarmedWeapon;
                 leftHandSlot.currentWeapon = unarmedWeapon;
                 leftHandSlot.LoadWeaponModel(weaponItem);
                 LoadLeftWeaponDamageCollider();
-                quickSlotsUI.UpdateWeaponQuickSlotsUI(true, weaponItem);
-                playerAnimatorManager.PlayTargetAnimation(weaponItem.offHandIdleAnimation, false, true);
+                player.uiManager.quickSlotsUI.UpdateWeaponQuickSlotsUI(true, weaponItem);
+                player.playerAnimatorManager.PlayTargetAnimation(weaponItem.offHandIdleAnimation, false, true);
             }
             else
             {
-                playerInventoryManager.rightWeapon = unarmedWeapon;
+                player.playerInventoryManager.rightWeapon = unarmedWeapon;
                 rightHandSlot.currentWeapon = unarmedWeapon;
                 rightHandSlot.LoadWeaponModel(weaponItem);
                 LoadRightWeaponDamageCollider();
-                quickSlotsUI.UpdateWeaponQuickSlotsUI(false, weaponItem);
-                playerAnimatorManager.animator.runtimeAnimatorController = weaponItem.weaponController;
+                player.uiManager.quickSlotsUI.UpdateWeaponQuickSlotsUI(false, weaponItem);
+                player.animator.runtimeAnimatorController = weaponItem.weaponController;
             }
         }
 
@@ -85,19 +71,19 @@ public class PlayerWeaponSlotManager : CharacterWeaponSlotManager
 
     public void SuccessfullyThrowFireBomb()
     {
-        Destroy(playerEffectsManager.instantiatedFXModel);
-        BombConsumableItem fireBombItem = playerInventoryManager.currentConsumable as BombConsumableItem;
+        Destroy(player.playerEffectsManager.instantiatedFXModel);
+        BombConsumableItem fireBombItem = player.playerInventoryManager.currentConsumable as BombConsumableItem;
 
-        GameObject activeModelBomb = Instantiate(fireBombItem.liveBombModel, rightHandSlot.transform.position, playerCamera.cameraPivotTransform.rotation);
-        activeModelBomb.transform.rotation = Quaternion.Euler(playerCamera.cameraPivotTransform.eulerAngles.x, playerManager.lockOnTransform.eulerAngles.y, 0);
+        GameObject activeModelBomb = Instantiate(fireBombItem.liveBombModel, rightHandSlot.transform.position, player.playerCamera.cameraPivotTransform.rotation);
+        activeModelBomb.transform.rotation = Quaternion.Euler(player.playerCamera.cameraPivotTransform.eulerAngles.x, player.lockOnTransform.eulerAngles.y, 0);
         BombDamageCollider damageCollider = activeModelBomb.GetComponentInChildren<BombDamageCollider>();
 
         damageCollider.explosionDamage = fireBombItem.baseDamage;
         damageCollider.explosionSplashDamage = fireBombItem.explosiveDamage;
         damageCollider.bombRigidbody.AddForce(activeModelBomb.transform.forward * fireBombItem.forwardVelocity);
         damageCollider.bombRigidbody.AddForce(activeModelBomb.transform.up * fireBombItem.upwardVelocity);
-        damageCollider.teamIDNumber = playerStatsManager.teamIDNumber;
-        LoadWeaponOnSlot(playerInventoryManager.rightWeapon, false);
+        damageCollider.teamIDNumber = player.playerStatsManager.teamIDNumber;
+        LoadWeaponOnSlot(player.playerInventoryManager.rightWeapon, false);
         //tinhs dame vaof nguowif minhf 
     }
 

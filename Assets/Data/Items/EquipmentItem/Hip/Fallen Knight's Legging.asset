@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89f1c3dac5f541e47958041803a33341, type: 3}
   m_Name: Fallen Knight's Legging
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: e98416b47b0244a48ae04c3d7e2cfcf0, type: 3}
   itemName: Fallen Knight's Legging
   physicalDefense: 0
   hipModelName: Male_Hips_06

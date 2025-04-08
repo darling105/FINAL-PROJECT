@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class EnemyAnimatorManager : CharacterAnimatorManager
 {
-    EnemyManager enemyManager;
-    EnemyBossManager enemyBossManager;
+    EnemyManager enemy;
 
     protected override void Awake()
     {
         base.Awake();
-        animator = GetComponent<Animator>();
-        enemyManager = GetComponent<EnemyManager>();
-        enemyBossManager = GetComponent<EnemyBossManager>();
+        enemy = GetComponent<EnemyManager>();
     }
 
     public void AwardShadesOnDeath()
@@ -22,7 +19,7 @@ public class EnemyAnimatorManager : CharacterAnimatorManager
 
         if (playerStats != null)
         {
-            playerStats.AddShades(characterStatsManager.shadesAwardedOnDeath);
+            playerStats.AddShades(enemy.enemyStatsManager.shadesAwardedOnDeath);
 
             if (shadeCountBar != null)
             {
@@ -34,21 +31,21 @@ public class EnemyAnimatorManager : CharacterAnimatorManager
     public void InstantiateBossParticleFX()
     {
         BossFXTransform bossFXTransform = GetComponentInChildren<BossFXTransform>();
-        GameObject phaseFX = Instantiate(enemyBossManager.particleFX, bossFXTransform.transform);
+        GameObject phaseFX = Instantiate(enemy.enemyBossManager.particleFX, bossFXTransform.transform);
     }
 
     private void OnAnimatorMove()
     {
         float delta = Time.deltaTime;
-        enemyManager.enemyRigidbody.drag = 0;
-        Vector3 deltaPosition = animator.deltaPosition;
+        enemy.enemyRigidbody.drag = 0;
+        Vector3 deltaPosition = enemy.animator.deltaPosition;
         deltaPosition.y = 0;
         Vector3 velocity = deltaPosition / delta;
-        enemyManager.enemyRigidbody.velocity = velocity;
+        enemy.enemyRigidbody.velocity = velocity;
 
-        if (enemyManager.isRotatingWithRootMotion)
+        if (enemy.isRotatingWithRootMotion)
         {
-            enemyManager.transform.rotation *= animator.deltaRotation;
+            enemy.transform.rotation *= enemy.animator.deltaRotation;
         }
     }
 

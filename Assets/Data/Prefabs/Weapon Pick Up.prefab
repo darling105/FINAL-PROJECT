@@ -4867,4 +4867,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 0.6
   interactableText: Pick Up Item
-  weapon: {fileID: 11400000, guid: 78aeff6faba875544b543a157afa33a0, type: 2}
+  weapon: {fileID: 11400000, guid: 987c8d7b9becc0a40a2a295d618858ba, type: 2}

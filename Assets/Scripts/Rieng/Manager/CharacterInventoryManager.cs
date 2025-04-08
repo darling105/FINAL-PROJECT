@@ -18,7 +18,7 @@ public class CharacterInventoryManager : MonoBehaviour
 
     [Header("Current Equipment")]
     public HelmetEquipment currentHelmetEquipment;
-    public TorsoEquipment currentTorsoEquipment;
+    public BodyEquipment currentBodyEquipment;
     public LegEquipment currentLegEquipment;
     public HandEquipment currentHandEquipment;
 
@@ -35,7 +35,6 @@ public class CharacterInventoryManager : MonoBehaviour
     }
     private void Start()
     {
-        characterWeaponSlotManager.LoadBothWeaponOnSlot();
         characterWeaponSlotManager.LoadBothWeaponOnSlot();
     }
 }

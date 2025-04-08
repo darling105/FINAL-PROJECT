@@ -16,7 +16,7 @@ public class LightAttackAction : ItemAction
         if (player.canDoCombo)
         {
             player.playerInputManager.comboFlag = true;
-            HandleWeaponCombo(player);
+            HandleLightWeaponCombo(player);
             player.playerInputManager.comboFlag = false;
         }
         else
@@ -54,12 +54,12 @@ public class LightAttackAction : ItemAction
         }
     }
 
-    public void HandleWeaponCombo(PlayerManager player)
+    public void HandleLightWeaponCombo(PlayerManager player)
     {
 
         if (player.playerInputManager.comboFlag)
         {
-            player.playerAnimatorManager.animator.SetBool("canDoCombo", false);
+            player.animator.SetBool("canDoCombo", false);
 
             if (player.isUsingLeftHand)
             {

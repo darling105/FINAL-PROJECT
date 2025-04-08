@@ -4,14 +4,9 @@ using UnityEngine;
 
 public class PlayerLocomotionManager : MonoBehaviour
 {
-    PlayerCamera playerCamera;
-    PlayerManager playerManager;
-    PlayerStatsManager playerStatsManager;
-    PlayerInputManager playerInputManager;
-    Transform cameraObject;
+    PlayerManager player;
     public Vector3 moveDirection;
     [HideInInspector] public float moveAmount;
-    [HideInInspector] public PlayerAnimatorManager playerAnimatorManager;
 
     [Header("Ground And Air Detection Settings")]
     [SerializeField] float groundDetectionRayStartPoint = 0.5f;
@@ -21,7 +16,6 @@ public class PlayerLocomotionManager : MonoBehaviour
     public float inAirTimer;
 
     [Header("Movement Settings")]
-    [HideInInspector] public Transform myTransform;
     public new Rigidbody rigidbody;
     public GameObject normalCamera;
     [SerializeField] float movementSpeed = 5;
@@ -37,41 +31,37 @@ public class PlayerLocomotionManager : MonoBehaviour
     [SerializeField] int backstepStaminaCost = 12;
     [SerializeField] int sprintStaminaCost = 1;
 
+    Vector3 normalVector;
+    Vector3 targetPosition;
+
     public CapsuleCollider characterCollider;
     public CapsuleCollider characterCollisionBlockerCollider;
 
     private void Awake()
     {
-        playerCamera = FindObjectOfType<PlayerCamera>();
-        playerManager = GetComponent<PlayerManager>();
-        playerStatsManager = GetComponent<PlayerStatsManager>();
+        player = GetComponent<PlayerManager>();
         rigidbody = GetComponent<Rigidbody>();
-        playerInputManager = GetComponent<PlayerInputManager>();
-        playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
     }
 
     void Start()
     {
-        cameraObject = Camera.main.transform;
-        myTransform = transform;
-        playerManager.isGrounded = true;
+        player.isGrounded = true;
         Physics.IgnoreCollision(characterCollider, characterCollisionBlockerCollider, true);
     }
 
     #region Movement
-    Vector3 normalVector;
-    Vector3 targetPosition;
+
     public void HandleRotation()
     {
-        if (playerAnimatorManager.canRotate)
+        if (player.canRotate)
         {
-            if (playerInputManager.lockOnFlag)
+            if (player.playerInputManager.lockOnFlag)
             {
-                if (playerInputManager.sprintFlag || playerInputManager.rollFlag)
+                if (player.playerInputManager.sprintFlag || player.playerInputManager.rollFlag)
                 {
                     Vector3 targetDirection = Vector3.zero;
-                    targetDirection = playerCamera.cameraTransform.forward * playerInputManager.verticalInput;
-                    targetDirection += playerCamera.cameraTransform.right * playerInputManager.horizontalInput;
+                    targetDirection = player.playerCamera.cameraTransform.forward * player.playerInputManager.verticalInput;
+                    targetDirection += player.playerCamera.cameraTransform.right * player.playerInputManager.horizontalInput;
                     targetDirection.Normalize();
                     targetDirection.y = 0;
 
@@ -88,7 +78,7 @@ public class PlayerLocomotionManager : MonoBehaviour
                 else
                 {
                     Vector3 rotationDirection = moveDirection;
-                    rotationDirection = playerCamera.currentLockOnTarget.transform.position - transform.position;
+                    rotationDirection = player.playerCamera.currentLockOnTarget.transform.position - transform.position;
                     rotationDirection.y = 0;
                     rotationDirection.Normalize();
                     Quaternion tr = Quaternion.LookRotation(rotationDirection);
@@ -98,116 +88,119 @@ public class PlayerLocomotionManager : MonoBehaviour
             }
             else
             {
-                Vector3 targetRotationDirection = Vector3.zero;
-                float moveOverride = playerInputManager.moveAmount;
+                Vector3 targetDir = Vector3.zero;
+                float moveOverride = player.playerInputManager.moveAmount;
 
-                targetRotationDirection = cameraObject.forward * playerInputManager.verticalInput;
-                targetRotationDirection += cameraObject.right * playerInputManager.horizontalInput;
+                targetDir = player.playerCamera.cameraObject.transform.forward * player.playerInputManager.verticalInput;
+                targetDir += player.playerCamera.cameraObject.transform.right * player.playerInputManager.horizontalInput;
 
-                targetRotationDirection.Normalize();
-                targetRotationDirection.y = 0;
+                targetDir.Normalize();
+                targetDir.y = 0;
 
-                if (targetRotationDirection == Vector3.zero)
+                if (targetDir == Vector3.zero)
                 {
-                    targetRotationDirection = myTransform.forward;
+                    targetDir = player.transform.forward;
                 }
 
-                Quaternion newRotation = Quaternion.LookRotation(targetRotationDirection);
-                Quaternion targetRotation = Quaternion.Slerp(myTransform.rotation, newRotation, rotationSpeed * Time.deltaTime);
-                myTransform.rotation = targetRotation;
+                Quaternion newRotation = Quaternion.LookRotation(targetDir);
+                Quaternion targetRotation = Quaternion.Slerp(player.transform.rotation, newRotation, rotationSpeed * Time.deltaTime);
+                player.transform.rotation = targetRotation;
             }
         }
     }
+    
     public void HandleMovement()
     {
 
-        if (playerInputManager.rollFlag)
+        if (player.playerInputManager.rollFlag)
             return;
 
-        if (playerManager.isInteracting)
+        if (player.isInteracting)
             return;
 
-        moveDirection = cameraObject.forward * playerInputManager.verticalInput;
-        moveDirection += cameraObject.right * playerInputManager.horizontalInput;
+        moveDirection = player.playerCamera.cameraObject.transform.forward * player.playerInputManager.verticalInput;
+        moveDirection += player.playerCamera.cameraObject.transform.right * player.playerInputManager.horizontalInput;
         moveDirection.Normalize();
         moveDirection.y = 0;
 
         float speed = movementSpeed;
 
-        if (playerInputManager.sprintFlag && playerInputManager.moveAmount > 0.5)
+        if (player.playerInputManager.sprintFlag && player.playerInputManager.moveAmount > 0.5)
         {
             speed = sprintSpeed;
-            playerManager.isSprinting = true;
+            player.isSprinting = true;
             moveDirection *= speed;
-            playerStatsManager.TakeStaminaDamage(sprintStaminaCost);
+            player.playerStatsManager.TakeStaminaDamage(sprintStaminaCost);
         }
         else
         {
-            if (playerInputManager.moveAmount < 0.5)
+            if (player.playerInputManager.moveAmount < 0.5)
             {
                 moveDirection *= walkingSpeed;
-                playerManager.isSprinting = false;
+                player.isSprinting = false;
             }
             else
             {
                 moveDirection *= speed;
-                playerManager.isSprinting = false;
+                player.isSprinting = false;
             }
         }
 
         Vector3 projectedVelocity = Vector3.ProjectOnPlane(moveDirection, normalVector);
         rigidbody.velocity = projectedVelocity;
-        if (playerInputManager.lockOnFlag && playerInputManager.sprintFlag == false)
+        if (player.playerInputManager.lockOnFlag && player.playerInputManager.sprintFlag == false)
         {
-            playerAnimatorManager.UpdateAnimatorValues(playerInputManager.verticalInput, playerInputManager.horizontalInput, playerManager.isSprinting);
+            player.playerAnimatorManager.UpdateAnimatorValues(player.playerInputManager.verticalInput, player.playerInputManager.horizontalInput, player.isSprinting);
         }
         else
         {
-            playerAnimatorManager.UpdateAnimatorValues(playerInputManager.moveAmount, 0, playerManager.isSprinting);
+            player.playerAnimatorManager.UpdateAnimatorValues(player.playerInputManager.moveAmount, 0, player.isSprinting);
         }
     }
+    
     public void HandleRollingAndSprinting()
     {
-        if (playerAnimatorManager.animator.GetBool("isInteracting"))
+        if (player.animator.GetBool("isInteracting"))
             return;
 
-        if (playerStatsManager.currentStamina <= 0)
+        if (player.playerStatsManager.currentStamina <= 0)
             return;
 
-        if (playerInputManager.rollFlag)
+        if (player.playerInputManager.rollFlag)
         {
-            playerInputManager.rollFlag = false;
-            moveDirection = cameraObject.forward * playerInputManager.verticalInput;
-            moveDirection += cameraObject.right * playerInputManager.horizontalInput;
+            player.playerInputManager.rollFlag = false;
+            moveDirection = player.playerCamera.cameraObject.transform.forward * player.playerInputManager.verticalInput;
+            moveDirection += player.playerCamera.cameraObject.transform.right * player.playerInputManager.horizontalInput;
 
-            if (playerInputManager.moveAmount > 0)
+            if (player.playerInputManager.moveAmount > 0)
             {
-                playerAnimatorManager.PlayTargetAnimation("Rolling", true);
-                playerAnimatorManager.EraseHandIKForWeapon();
+                player.playerAnimatorManager.PlayTargetAnimation("Rolling", true);
+                player.playerAnimatorManager.EraseHandIKForWeapon();
                 moveDirection.y = 0;
                 Quaternion rollRotation = Quaternion.LookRotation(moveDirection);
-                myTransform.rotation = rollRotation;
-                playerStatsManager.TakeStaminaDamage(rollStaminaCost);
+                player.transform.rotation = rollRotation;
+                player.playerStatsManager.TakeStaminaDamage(rollStaminaCost);
             }
             else
             {
-                playerAnimatorManager.PlayTargetAnimation("Backstep", true);
-                playerStatsManager.TakeStaminaDamage(backstepStaminaCost);
+                player.playerAnimatorManager.PlayTargetAnimation("Backstep", true);
+                player.playerStatsManager.TakeStaminaDamage(backstepStaminaCost);
             }
         }
     }
+    
     public void HandleFalling(Vector3 moveDirection)
     {
-        playerManager.isGrounded = false;
+        player.isGrounded = false;
         RaycastHit hit;
-        Vector3 origin = myTransform.position;
+        Vector3 origin = player.transform.position;
         origin.y += groundDetectionRayStartPoint;
 
-        if (Physics.Raycast(origin, myTransform.forward, out hit, 0.4f))
+        if (Physics.Raycast(origin, player.transform.forward, out hit, 0.4f))
         {
             moveDirection = Vector3.zero;
         }
-        if (playerManager.isInAir)
+        if (player.isInAir)
         {
             rigidbody.AddForce(-Vector3.up * fallingSpeed);
             rigidbody.AddForce(moveDirection * fallingSpeed / 10f);
@@ -217,86 +210,87 @@ public class PlayerLocomotionManager : MonoBehaviour
         dir.Normalize();
         origin = origin + dir * groundDirectionRayDistance;
 
-        targetPosition = myTransform.position;
+        targetPosition = player.transform.position;
 
         Debug.DrawRay(origin, -Vector3.up * minimumDistanceNeededToBeginFall, Color.red, 0.1f, false);
         if (Physics.Raycast(origin, -Vector3.up, out hit, minimumDistanceNeededToBeginFall, groundCheck))
         {
             normalVector = hit.normal;
             Vector3 tp = hit.point;
-            playerManager.isGrounded = true;
+            player.isGrounded = true;
             targetPosition.y = tp.y;
 
-            if (playerManager.isInAir)
+            if (player.isInAir)
             {
                 if (inAirTimer > 0.5f)
                 {
                     Debug.LogWarning("Thuoc than ki cho " + inAirTimer);
-                    playerAnimatorManager.PlayTargetAnimation("Land", true);
+                    player.playerAnimatorManager.PlayTargetAnimation("Land", true);
                     inAirTimer = 0;
 
                 }
                 else
                 {
-                    playerAnimatorManager.PlayTargetAnimation("Empty", true);
+                    player.playerAnimatorManager.PlayTargetAnimation("Empty", true);
                     inAirTimer = 0;
                 }
 
-                playerManager.isInAir = false;
+                player.isInAir = false;
             }
         }
         else
         {
-            if (playerManager.isGrounded)
+            if (player.isGrounded)
             {
-                playerManager.isGrounded = false;
+                player.isGrounded = false;
             }
 
-            if (playerManager.isInAir == false)
+            if (player.isInAir == false)
             {
-                if (playerManager.isInteracting == false)
+                if (player.isInteracting == false)
                 {
-                    playerAnimatorManager.PlayTargetAnimation("Falling", true);
+                    player.playerAnimatorManager.PlayTargetAnimation("Falling", true);
                 }
 
                 Vector3 vel = rigidbody.velocity;
                 vel.Normalize();
                 rigidbody.velocity = vel * (movementSpeed / 2);
-                playerManager.isInAir = true;
+                player.isInAir = true;
             }
         }
-        if (playerManager.isInteracting || playerInputManager.moveAmount > 0)
+        if (player.isInteracting || player.playerInputManager.moveAmount > 0)
         {
-            myTransform.position = Vector3.Lerp(myTransform.position, targetPosition, Time.deltaTime / 0.1f);
+            player.transform.position = Vector3.Lerp(player.transform.position, targetPosition, Time.deltaTime / 0.1f);
         }
         else
         {
-            myTransform.position = targetPosition;
+            player.transform.position = targetPosition;
         }
     }
+    
     public void HandleJumping()
     {
-        if (playerManager.isInteracting)
+        if (player.isInteracting)
             return;
 
-        if (playerStatsManager.currentStamina <= 0)
+        if (player.playerStatsManager.currentStamina <= 0)
             return;
 
-        if (playerInputManager.jumpInput)
+        if (player.playerInputManager.jumpInput)
         {
 
-            moveDirection = cameraObject.forward * playerInputManager.verticalInput;
-            moveDirection += cameraObject.right * playerInputManager.horizontalInput;
+            moveDirection = player.playerCamera.cameraObject.transform.forward * player.playerInputManager.verticalInput;
+            moveDirection += player.playerCamera.cameraObject.transform.right * player.playerInputManager.horizontalInput;
             moveDirection.y = 0;
             moveDirection.Normalize();
 
-            if (playerInputManager.moveAmount > 0)
+            if (player.playerInputManager.moveAmount > 0)
             {
 
-                playerAnimatorManager.EraseHandIKForWeapon();
-                playerAnimatorManager.PlayTargetAnimation("Jump", true);
+                player.playerAnimatorManager.EraseHandIKForWeapon();
+                player.playerAnimatorManager.PlayTargetAnimation("Jump", true);
                 Quaternion jumpRotation = Quaternion.LookRotation(moveDirection);
-                myTransform.rotation = jumpRotation;
+                player.transform.rotation = jumpRotation;
 
                 Vector3 jumpVelocity = moveDirection * jumpForwardMultiplier;
                 jumpVelocity.y = jumpHeight;
@@ -304,13 +298,13 @@ public class PlayerLocomotionManager : MonoBehaviour
                 // Apply to Rigidbody (make sure you have a reference to it)
                 rigidbody.velocity = jumpVelocity;
             }
-             else
-        {
-            // Vertical jump if no movement input
-            playerAnimatorManager.PlayTargetAnimation("Jump", true);
-            Vector3 jumpVelocity = new Vector3(0, jumpHeight, 0);
-            rigidbody.velocity = jumpVelocity;
-        }
+            else
+            {
+                // Vertical jump if no movement input
+                player.playerAnimatorManager.PlayTargetAnimation("Jump", true);
+                Vector3 jumpVelocity = new Vector3(0, jumpHeight, 0);
+                rigidbody.velocity = jumpVelocity;
+            }
         }
     }
 

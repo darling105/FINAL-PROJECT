@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad61a61412dbf4f438c93493e845fb32, type: 3}
   m_Name: Knight's Gaunlets
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 8911fe831f210ee4695e73904bd88a0a, type: 3}
   itemName: Knight's Gaunlets
   physicalDefense: 11
   leftHandModelName: Chr_HandLeft_Male_14

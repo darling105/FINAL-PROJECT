@@ -10,6 +10,7 @@ public class PlayerCamera : MonoBehaviour
     PlayerManager playerManager;
     public Transform targetTransform;
     public Transform cameraTransform;
+    public Camera cameraObject;
     public Transform cameraPivotTransform;
     private Transform myTransform;
     private Vector3 cameraTransformPosition;

@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class PlayerEffectsManager : CharacterEffectsManager
 {
-    PlayerStatsManager playerStatsManager;
-    PlayerWeaponSlotManager playerWeaponSlotManager;
+    PlayerManager player;
 
     PoisonBuildUpBar poisonBuildUpBar;
     PoisonAmountBar poisonAmountBar;
@@ -17,8 +16,7 @@ public class PlayerEffectsManager : CharacterEffectsManager
     protected override void Awake()
     {
         base.Awake();
-        playerStatsManager = GetComponentInParent<PlayerStatsManager>();
-        playerWeaponSlotManager = GetComponent<PlayerWeaponSlotManager>();
+        player = GetComponent<PlayerManager>();
 
         poisonBuildUpBar = FindObjectOfType<PoisonBuildUpBar>();
         poisonAmountBar = FindObjectOfType<PoisonAmountBar>();
@@ -26,17 +24,17 @@ public class PlayerEffectsManager : CharacterEffectsManager
 
     public void HealPlayerFromEffect()
     {
-        playerStatsManager.HealPlayer(amountToBeHealed);
-        GameObject healParticles = Instantiate(currentParticleFX, playerStatsManager.transform);
+        player.playerStatsManager.HealPlayer(amountToBeHealed);
+        GameObject healParticles = Instantiate(currentParticleFX, player.playerStatsManager.transform);
         Destroy(instantiatedFXModel.gameObject, 1);
         StartCoroutine(DelayLoadWeapons());
     }
     private IEnumerator DelayLoadWeapons()
     {
         yield return new WaitForSeconds(1f);
-        if (playerWeaponSlotManager != null)
+        if (player.playerWeaponSlotManager != null)
         {
-            playerWeaponSlotManager.LoadBothWeaponOnSlot();
+            player.playerWeaponSlotManager.LoadBothWeaponOnSlot();
         }
     }
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HandEquipmentSlotUI : MonoBehaviour
+public class WeaponEquipmentSlotUI : MonoBehaviour
 {
     UIManager uiManager;
     public Image icon;
@@ -21,16 +21,19 @@ public class HandEquipmentSlotUI : MonoBehaviour
 
     public void AddItem(WeaponItem newItem)
     {
-        if (newItem == null)
-            return;
+        if (newItem != null)
+        {
+            weapon = newItem;
+            icon.sprite = weapon.itemIcon;
+            icon.enabled = true;
+            gameObject.SetActive(true);
+        }
+        else
+        {
+            ClearItem();
+        }
 
-        if (icon == null)
-            return;
 
-        weapon = newItem;
-        icon.sprite = weapon.itemIcon;
-        icon.enabled = true;
-        gameObject.SetActive(true);
     }
 
     public void ClearItem()
@@ -38,7 +41,6 @@ public class HandEquipmentSlotUI : MonoBehaviour
         weapon = null;
         icon.sprite = null;
         icon.enabled = false;
-        gameObject.SetActive(false);
     }
 
     public void SelectThisSlot()

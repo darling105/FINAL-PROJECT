@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f9a7381e3276d6478b67276bf39eaed, type: 3}
   m_Name: Fallen Knight's Helmet
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: d6f47efd54d9fa04fb6427ac89997c67, type: 3}
   itemName: Fallen Knight's Helmet
-  physicalDefense: 0
+  physicalDefense: 35
   helmetModelName: Male_Helmet_06

@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class EnemyStatsManager : CharacterStatsManager
 {
-    EnemyAnimatorManager enemyAnimatorManager;
-    EnemyBossManager enemyBossManager;
+    EnemyManager enemy;
     public UIEnemyHealthBar enemyHealthBar;
 
     public bool isBoss;
@@ -13,8 +12,7 @@ public class EnemyStatsManager : CharacterStatsManager
     protected override void Awake()
     {
         base.Awake();
-        enemyAnimatorManager = GetComponent<EnemyAnimatorManager>();
-        enemyBossManager = GetComponent<EnemyBossManager>();
+        enemy = GetComponent<EnemyManager>();
         maxHealth = SetMaxHealthFromHealthLevel();
         currentHealth = maxHealth;
     }
@@ -41,15 +39,15 @@ public class EnemyStatsManager : CharacterStatsManager
         {
             enemyHealthBar.SetHealth(currentHealth);
         }
-        else if (isBoss && enemyBossManager != null)
+        else if (isBoss && enemy.enemyBossManager != null)
         {
-            enemyBossManager.UpdateBossHealthBar(currentHealth, maxHealth);
+            enemy.enemyBossManager.UpdateBossHealthBar(currentHealth, maxHealth);
         }
     }
 
     public void BreakGuard()
     {
-        enemyAnimatorManager.PlayTargetAnimation("Break_Guard", true);
+        enemy.enemyAnimatorManager.PlayTargetAnimation("Break_Guard", true);
     }
 
     public override void TakeDamage(int physicalDamage, int fireDamage, string damageAnimation)
@@ -61,12 +59,12 @@ public class EnemyStatsManager : CharacterStatsManager
         {
             enemyHealthBar.SetHealth(currentHealth);
         }
-        else if (isBoss && enemyBossManager != null)
+        else if (isBoss && enemy.enemyBossManager != null)
         {
-            enemyBossManager.UpdateBossHealthBar(currentHealth, maxHealth);
+            enemy.enemyBossManager.UpdateBossHealthBar(currentHealth, maxHealth);
         }
 
-        enemyAnimatorManager.PlayTargetAnimation(damageAnimation, true);
+        enemy.enemyAnimatorManager.PlayTargetAnimation(damageAnimation, true);
 
         if (currentHealth <= 0)
         {
@@ -77,7 +75,7 @@ public class EnemyStatsManager : CharacterStatsManager
 
     public override void TakePoisonDamage(int damage)
     {
-        if (isDead)
+        if (enemy.isDead)
             return;
 
         base.TakePoisonDamage(damage);
@@ -86,24 +84,24 @@ public class EnemyStatsManager : CharacterStatsManager
         {
             enemyHealthBar.SetHealth(currentHealth);
         }
-        else if (isBoss && enemyBossManager != null)
+        else if (isBoss && enemy.enemyBossManager != null)
         {
-            enemyBossManager.UpdateBossHealthBar(currentHealth, maxHealth);
+            enemy.enemyBossManager.UpdateBossHealthBar(currentHealth, maxHealth);
         }
 
         if (currentHealth <= 0)
         {
             currentHealth = 0;
-            isDead = true;
-            enemyAnimatorManager.PlayTargetAnimation("Death_01", true);
+            enemy.isDead = true;
+            enemy.enemyAnimatorManager.PlayTargetAnimation("Death_01", true);
         }
     }
 
     private void HandleDead()
     {
         currentHealth = 0;
-        isDead = true;
-        enemyAnimatorManager.PlayTargetAnimation("Death_01", true);
+        enemy.enemyAnimatorManager.PlayTargetAnimation("Death_01", true);
+        enemy.isDead = true;
 
     }
 

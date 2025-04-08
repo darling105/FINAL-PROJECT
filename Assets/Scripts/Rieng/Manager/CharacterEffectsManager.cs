@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class CharacterEffectsManager : MonoBehaviour
 {
-    CharacterStatsManager characterStatsManager;
+    CharacterManager character;
     [Header("Damage FX")]
     public GameObject bloodSplatterFX;
 
@@ -27,7 +27,7 @@ public class CharacterEffectsManager : MonoBehaviour
 
     protected virtual void Awake()
     {
-        characterStatsManager = GetComponent<CharacterStatsManager>();
+        character = GetComponent<CharacterManager>();
     }
 
     public virtual void PlayWeaponEffect(bool isLeft)
@@ -55,7 +55,7 @@ public class CharacterEffectsManager : MonoBehaviour
 
     public virtual void HandleAllBuildUpEffects()
     {
-        if (characterStatsManager.isDead)
+        if (character.isDead)
             return;
 
         HandlePoisonBuildUp();
@@ -76,13 +76,13 @@ public class CharacterEffectsManager : MonoBehaviour
             isPoisoned = true;
             poisonBuildup = 0;
 
-            if(buildUpTransform != null)
+            if (buildUpTransform != null)
             {
                 currentPoisonParticleFX = Instantiate(defaultPoisonParticleFX, buildUpTransform.transform);
             }
             else
             {
-                currentPoisonParticleFX = Instantiate(defaultPoisonParticleFX, characterStatsManager.transform);
+                currentPoisonParticleFX = Instantiate(defaultPoisonParticleFX, character.transform);
             }
         }
     }
@@ -97,7 +97,7 @@ public class CharacterEffectsManager : MonoBehaviour
 
                 if (timer >= poisonTimer)
                 {
-                    characterStatsManager.TakePoisonDamage(poisonDamage);
+                    character.characterStatsManager.TakePoisonDamage(poisonDamage);
                     timer = 0;
                 }
 

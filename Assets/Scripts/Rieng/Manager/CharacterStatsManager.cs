@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CharacterStatsManager : MonoBehaviour
 {
-    CharacterAnimatorManager characterAnimatorManager;
+    CharacterManager character;
     [Header("Team I.D")]
     public int teamIDNumber = 0;
     public int maxHealth;
@@ -71,11 +71,9 @@ public class CharacterStatsManager : MonoBehaviour
     //Magic
     //Dark
 
-    public bool isDead;
-
     protected virtual void Awake()
     {
-        characterAnimatorManager = GetComponent<CharacterAnimatorManager>();
+        character = GetComponent<CharacterManager>();
     }
 
     protected virtual void Update()
@@ -110,10 +108,10 @@ public class CharacterStatsManager : MonoBehaviour
 
     public virtual void TakeDamage(int physicalDamage, int fireDamage, string damageAnimation)
     {
-        if (isDead)
+        if (character.isDead)
             return;
 
-        characterAnimatorManager.EraseHandIKForWeapon();
+        character.characterAnimatorManager.EraseHandIKForWeapon();
         //PHYSIC
 
         float totalPhysicalDamageAbsorption = 1 -
@@ -142,13 +140,13 @@ public class CharacterStatsManager : MonoBehaviour
         if (currentHealth <= 0)
         {
             currentHealth = 0;
-            isDead = true;
+            character.isDead = true;
         }
     }
 
     public virtual void TakeDamageNoAnimation(int physicalDamage, int fireDamage)
     {
-        if (isDead)
+        if (character.isDead)
             return;
 
         //PHYSIC
@@ -178,7 +176,7 @@ public class CharacterStatsManager : MonoBehaviour
         if (currentHealth <= 0)
         {
             currentHealth = 0;
-            isDead = true;
+            character.isDead = true;
         }
     }
 
@@ -189,7 +187,7 @@ public class CharacterStatsManager : MonoBehaviour
         if (currentHealth <= 0)
         {
             currentHealth = 0;
-            isDead = true;
+            character.isDead = true;
         }
     }
 

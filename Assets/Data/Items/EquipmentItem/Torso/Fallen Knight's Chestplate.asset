@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77467fed27d105a49bbef59154aee218, type: 3}
   m_Name: Fallen Knight's Chestplate
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 53de8fe063d790a49b7656c97d0e6708, type: 3}
   itemName: Fallen Knight's Chestplate
   physicalDefense: 0
   torsoModelName: Male_Torso_26
