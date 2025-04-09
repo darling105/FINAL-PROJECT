@@ -161,7 +161,16 @@
                     "id": "e0b0b6cc-817f-4d95-ac6e-f71101e60ca9",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Tap",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Hold RT",
+                    "type": "PassThrough",
+                    "id": "64519743-b6c6-46ae-b8ea-4e17368bc4d0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Hold",
                     "initialStateCheck": false
                 },
                 {
@@ -462,6 +471,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "HoldLB",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bb645e38-d0cb-4ac4-b4b5-cde78fef0974",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Hold RT",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

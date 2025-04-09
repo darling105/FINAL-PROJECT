@@ -73,7 +73,7 @@ public class PlayerManager : CharacterManager
         animator.SetBool("isInAir", isInAir);
         animator.SetBool("isDead", isDead);
 
-        playerInputManager.TickInput(delta);
+        playerInputManager.TickInput();
         playerLocomotionManager.HandleRollingAndSprinting();
         playerLocomotionManager.HandleJumping();
         playerStatsManager.RegenerateStanima();
@@ -100,6 +100,7 @@ public class PlayerManager : CharacterManager
         playerInputManager.aInput = false;
         playerInputManager.jumpInput = false;
         playerInputManager.inventoryInput = false;
+        //playerInputManager.holdLBInput = false;
 
         if (playerCamera != null)
         {

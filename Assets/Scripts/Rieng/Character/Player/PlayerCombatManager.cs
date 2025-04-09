@@ -9,10 +9,14 @@ public class PlayerCombatManager : MonoBehaviour
     [Header("Attack Animations")]
     public string oh_light_attack_01 = "OH_Light_Attack_01";
     public string oh_light_attack_02 = "OH_Light_Attack_02";
+    public string oh_charging_attack_01 = "OH_Charging_Attack_Charge_01";
+    public string oh_charging_attack_02 = "OH_Charging_Attack_Charge_02";
 
     public string th_light_attack_01 = "TH_Light_Attack_01";
     public string th_light_attack_02 = "TH_Light_Attack_02";
     public string th_light_attack_03 = "TH_Light_Attack_03";
+    public string th_charging_attack_01 = "TH_Charging_Attack_Charge_01";
+    public string th_charging_attack_02 = "TH_Charging_Attack_Charge_02";
 
     public string oh_heavy_attack_01 = "OH_Heavy_Attack_01";
     public string th_heavy_attack_01 = "TH_Heavy_Attack_01";

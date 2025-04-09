@@ -36,23 +36,25 @@ public class WeaponItem : Item
     public float heavyAttackMultiplier;
 
     [Header("Item Actions")]
-    public ItemAction holdRBAction;
-    public ItemAction tapRBAction;
-    public ItemAction holdLBAction;
-    public ItemAction tapLBAction;
-    public ItemAction holdRTAction;
-    public ItemAction tapRTAction; 
-    public ItemAction holdLTAction;
-    public ItemAction tapLTAction;
+    public ItemAction ohHoldRBAction;
+    public ItemAction ohTapRBAction;
+    public ItemAction ohHoldLBAction;
+    public ItemAction ohTapLBAction;
+    public ItemAction ohHoldRTAction;
+    public ItemAction ohTapRTAction; 
+    public ItemAction ohHoldLTAction;
+    public ItemAction ohTapLTAction;
 
-    //[Header("Two Handed Item Actions")]
-    // public ItemAction thHoldRBAction;
-    // public ItemAction thTapRBAction;
-    // public ItemAction thHoldLBAction;
-    // public ItemAction thTapLBAction;
-    // public ItemAction thHoldRTAction;
-    // public ItemAction thTapRTAction; 
+    [Header("Two Handed Item Actions")]
+    public ItemAction thHoldRBAction;
+    public ItemAction thTapRBAction;
+    public ItemAction thHoldLBAction;
+    public ItemAction thTapLBAction;
+    public ItemAction thHoldRTAction;
+    public ItemAction thTapRTAction; 
+    public ItemAction thHoldLTAction;
+    public ItemAction thTapLTAction;
 
-    // public ItemAction thHoldLTAction;
-    // public ItemAction thTapLTAction;
+    [Header("Sound FX")]
+    public AudioClip[] weaponWhooshesSounds;
 }

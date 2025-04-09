@@ -146,6 +146,8 @@ public class CharacterWeaponSlotManager : MonoBehaviour
 
     public virtual void OpenDamageCollider()
     {
+        //character.characterSoundFXManager.PlayRandomDamageSoundFX();
+
         if (character.isUsingRightHand)
         {
             rightHandDamageCollider.EnableDamageCollider();

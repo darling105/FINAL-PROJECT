@@ -142,6 +142,8 @@ public class CharacterStatsManager : MonoBehaviour
             currentHealth = 0;
             character.isDead = true;
         }
+
+        character.characterSoundFXManager.PlayRandomDamageSoundFX();
     }
 
     public virtual void TakeDamageNoAnimation(int physicalDamage, int fireDamage)
@@ -178,6 +180,9 @@ public class CharacterStatsManager : MonoBehaviour
             currentHealth = 0;
             character.isDead = true;
         }
+
+        character.characterSoundFXManager.PlayRandomDamageSoundFX();
+
     }
 
     public virtual void TakePoisonDamage(int damage)
