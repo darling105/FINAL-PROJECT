@@ -27,6 +27,7 @@ public class ItemStatsWindowUI : MonoBehaviour
 
     public void UpdateWeaponItemStats(WeaponItem weapon)
     {
+        CloseAllStatWindow();
         if (weapon != null)
         {
             if (weapon.itemName != null)
@@ -66,8 +67,9 @@ public class ItemStatsWindowUI : MonoBehaviour
         }
     }
 
-     public void UpdateArmorItemStats(EquipmentItem armor)
+    public void UpdateArmorItemStats(EquipmentItem armor)
     {
+        CloseAllStatWindow();
         if (armor != null)
         {
             if (armor.itemName != null)
@@ -107,4 +109,11 @@ public class ItemStatsWindowUI : MonoBehaviour
             armorStats.SetActive(false);
         }
     }
+
+    public void CloseAllStatWindow()
+    {
+        weaponStats.SetActive(false);
+        armorStats.SetActive(false);
+    }
+
 }

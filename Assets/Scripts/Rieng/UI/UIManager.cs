@@ -69,12 +69,13 @@ public class UIManager : MonoBehaviour
       bodyEquipmentInventorySlots = bodyEquipmentInventorySlotParent.GetComponentsInChildren<BodyEquipmentInventorySlot>();
       legEquipmentInventorySlots = legEquipmentInventorySlotParent.GetComponentsInChildren<LegEquipmentInventorySlot>();
       handEquipmentInventorySlots = handEquipmentInventorySlotParent.GetComponentsInChildren<HandEquipmentInventorySlot>();
-   } 
+   }
 
    private void Start()
    {
       equipmentWindowUI.LoadWeaponsOnEquipmentScreen(player.playerInventoryManager);
-
+      equipmentWindowUI.LoadArmorOnEquipmentScreen(player.playerInventoryManager);
+      
       if (player.playerInventoryManager.currentConsumable != null)
       {
          quickSlotsUI.UpdateCurrentSpellIcon(player.playerInventoryManager.currentSpell);

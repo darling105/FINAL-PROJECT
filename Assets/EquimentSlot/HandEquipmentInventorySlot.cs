@@ -18,7 +18,7 @@ public class HandEquipmentInventorySlot : MonoBehaviour
     public void AddItem(HandEquipment newItem)
     {
         item = newItem;
-        icon.sprite = item.itemIcon;
+        icon.sprite = newItem.itemIcon;
         icon.enabled = true;
         gameObject.SetActive(true);
     }
