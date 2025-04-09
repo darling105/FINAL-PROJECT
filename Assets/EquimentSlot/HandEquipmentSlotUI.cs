@@ -38,5 +38,6 @@ public class HandEquipmentSlotUI : MonoBehaviour
     public void SelectThisSlot()
     {
         uiManager.handEquipmentSlotSelected = true;
+        uiManager.itemStatsWindowUI.UpdateArmorItemStats(item);
     }
 }

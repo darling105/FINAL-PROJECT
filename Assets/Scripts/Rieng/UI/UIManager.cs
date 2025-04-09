@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
    public PlayerManager player;
+   public ItemStatsWindowUI itemStatsWindowUI;
    public EquipmentWindowUI equipmentWindowUI;
    public QuickSlotsUI quickSlotsUI;
 
@@ -17,7 +18,9 @@ public class UIManager : MonoBehaviour
    public GameObject selectWindow;
    public GameObject equipmentScreenWindow;
    public GameObject weaponInventoryWindow;
+   public GameObject itemStatsWindow;
    public GameObject levelUpWindow;
+
 
    [Header("Equipment Window Slot Selected")]
    public bool rightHandSlot01Selected;
@@ -55,16 +58,18 @@ public class UIManager : MonoBehaviour
    public Transform handEquipmentInventorySlotParent;
    HandEquipmentInventorySlot[] handEquipmentInventorySlots;
 
-   public void Awake()
+   private void Awake()
    {
-      quickSlotsUI = GetComponentInChildren<QuickSlotsUI>();
       player = FindObjectOfType<PlayerManager>();
+
+      quickSlotsUI = GetComponentInChildren<QuickSlotsUI>();
+
       weaponInventorySlots = weaponInventorySlotsParent.GetComponentsInChildren<WeaponInventorySlot>();
       headEquipmentInventorySlots = headEquipmentInventorySlotParent.GetComponentsInChildren<HeadEquipmentInventorySlot>();
       bodyEquipmentInventorySlots = bodyEquipmentInventorySlotParent.GetComponentsInChildren<BodyEquipmentInventorySlot>();
       legEquipmentInventorySlots = legEquipmentInventorySlotParent.GetComponentsInChildren<LegEquipmentInventorySlot>();
       handEquipmentInventorySlots = handEquipmentInventorySlotParent.GetComponentsInChildren<HandEquipmentInventorySlot>();
-   }
+   } 
 
    private void Start()
    {
@@ -100,7 +105,7 @@ public class UIManager : MonoBehaviour
          }
          else
          {
-            weaponInventorySlots[i].ClearInventortSlot();
+            weaponInventorySlots[i].ClearInventorySlot();
          }
       }
 
@@ -112,14 +117,14 @@ public class UIManager : MonoBehaviour
          {
             if (headEquipmentInventorySlots.Length < player.playerInventoryManager.headEquipmentInventory.Count)
             {
-               Instantiate(headEquipmentInventorySlotParent, headEquipmentInventorySlotParent);
+               Instantiate(headEquipmentInventorySlotPrefab, headEquipmentInventorySlotParent);
                headEquipmentInventorySlots = headEquipmentInventorySlotParent.GetComponentsInChildren<HeadEquipmentInventorySlot>();
             }
             headEquipmentInventorySlots[i].AddItem(player.playerInventoryManager.headEquipmentInventory[i]);
          }
          else
          {
-            headEquipmentInventorySlots[i].ClearInventortSlot();
+            headEquipmentInventorySlots[i].ClearInventorySlot();
          }
       }
 
@@ -131,14 +136,14 @@ public class UIManager : MonoBehaviour
          {
             if (bodyEquipmentInventorySlots.Length < player.playerInventoryManager.bodyEquipmentInventory.Count)
             {
-               Instantiate(bodyEquipmentInventorySlotParent, bodyEquipmentInventorySlotParent);
+               Instantiate(bodyEquipmentInventorySlotPrefab, bodyEquipmentInventorySlotParent);
                bodyEquipmentInventorySlots = bodyEquipmentInventorySlotParent.GetComponentsInChildren<BodyEquipmentInventorySlot>();
             }
             bodyEquipmentInventorySlots[i].AddItem(player.playerInventoryManager.bodyEquipmentInventory[i]);
          }
          else
          {
-            bodyEquipmentInventorySlots[i].ClearInventortSlot();
+            bodyEquipmentInventorySlots[i].ClearInventorySlot();
          }
       }
 
@@ -157,12 +162,12 @@ public class UIManager : MonoBehaviour
          }
          else
          {
-            legEquipmentInventorySlots[i].ClearInventortSlot();
+            legEquipmentInventorySlots[i].ClearInventorySlot();
          }
       }
 
       //hand equipment inventory slot
-      
+
       for (int i = 0; i < handEquipmentInventorySlots.Length; i++)
       {
          if (i < player.playerInventoryManager.handEquipmentInventory.Count)
@@ -176,7 +181,7 @@ public class UIManager : MonoBehaviour
          }
          else
          {
-            handEquipmentInventorySlots[i].ClearInventortSlot();
+            handEquipmentInventorySlots[i].ClearInventorySlot();
          }
       }
 
@@ -197,6 +202,7 @@ public class UIManager : MonoBehaviour
       ResetAllSelectedItems();
       weaponInventoryWindow.SetActive(false);
       equipmentScreenWindow.SetActive(false);
+      itemStatsWindow.SetActive(false);
    }
 
    public void ResetAllSelectedItems()

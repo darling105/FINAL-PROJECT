@@ -23,7 +23,7 @@ public class BodyEquipmentInventorySlot : MonoBehaviour
         gameObject.SetActive(true);
     }
 
-    public void ClearInventortSlot()
+    public void ClearInventorySlot()
     {
         item = null;
         icon.sprite = null;

@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 21300000, guid: e98416b47b0244a48ae04c3d7e2cfcf0, type: 3}
   itemName: Fallen Knight's Legging
-  physicalDefense: 0
+  physicalDefense: 10
+  fireDefense: 10
+  poisonResistance: 0
   hipModelName: Male_Hips_06
   leftLegModelName: Male_Leg_Left_17
   rightLegModelName: Male_Leg_Right_17

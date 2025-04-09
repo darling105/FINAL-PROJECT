@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 21300000, guid: e12da0c38f48e1046ae8196d810463a7, type: 3}
   itemName: Fallen Knight's Gaunlets
-  physicalDefense: 0
+  physicalDefense: 10
+  fireDefense: 0
+  poisonResistance: 0
   leftHandModelName: Chr_HandLeft_Male_14
   rightHandModelName: Chr_HandRight_Male_14
   lowerLeftArmModelName: Male_Arm_Lower_Left_13

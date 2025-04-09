@@ -38,5 +38,6 @@ public class LegEquipmentSlotUI : MonoBehaviour
     public void SelectThisSlot()
     {
         uiManager.legEquipmentSlotSelected = true;
+        uiManager.itemStatsWindowUI.UpdateArmorItemStats(item);
     }
 }

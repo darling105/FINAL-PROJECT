@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class BodyEquipmentSlotUI : MonoBehaviour
 {
-UIManager uiManager;
+    UIManager uiManager;
     public Image icon;
     BodyEquipment item;
     private void Awake()
@@ -37,6 +37,7 @@ UIManager uiManager;
 
     public void SelectThisSlot()
     {
-       uiManager.bodyEquipmentSlotSelected = true;
+        uiManager.bodyEquipmentSlotSelected = true;
+        uiManager.itemStatsWindowUI.UpdateArmorItemStats(item);
     }
 }
